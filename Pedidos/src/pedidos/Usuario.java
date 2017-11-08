@@ -9,14 +9,6 @@ package pedidos;
  *
  * @author john
  */
-public class Pedidos {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("Holi");
-    }
+public class Usuario {
     
 }
