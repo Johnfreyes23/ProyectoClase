@@ -12,5 +12,29 @@ package pedidos;
 public class Empleado extends Usuario {
     private String Cargo;
     private String Orden_Pedido;
+
+    public String getCargo() {
+        return Cargo;
+    }
+
+    public void setCargo(String Cargo) {
+        this.Cargo = Cargo;
+    }
+
+    public String getOrden_Pedido() {
+        return Orden_Pedido;
+    }
+
+    public void setOrden_Pedido(String Orden_Pedido) {
+        this.Orden_Pedido = Orden_Pedido;
+    }
+
+    public Empleado(String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Direccion, String Telefono, String Correo) {
+        super(Nombres, Apellidos, ID, Fecha_Nacimiento, Direccion, Telefono, Correo);
+    }
+
+    public Empleado() {
+    }
+    
     
 }

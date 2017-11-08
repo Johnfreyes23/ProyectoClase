@@ -18,6 +18,20 @@ public class Usuario {
     private String Telefono;
     private String Correo;
 
+    public Usuario(String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Direccion, String Telefono, String Correo) {
+        this.Nombres = Nombres;
+        this.Apellidos = Apellidos;
+        this.ID = ID;
+        this.Fecha_Nacimiento = Fecha_Nacimiento;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
+        this.Correo = Correo;
+    }
+
+    public Usuario() {
+    }
+    
+    
     public String getNombres() {
         return Nombres;
     }
