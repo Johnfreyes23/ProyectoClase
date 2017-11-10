@@ -19,6 +19,7 @@ public class Producto {
     public Producto(float alto, float ancho ) {
         this.alto = alto;
         this.ancho = ancho;
+        this.area = this.alto * this.ancho ;
     }
     
     
