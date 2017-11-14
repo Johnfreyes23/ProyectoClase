@@ -11,35 +11,25 @@ package pedidos;
  */
 public class Polietileno extends Producto {
 
-    private  float calibre;
+    private double calibre;
 
-    public Polietileno(float calibre, float alto, float ancho) {
+    public Polietileno(double calibre, double alto, double ancho) {
         super(alto, ancho);
         this.calibre = calibre;
     }
 
-    public double RecargoValor(float area) {
-        double porcentaje = 0.1;
-        if (area > 10000) {
-            porcentaje =  0.6;
-            
-        }
-        if (area <= 10000 && area >= 5000) {
-            porcentaje =  1.2;
-             
-        }
-        if (area < 5000) {
-            porcentaje =  2;
-            
-        }
+    public double RecargoValor(double area) {
+        double porcentaje = -5.369*Math.pow(10, -5)*area+3.6;
         return porcentaje;
 
     }
 
-    float CalcularPrecio() {
+    public double CalcularPrecio() {
 
-        float area = getArea();
-        float valor = (float) ((442.8 * calibre + 0.4428*area- 8856)* RecargoValor(area)) ;
+        double area = getArea();
+        double costo =  ((442.8 * calibre + 0.4428*(area-20000)*(calibre/20))) ;
+        double valor = costo * RecargoValor(area);
+        setCosto(costo);
         setValor(valor);
         return valor;
     }
