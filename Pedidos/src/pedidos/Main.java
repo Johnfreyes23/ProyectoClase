@@ -17,7 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here        
+        // TODO code application logic here 
+        ArrayList<Usuario> usuarios = new ArrayList();
         Scanner sc = new Scanner(System.in);
         Integer option;
         do{
@@ -27,6 +28,24 @@ public class Main {
         {
             case 1: 
                 System.out.println("Va a ingresar un empleado.");
+                Empleado empleado = new Empleado();
+                System.out.println("Nombres:.");
+                empleado.setNombres(sc.next());
+                System.out.println("Apellidos:.");
+                empleado.setApellidos(sc.next());
+                System.out.println("Documento de Identidad:.");
+                empleado.setID(sc.next());
+                System.out.println("Cargo:.");
+                empleado.setCargo(sc.next());
+                System.out.println("Fecha de Nacimiento:.");
+                empleado.setFecha_Nacimiento(sc.next());
+                System.out.println("Dirección:.");
+                empleado.setDireccion(sc.next());
+                System.out.println("Telefono:.");
+                empleado.setTelefono(sc.next());
+                System.out.println("Correo:.");
+                empleado.setCorreo(sc.next());
+                usuarios.add(empleado);
                 break;
             case 2: 
                 System.out.println("Va a ingresar un cliente.");
@@ -37,6 +56,10 @@ public class Main {
                 
         }
         } while(option != 4);
+        
+        for(Usuario usu : usuarios){
+            System.out.println(usu.getNombres() + " " + usu.getApellidos());
+        }
     }
     
 }
