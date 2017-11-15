@@ -49,6 +49,15 @@ public class Cajon extends Producto {
         return valor;
     }
 
+    public double getOtros() {
+        return otros;
+    }
+
+    public void setOtros(double otros) {
+        this.otros = otros;
+    }
+    
+
     public Acrilico getFrente() {
         return frente;
     }
