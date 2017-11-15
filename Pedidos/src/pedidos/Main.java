@@ -49,6 +49,24 @@ public class Main {
                 break;
             case 2: 
                 System.out.println("Va a ingresar un cliente.");
+                Cliente cliente = new Cliente();
+                System.out.println("Código de Cliente:.");
+                cliente.setId_Cliente(sc.next());
+                System.out.println("Nombres:.");
+                cliente.setNombres(sc.next());
+                System.out.println("Apellidos:.");
+                cliente.setApellidos(sc.next());
+                System.out.println("Documento de Identidad:.");
+                cliente.setID(sc.next());
+                System.out.println("Fecha de Nacimiento:.");
+                cliente.setFecha_Nacimiento(sc.next());
+                System.out.println("Dirección:.");
+                cliente.setDireccion(sc.next());
+                System.out.println("Telefono:.");
+                cliente.setTelefono(sc.next());
+                System.out.println("Correo:.");
+                cliente.setCorreo(sc.next());
+                usuarios.add(cliente);
                 break;
             case 3: 
                 System.out.println("Va a realizar una cotización.");
