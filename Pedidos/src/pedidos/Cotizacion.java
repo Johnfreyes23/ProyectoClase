@@ -14,33 +14,31 @@ import java.util.ArrayList;
 public class Cotizacion {
     private ArrayList<Producto> productos = new ArrayList();
     private Cliente cliente = new Cliente();
-    private String IDcliente;
     private String descripcion;
     private double valorTotal;
-    static final double IVA = 0.19;
     
-    public Cotizacion(String IDcliente) {
-        this.IDcliente = IDcliente;
-    }
-    
-    /**
-     *
-     */
     public Cotizacion() {
+        
     }
     
-    public void agregarProducto (String tipo){
-        if(tipo.equals("acrilico")){
-            
-        }
-        if(tipo.equals("cajon")){
-            
-        }
-        if(tipo.equals("polietileno")){
-            
-        }
+    public void generarCotizacion(){
+        
+        System.out.println("Arteacryl de Colombia - Cotizacion");
+        System.out.println("Cliente " + cliente.getNombres()+ " " + cliente.getApellidos());
+        System.out.println("Descripcion : " + descripcion);
+        System.out.println("Valor total : " + CalculoValorTotal(productos));
     }
     
+    public void agregarProducto (Producto producto){
+        productos.add(producto);
+    } 
+    public double CalculoValorTotal(ArrayList Productos){
+        for(Producto prod : productos){
+            valorTotal=0;
+            valorTotal = prod.getValor()+ valorTotal;}
+        setValorTotal(valorTotal) ;
+        return valorTotal;
+    }
 
     public ArrayList<Producto> getProductos() {
         return productos;

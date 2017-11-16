@@ -15,7 +15,8 @@ public class Producto {
     private double ancho;
     private double area;
     private double valor;
-    private double costo;
+    private double costo;    
+    static final double IVA = 0.19;
 
     public Producto(double alto, double ancho ) {
         this.alto = alto;
