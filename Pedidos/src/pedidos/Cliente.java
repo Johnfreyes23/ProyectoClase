@@ -13,9 +13,12 @@ public class Cliente extends Usuario{
     private String Id_Pedido;
     private String Id_Cliente;
 
-    public Cliente(String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Direccion, String Telefono, String Correo) {
-        super(Nombres, Apellidos, ID, Fecha_Nacimiento, Direccion, Telefono, Correo);
+    public Cliente(String Id_Pedido, String Id_Cliente, String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
+        super(Nombres, Apellidos, ID, Fecha_Nacimiento, Genero, Direccion, Telefono, Correo);
+        this.Id_Pedido = Id_Pedido;
+        this.Id_Cliente = Id_Cliente;
     }
+    
 
     public Cliente() {
         super();

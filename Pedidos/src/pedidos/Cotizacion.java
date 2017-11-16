@@ -17,7 +17,8 @@ public class Cotizacion {
     private String descripcion;
     private double valorTotal;
     
-    public Cotizacion() {
+    public Cotizacion(ArrayList productos) {
+        this.productos=productos;
         
     }
     

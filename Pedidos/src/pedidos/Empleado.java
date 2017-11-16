@@ -29,9 +29,13 @@ public class Empleado extends Usuario {
         this.Orden_Pedido = Orden_Pedido;
     }
 
-    public Empleado(String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Direccion, String Telefono, String Correo) {
-        super(Nombres, Apellidos, ID, Fecha_Nacimiento, Direccion, Telefono, Correo);
+
+    public Empleado(String Cargo, String Orden_Pedido, String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
+        super(Nombres, Apellidos, ID, Fecha_Nacimiento, Genero, Direccion, Telefono, Correo);
+        this.Cargo = Cargo;
+        this.Orden_Pedido = Orden_Pedido;
     }
+    
 
     public Empleado() {
     }
