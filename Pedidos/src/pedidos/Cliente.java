@@ -11,17 +11,16 @@ package pedidos;
  */
 public class Cliente extends Usuario{
     private String Id_Pedido;
-    private String Id_Cliente;
 
-    public Cliente(String Id_Pedido, String Id_Cliente, String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
-        super(Nombres, Apellidos, ID, Fecha_Nacimiento, Genero, Direccion, Telefono, Correo);
-        this.Id_Pedido = Id_Pedido;
-        this.Id_Cliente = Id_Cliente;
+    public Cliente(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
+        super( ID,  Nombres,   Apellidos,  Identificacion,   Fecha_Nacimiento,  Genero,  Direccion,  Telefono,  Correo);
+        setCategoria("cliente");
     }
     
 
     public Cliente() {
         super();
+        setCategoria("cliente");
     }
     
     public String getId_Pedido() {
@@ -32,12 +31,5 @@ public class Cliente extends Usuario{
         this.Id_Pedido = Id_Pedido;
     }
 
-    public String getId_Cliente() {
-        return Id_Cliente;
-    }
-
-    public void setId_Cliente(String Id_Cliente) {
-        this.Id_Cliente = Id_Cliente;
-    }
-    
+  
 }

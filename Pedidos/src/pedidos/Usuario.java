@@ -7,6 +7,8 @@ package pedidos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,22 +21,28 @@ public class Usuario {
     private String Apellidos;
     private String ID;
     private String Fecha_Nacimiento;
-    private String Idenficacion;
+    private String Identificacion;
     private String Genero;
     private String Direccion;
     private String Telefono;
     private String Correo;
+    private String Categoria ;
 
-    public Usuario(String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
+    public Usuario(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
         this.ID = ID;
         this.Fecha_Nacimiento = Fecha_Nacimiento;
+        this.Identificacion = Identificacion;
         this.Genero = Genero;
         this.Direccion = Direccion;
         this.Telefono = Telefono;
         this.Correo = Correo;
+        this.Categoria= null;
     }
+
+   
+    
 
   
 
@@ -59,13 +67,70 @@ public class Usuario {
 
         return null;
     }
+    
+    public List<Usuario> obtenerListaUsuarios() {
+        ConexionBD diamante = new ConexionBD();
+        String sentencia = "select IdUsr from Usuario ";
+        ResultSet rs = diamante.consultarBD(sentencia);
+        List<Usuario> usuarios = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Usuario u = new Usuario();
+                u.obtenerUsuario(rs.getString("IdUsr"));
+                usuarios.add(u);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuarios;
+    }
+    
+    public Boolean crearUsuario() {
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Insert into Proyecto.Usuario (IdUsr,Identif,Categoria,NomUsr,ApeUsr,CorreoUsr,GeneroUsr,Domicilio,Telefono,FechaNacimiento) "
+                + " Values('" + this.ID + "',"
+                + "'" + this.Identificacion + "',"
+                + "'" + this.Categoria + "',"
+                + "'" + this.Nombres + "',"
+                + "'" + this.Apellidos + "',"
+                + "'" + this.Correo + "',"
+                + "'" + this.Genero + "',"
+                + "'" + this.Direccion + "',"
+                + "'" + this.Telefono + "',"
+                + "'" + this.Fecha_Nacimiento + "');";
+        boolean exito = Proyecto.insertarBD(sentencia);
+        if (exito) {
+            String sentencia2 = "select max(IdUsr) as Id from Usuario;";
+            ResultSet rs = Proyecto.consultarBD(sentencia2);
+            try {
+                if (rs.next()) {
+                    this.setID(rs.getString("IdUsr"));
+                    Proyecto.cerrarConexion();
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Proyecto.cerrarConexion();
+        return false;
+    }
 
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+    
+    
     public String getIdenficacion() {
-        return Idenficacion;
+        return Identificacion;
     }
 
     public void setIdenficacion(String Idenficacion) {
-        this.Idenficacion = Idenficacion;
+        this.Identificacion = Idenficacion;
     }
 
     public String getGenero() {
