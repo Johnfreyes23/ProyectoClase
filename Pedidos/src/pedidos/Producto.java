@@ -25,7 +25,9 @@ public class Producto {
         this.tipo = tipo;
         this.area = this.alto * this.ancho ;
     }
-
+    public double CalcularPrecio() {
+        return valor;
+    }
     public double getCosto() {
         return costo;
     }
@@ -72,16 +74,5 @@ public class Producto {
         return tipo;
     }
     
-    public void Imprimir(Producto product)
-    {
-        switch(product.getTipo())
-                {
-                    case "Polietileno":
-                        Polietileno po = (Polietileno) product;
-                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
-                                "\n\t Ancho: " + product.getAncho() + "\n\t Calibre: " + po.getCalibre());
-                    break;
-                }
-    }
     
 }

@@ -35,8 +35,8 @@ public class Factura {
         productos.add(producto);
     } 
     public double CalculoValorTotal(ArrayList Productos){
+        valorTotal=0;
         for(Producto prod : productos){
-            valorTotal=0;
             valorTotal = prod.getValor()+ valorTotal;}
         setValorTotal(valorTotal) ;
         return valorTotal;

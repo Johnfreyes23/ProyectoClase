@@ -33,18 +33,41 @@ public class Cotizacion extends Factura {
         super();
     }   
     
+    public void Imprimir(Producto product)
+    {
+        switch(product.getTipo())
+                {
+                    case "Polietileno":
+                        Polietileno po = (Polietileno) product;
+                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
+                                "\n\t Ancho: " + product.getAncho() + "\n\t Calibre: " + po.getCalibre() + "\n\t Valor: $" + 
+                                po.CalcularPrecio());
+                    break;
+                    
+                    case "Acrilico":
+                        Acrilico a1 = (Acrilico) product;
+                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
+                                "\n\t Ancho: " + product.getAncho() + "\n\t Calibre: " + a1.getCalibre() + "\n\t Color: " + a1.getColor() + 
+                                "\n\t Valor: $" + a1.CalcularPrecio());
+                    break;
+                    
+                    case "Cajon":
+                        Cajon c1 = (Cajon) product;
+                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
+                                "\n\t Largo: " + product.getAncho() + "\n\t Ancho: " + c1.getCanto() + "\n\t Valor: $" + c1.CalcularPrecio());
+                        
+                }
+    }
     
     public void generarCotizacion(){
         
         System.out.println("Arteacryl de Colombia - Cotizacion");
         System.out.println("Cliente " + getCliente().getNombres()+ " " + getCliente().getApellidos());
         System.out.println("Producto(s) a cotizar");
-        Factura facturar = new Factura();
-        for(Producto ver : facturar.getProductos())
+        for(Producto ver : getProductos())
         {
-            
+            Imprimir(ver);
         }
-        System.out.println("Descripcion : " + getDescripcion());
         System.out.println("Valor total : " + CalculoValorTotal(getProductos()));
     }
     
