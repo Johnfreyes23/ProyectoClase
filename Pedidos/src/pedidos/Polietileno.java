@@ -14,7 +14,7 @@ public class Polietileno extends Producto {
     private double calibre;
 
     public Polietileno(double calibre, double alto, double ancho) {
-        super(alto, ancho);
+        super(alto, ancho, "Polietileno");
         this.calibre = calibre;
     }
 
@@ -34,4 +34,8 @@ public class Polietileno extends Producto {
         return valor;
     }
 
+    public double getCalibre()
+    {
+        return calibre;
+    }
 }

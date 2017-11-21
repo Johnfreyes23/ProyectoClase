@@ -14,7 +14,7 @@ public class Acrilico extends Producto{
     private String color;
 
     public Acrilico(double calibre, String color, double alto, double ancho) {
-        super(alto, ancho);
+        super(alto, ancho, "Acrilico");
         this.calibre = calibre;
         this.color = color;
     }

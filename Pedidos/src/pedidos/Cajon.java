@@ -21,7 +21,7 @@ public class Cajon extends Producto {
     private Acrilico cantonera;
 
     public Cajon(int tubos , int leds, double canto, double manofactura,double otros , double alto, double ancho) {
-        super(alto, ancho);
+        super(alto, ancho, "Cajon");
         this.tubos = tubos;
         this.leds = leds;
         this.canto = canto;

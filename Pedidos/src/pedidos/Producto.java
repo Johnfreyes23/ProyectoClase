@@ -16,11 +16,13 @@ public class Producto {
     private double area;
     private double valor;
     private double costo;    
+    private String tipo;
     static final double IVA = 0.19;
 
-    public Producto(double alto, double ancho ) {
+    public Producto(double alto, double ancho, String tipo ) {
         this.alto = alto;
         this.ancho = ancho;
+        this.tipo = tipo;
         this.area = this.alto * this.ancho ;
     }
 
@@ -63,6 +65,23 @@ public class Producto {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+    
+    public String getTipo()
+    {
+        return tipo;
+    }
+    
+    public void Imprimir(Producto product)
+    {
+        switch(product.getTipo())
+                {
+                    case "Polietileno":
+                        Polietileno po = (Polietileno) product;
+                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
+                                "\n\t Ancho: " + product.getAncho() + "\n\t Calibre: " + po.getCalibre());
+                    break;
+                }
     }
     
 }

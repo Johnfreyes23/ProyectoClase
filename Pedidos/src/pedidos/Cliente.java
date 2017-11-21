@@ -5,6 +5,13 @@
  */
 package pedidos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Nicolas
@@ -16,7 +23,22 @@ public class Cliente extends Usuario{
         super( ID,  Nombres,   Apellidos,  Identificacion,   Fecha_Nacimiento,  Genero,  Direccion,  Telefono,  Correo);
         setCategoria("cliente");
     }
-    
+    public List<Cliente> obtenerListaClientes() {
+        ConexionBD diamante = new ConexionBD();
+        String sentencia = "select IdUsr from Usuario ";
+        ResultSet rs = diamante.consultarBD(sentencia);
+        List<Cliente> clientes = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Cliente u = new Cliente();
+                u.obtenerUsuario(rs.getString("IdUsr"));
+                clientes.add(u);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return clientes;
+    }
 
     public Cliente() {
         super();

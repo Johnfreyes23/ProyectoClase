@@ -30,17 +30,17 @@ public class Empleado extends Usuario {
     }
 
 
-    public Empleado(String Cargo, String Orden_Pedido, String Nombres, String Apellidos, String ID, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
-        super(ID, Nombres, Direccion, Apellidos, Fecha_Nacimiento, Genero, Direccion, Telefono, Correo);
+    public Empleado(String ID, String Nombres, String Apellidos, String Identificacion, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo, String Cargo) {
+        super(ID, Nombres, Apellidos, Identificacion, Fecha_Nacimiento,  Genero, Direccion, Telefono, Correo);
         this.Cargo = Cargo;
         this.Orden_Pedido = Orden_Pedido;
-        setCategoria("cliente");
+        setCategoria("Empleado");
     }
     
 
     public Empleado() {
         super();
-        setCategoria("cliente");
+        setCategoria("Empleado");
     }
     
     

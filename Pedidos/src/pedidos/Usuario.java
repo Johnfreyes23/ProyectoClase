@@ -55,6 +55,10 @@ public class Usuario {
                 this.setNombres(rs.getString("NomUsr"));
                 this.setApellidos(rs.getString("ApeUsr"));
                 this.setIdenficacion(rs.getString("Identif"));
+                this.setFecha_Nacimiento("FechaNacimiento");
+                this.setGenero("GeneroUsr");
+                this.setDireccion("Domicilio");
+                this.setTelefono("Telefono");
                 this.setCorreo(rs.getString("CorreoUsr"));
                 return this;
             }
@@ -149,7 +153,7 @@ public class Usuario {
         this.Nombres = Nombres;
     }
 
-    public String getApellidos() {
+        public String getApellidos() {
         return Apellidos;
     }
 
