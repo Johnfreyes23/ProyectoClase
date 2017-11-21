@@ -28,7 +28,7 @@ public class Usuario {
     private String Correo;
     private String Categoria ;
 
-    public Usuario(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
+   public Usuario(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
         this.ID = ID;
@@ -41,10 +41,6 @@ public class Usuario {
         this.Categoria= null;
     }
 
-   
-    
-
-  
 
     public Usuario() {
     }
@@ -58,6 +54,8 @@ public class Usuario {
                 this.setID(Id);
                 this.setNombres(rs.getString("NomUsr"));
                 this.setApellidos(rs.getString("ApeUsr"));
+                this.setIdenficacion(rs.getString("Identif"));
+                this.setCorreo(rs.getString("CorreoUsr"));
                 return this;
             }
         } catch (SQLException ex) {
