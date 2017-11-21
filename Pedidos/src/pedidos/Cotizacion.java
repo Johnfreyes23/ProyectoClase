@@ -5,73 +5,32 @@
  */
 package pedidos;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
  * @author john
  */
-public class Cotizacion {
-    private ArrayList<Producto> productos = new ArrayList();
-    private Cliente cliente = new Cliente();
-    private String descripcion;
-    private double valorTotal;
-    
-    public Cotizacion(ArrayList productos) {
-        this.productos=productos;
-        
+public class Cotizacion extends Factura {
+   
+
+    public Cotizacion(Cliente cliente,String descripcion, double valorTotal, String fechaAprobado) {
+        super(cliente, descripcion, valorTotal, fechaAprobado);
     }
+
+    public Cotizacion() {
+        super();
+    }   
+    
     
     public void generarCotizacion(){
         
         System.out.println("Arteacryl de Colombia - Cotizacion");
-        System.out.println("Cliente " + cliente.getNombres()+ " " + cliente.getApellidos());
-        System.out.println("Descripcion : " + descripcion);
-        System.out.println("Valor total : " + CalculoValorTotal(productos));
+        System.out.println("Cliente " + getCliente().getNombres()+ " " + getCliente().getApellidos());
+        System.out.println("Descripcion : " + getDescripcion());
+        System.out.println("Valor total : " + CalculoValorTotal(getProductos()));
     }
-    
-    public void agregarProducto (Producto producto){
-        productos.add(producto);
-    } 
-    public double CalculoValorTotal(ArrayList Productos){
-        for(Producto prod : productos){
-            valorTotal=0;
-            valorTotal = prod.getValor()+ valorTotal;}
-        setValorTotal(valorTotal) ;
-        return valorTotal;
-    }
-
-    public ArrayList<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-    
     
 }

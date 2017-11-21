@@ -13,35 +13,34 @@ import java.util.Date;
  */
 public class Pedido {
     private String estado;
-    private String idPedido;
+    private Cotizacion cotizacion;
     private ArrayList<Producto> productos = new ArrayList();
-    private Cliente cliente = new Cliente();
+    private Cliente cliente ;
     private ArrayList<Empleado> empleado=new ArrayList();
-    private String IDcliente;
     private String descripcion;
     private double valorTotal;
-    private Date fechaIncial;
-    private Date fechaFinal;
+    private String fechaIncial;
+    private String fechaFinal;
 
-    public Pedido() {
-        
+    public Pedido(String estado, Cliente cliente, ArrayList<Producto>  productos, String descripcion, String fechaIncial) {
+        this.estado = estado;
+        this.cliente = cliente;
+        this.productos = productos;
+        this.descripcion = descripcion;
+        this.fechaIncial = fechaIncial;
     }
     
-
+    
+    public Pedido() {
+        
+    }   
+    
     public String getEstado() {
         return estado;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public String getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(String idPedido) {
-        this.idPedido = idPedido;
     }
 
     public ArrayList<Producto> getProductos() {
@@ -60,13 +59,7 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public String getIDcliente() {
-        return IDcliente;
-    }
-
-    public void setIDcliente(String IDcliente) {
-        this.IDcliente = IDcliente;
-    }
+   
 
     public String getDescripcion() {
         return descripcion;

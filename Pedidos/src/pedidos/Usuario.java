@@ -58,6 +58,7 @@ public class Usuario {
                 this.setCorreo(rs.getString("CorreoUsr"));
                 return this;
             }
+            
         } catch (SQLException ex) {
 
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,11 +99,11 @@ public class Usuario {
                 + "'" + this.Fecha_Nacimiento + "');";
         boolean exito = Proyecto.insertarBD(sentencia);
         if (exito) {
-            String sentencia2 = "select max(IdUsr) as Id from Usuario;";
+            String sentencia2 = "select max(IdUsr) as Id from Proyecto.Usuario;";
             ResultSet rs = Proyecto.consultarBD(sentencia2);
             try {
                 if (rs.next()) {
-                    this.setID(rs.getString("IdUsr"));
+                    this.setID(rs.getString("Id"));
                     Proyecto.cerrarConexion();
                     return true;
                 }
