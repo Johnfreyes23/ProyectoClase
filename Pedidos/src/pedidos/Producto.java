@@ -6,11 +6,13 @@
 package pedidos;
 
 /**
- *
- * @author john
+ * Esta clase define objetos que generan los productos
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 20/11/2017
  */
 public class Producto {
-
+    //Campos de la clase
     private double alto;
     private double ancho;
     private double area;
@@ -18,7 +20,12 @@ public class Producto {
     private double costo;    
     private String tipo;
     static final double IVA = 0.19;
-
+/**
+* Constructor para la clase producto
+* @param alto Define la altura del producto;
+* @param ancho Define la anchura del producto;
+* @param tipo Define el tipo de producto;
+*/
     public Producto(double alto, double ancho, String tipo ) {
         this.alto = alto;
         this.ancho = ancho;
