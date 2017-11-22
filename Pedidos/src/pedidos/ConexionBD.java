@@ -1,18 +1,4 @@
-/*
- * ConexionBD.java  (01/06/04)
- *
- * Derechos de Autor Grupo Software CALUMET, 
- * Escuela de Ingeniera de Sistemas e Informtica - UIS
- * Bucaramanga (Santander) Colombia
- * Todos los derechos reservados.
- *
- * Este software es informacin propietaria y confidencial del 
- * Grupo Software CALUMET, cualquier intento de uso o distribucin
- * debe ser aprobado por CALUMET
- *
- * ltima modificacin:  23/12/04 
- * @Author: Rikardo lvarez
- */
+
 package pedidos;
 
 import java.sql.*;

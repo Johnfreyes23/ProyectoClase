@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
@@ -10,21 +10,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- *
- * @author john
+ * Esta clase define objetos que generan cotizacion
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 20/11/2017
  */
-//public class Cotizacion {
-//    private ArrayList<Producto> productos = new ArrayList();
-//    private Cliente cliente = new Cliente();
-//    private String descripcion;
-//    private double valorTotal;
-    
-//    public Cotizacion(ArrayList productos) {
-//        this.productos=productos;
-//        
-//    }
-public class Cotizacion extends Factura {
 
+public class Cotizacion extends Factura {
+    
+/**
+* Constructor para la clase produccion
+* @param cliente El parámetro pedido define el cliente asociado a la cotizacion.
+* @param descripcion El parámetro descripcion define la descripcion de la cotizacion.
+* @param valorTotal El parámetro valorTotal define el valor total de la cotizacion.
+* @param fechaAprobado El parámetro fechaAprobado define la fecha en que se crea la cotizacion.
+
+*/
     public Cotizacion(Cliente cliente,String descripcion, double valorTotal, String fechaAprobado) {
         super(cliente, descripcion, valorTotal, fechaAprobado);
     }
@@ -32,7 +33,9 @@ public class Cotizacion extends Factura {
     public Cotizacion() {
         super();
     }   
-    
+/**
+* Metodo que imprime en pantalla descripcion de los productos en cotizacion de un pedido.
+*/
     public void Imprimir(Producto product)
     {
         switch(product.getTipo())
@@ -59,6 +62,9 @@ public class Cotizacion extends Factura {
                 }
     }
     
+/**
+* Metodo que imprime en pantalla descripcion la cotizacion de un pedido.
+*/
     public void generarCotizacion(){
         
         System.out.println("Arteacryl de Colombia - Cotizacion");

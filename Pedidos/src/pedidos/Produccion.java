@@ -13,10 +13,10 @@ import java.util.Calendar;
  * Esta clase define objetos que generan una orden de produccion 
  * @author John Reyes Celis
  * @author Nicolas Gamboa Agredo
- * @version: 22/09/2016/A
+ * @version: 20/11/2017
  */
 public class Produccion {
-    //Capos de la Clase
+    //Campos de la Clase
     private Pedido pedido ; 
     private String FechaEntrega;
     private Empleado empleado;
