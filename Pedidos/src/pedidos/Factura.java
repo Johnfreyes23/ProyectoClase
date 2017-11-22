@@ -20,8 +20,16 @@ public class Factura {
     private double valorTotal;
     private String fechaAprobado;
     private Pedido pedido;
-    public Factura() {
-        super();
+    private Cotizacion cotizacion;
+
+    public Factura(Cotizacion cotizacion) {
+        this.cotizacion = cotizacion;
+        this.cliente = cotizacion.getCliente();
+        this.fechaAprobado=cotizacion.fechaAprobado();
+        this.productos= cotizacion.getProductos();        
+    }
+    
+    public Factura(){
     }
 
     public Factura(Cliente cliente, String descripcion,double valorTotal, String fechaFactura) {
@@ -54,7 +62,7 @@ public class Factura {
     
     
     public void generarPedido(){
-        pedido = new Pedido("Cotizado",getCliente(),getProductos(),getDescripcion(),getFechaAprobado());
+        pedido = new Pedido("Facturado",getCliente(),getProductos(),getDescripcion(),getFechaAprobado());
         this.fechaAprobado=fechaAprobado();        
     }
 
