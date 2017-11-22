@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
@@ -13,12 +13,27 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Nicolas
+ * Esta clase define objetos que generan un Cliente. 
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 20/11/2017
  */
 public class Empleado extends Usuario {
+    //Campos de la Clase
     private String Cargo;
     private String Orden_Pedido;
+/**
+* Constructor para la clase Empleado.
+* @param ID Identificacion del Empleado en base de datos. 
+* @param Nombres 
+* @param Apellidos 
+* @param Identificacion 
+* @param Genero 
+* @param Nombres 
+* @param Direccion 
+* @param Telefono 
+* @param Correo 
+*/
     public Empleado(String ID, String Nombres, String Apellidos, String Identificacion, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo, String Cargo) {
         super(ID, Nombres, Apellidos, Identificacion, Fecha_Nacimiento,  Genero, Direccion, Telefono, Correo);
         this.Cargo = Cargo;
@@ -31,6 +46,11 @@ public class Empleado extends Usuario {
         super();
         setCategoria("Empleado");
     }
+    
+/**
+* Metodo obtiene una lista de Empleados de base de datos.
+* @return lista de Empleados en la tabla usuarios en base de datos.
+*/
     public List<Empleado> obtenerListaEmpleados() {
         ConexionBD diamante = new ConexionBD();
         String sentencia = "select IdUsr from Usuario where Categoria = 'Empleado'";

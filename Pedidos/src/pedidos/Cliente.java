@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
@@ -13,16 +13,36 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Nicolas
+ * Esta clase define objetos que generan un Cliente. 
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 20/11/2017
  */
+
 public class Cliente extends Usuario{
     private String Id_Pedido;
 
+/**
+* Constructor para la clase Cliente.
+* @param ID Identificacion del Cliente en base de datos. 
+* @param Nombres 
+* @param Apellidos 
+* @param Identificacion 
+* @param Genero 
+* @param Nombres 
+* @param Direccion 
+* @param Telefono 
+* @param Correo 
+*/
     public Cliente(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
         super( ID,  Nombres,   Apellidos,  Identificacion,   Fecha_Nacimiento,  Genero,  Direccion,  Telefono,  Correo);
         setCategoria("cliente");
     }
+    
+/**
+* Metodo obtiene una lista de Clientes de base de datos.
+* @return lista de Clientes en la tabla usuarios en base de datos.
+*/
     public List<Cliente> obtenerListaClientes() {
         ConexionBD diamante = new ConexionBD();
         String sentencia = "select IdUsr from Usuario ";

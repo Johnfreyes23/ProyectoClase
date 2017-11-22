@@ -1,17 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
 import java.util.ArrayList;
 import java.util.Date;
 /**
- *
- * @author john
+ * Esta clase define objetos que generan un pedido. 
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 20/11/2017
  */
 public class Pedido {
+    //Campos de la Clase
     private String estado;
     private Cotizacion cotizacion;
     private ArrayList<Producto> productos = new ArrayList();
@@ -21,12 +24,17 @@ public class Pedido {
     private double valorTotal;
     private String fechaIncial;
     private String fechaFinal;
-
+/**
+* Constructor para la clase Pedido.
+* @param estado El parámetro estado define el estado asociado a el pedido.
+* @param cliente El parámetro cliente define el cliente asociado al pedido.
+* @param productos El parámetro productos cotendra un Array con productos asociados al pedido.
+* @param fechaIncial El parámetro fechaIncial define la fecha en que se inicio el pedido.
+*/
     public Pedido(String estado, Cliente cliente, ArrayList<Producto>  productos, String fechaIncial) {
         this.estado = estado;
         this.cliente = cliente;
         this.productos = productos;
-        this.descripcion = descripcion;
         this.fechaIncial = fechaIncial;
     }
     

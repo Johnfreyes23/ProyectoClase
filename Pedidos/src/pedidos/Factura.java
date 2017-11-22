@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
@@ -10,10 +10,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- *
- * @author john
+ * Esta clase define objetos que generan una factura
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 20/11/2017
  */
+
 public class Factura {
+    //Campos de la Clase
     private ArrayList<Producto> productos = new ArrayList();
     private Cliente cliente = new Cliente();
     private String descripcion;
@@ -21,8 +25,12 @@ public class Factura {
     private String fechaAprobado;
     private Pedido pedido;
     private Cotizacion cotizacion;
-    private Produccion p;
+    private Produccion produccion;
 
+/**
+* Constructor para la clase Factura.
+* @param cotizacion El parámetro cotizacion define una Factura luego de cotizar.
+*/
     public Factura(Cotizacion cotizacion) {
         this.cotizacion = cotizacion;
         this.cliente = cotizacion.getCliente();
@@ -32,17 +40,30 @@ public class Factura {
     
     public Factura(){
     }
+/**
+* Constructor para la clase Factura.
+* @param cliente El parámetro cliente define el cliente asociado a la factura.
+* @param descripcion El parámetro descripcion define la descripcion de la factura.
+* @param valorTotal El parámetro valorTotal define el valor total de la factura.
+* @param fechaFactura El parámetro fechaFactura define la fecha en que se crea la factura.
 
+*/
     public Factura(Cliente cliente, String descripcion,double valorTotal, String fechaFactura) {
         this.descripcion = descripcion;
         this.valorTotal = valorTotal;
         this.fechaAprobado = fechaFactura;
     }
-
+/**
+* Metodo que permite agregar un producto al arreglo de productos en una factura.
+*/
     
     public void agregarProducto (Producto producto){
         productos.add(producto);
     } 
+/**
+* Metodo que calcula el valor total de los productos agregados a la factura
+* @return suma total del valor de cada producto.
+*/
     public double CalculoValorTotal(ArrayList Productos){
         valorTotal=0;
         for(Producto prod : productos){
@@ -51,7 +72,10 @@ public class Factura {
         return valorTotal;
     }
     
-    
+/**
+* Metodo que usa el calendario para obtener la fecha actual
+* @return fecha actual al llamar el metodo
+*/ 
     public String fechaAprobado(){
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
@@ -59,6 +83,10 @@ public class Factura {
         String formatted = format1.format(cal.getTime());
         return(formatted);        
     }
+/**
+* Metodo crea un pedido, debe ser llamado luego de crear la factura.
+* @return pedido con estado facturado y los datos de la factura.
+*/ 
     public Pedido generarPedido(){
         this.fechaAprobado=fechaAprobado();
         pedido = new Pedido("Facturado",getCliente(),getProductos(),getFechaAprobado());

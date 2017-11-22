@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
@@ -13,10 +13,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author john and Nicolas XD
+ * Esta clase define objetos que generan un Usuario. 
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 20/11/2017
  */
 public class Usuario {
+    //Campos de la Clase
     private String Nombres;
     private String Apellidos;
     private String ID;
@@ -27,7 +30,18 @@ public class Usuario {
     private String Telefono;
     private String Correo;
     private String Categoria ;
-
+/**
+* Constructor para la clase Usuario.
+* @param ID Identificacion del usuario en base de datos. 
+* @param Nombres 
+* @param Apellidos 
+* @param Identificacion 
+* @param Genero 
+* @param Nombres 
+* @param Direccion 
+* @param Telefono 
+* @param Correo 
+*/
    public Usuario(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
@@ -44,7 +58,12 @@ public class Usuario {
 
     public Usuario() {
     }
-    
+
+/**
+* Metodo obtiene el usuario de base de datos conocido su ID.
+* @param Id id de Usuario.
+* @return un objeto usuario con sus atributos llenos.
+*/
     public Usuario obtenerUsuario(String Id) {
         ConexionBD Proyecto = new ConexionBD();
         String sentencia = "select * from Usuario where IdUsr='" + Id + "'";
@@ -70,7 +89,10 @@ public class Usuario {
 
         return null;
     }
-    
+/**
+* Metodo obtiene una lista de usuarios de base de datos.
+* @return lista de usuarios en la tabla usuarios en base de datos.
+*/
     public List<Usuario> obtenerListaUsuarios() {
         ConexionBD diamante = new ConexionBD();
         String sentencia = "select IdUsr from Usuario ";
@@ -87,7 +109,10 @@ public class Usuario {
         }
         return usuarios;
     }
-    
+/**
+* Metodo que crea en la tabla usuario en bases de datos un usuario.
+* @return true si pudo ser creado de lo contrario retorna false.
+*/   
     public Boolean crearUsuario() {
         ConexionBD Proyecto = new ConexionBD();
         String sentencia = "Insert into Proyecto.Usuario (IdUsr,Identif,Categoria,NomUsr,ApeUsr,CorreoUsr,GeneroUsr,Domicilio,Telefono,FechaNacimiento) "

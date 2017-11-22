@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
@@ -19,21 +19,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-//        Cliente c1 = new Cliente("910", "Jhon", "Reyes", "10108515", "2000-10-23", "Masculino", "calle 18 #24-21", "6352511", "juanperez@hotmail.com");
-//        c1.crearUsuario();
-////        Empleado e1 = new Empleado("4", "Carlos", "Reyes", "10108515", "2000-10-23", "Masculino", "calle 18 #24-21", "6352511", "juanperez@hotmail.com", "Operario");
-////        e1.crearUsuario();
-//        Usuario u = new Usuario();
-//        u.obtenerUsuario("3");
-//        System.out.println(u.getApellidos());
-//        List<Usuario> usuarios = u.obtenerListaUsuarios();
-//        for (Usuario us : usuarios){
-//            System.out.println(us.getNombres()+" "+us.getApellidos());
-//        }
-        
-        // TODO code application logic here
-            
+    public static void main(String[] args) {            
         Scanner sc = new Scanner(System.in);
         
         Integer option;
