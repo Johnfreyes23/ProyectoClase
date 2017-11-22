@@ -16,7 +16,7 @@ public class Pedido {
     private Cotizacion cotizacion;
     private ArrayList<Producto> productos = new ArrayList();
     private Cliente cliente ;
-    private ArrayList<Empleado> empleado=new ArrayList();
+    private Empleado empleado;
     private String descripcion;
     private double valorTotal;
     private String fechaIncial;
@@ -83,6 +83,30 @@ public class Pedido {
 
     public void setCotizacion(Cotizacion cotizacion) {
         this.cotizacion = cotizacion;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public String getFechaIncial() {
+        return fechaIncial;
+    }
+
+    public void setFechaIncial(String fechaIncial) {
+        this.fechaIncial = fechaIncial;
+    }
+
+    public String getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(String fechaFinal) {
+        this.fechaFinal = fechaFinal;
     }
     
     

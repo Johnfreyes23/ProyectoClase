@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto final para la asignatura Principios y Practicas del desarrollo de Software Orientado a Objetos.
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
  */
 package pedidos;
 
@@ -10,20 +10,30 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- *
- * @author john
+ * Esta clase define objetos que generan una orden de produccion 
+ * @author John Reyes Celis
+ * @author Nicolas Gamboa Agredo
+ * @version: 22/09/2016/A
  */
 public class Produccion {
+    //Capos de la Clase
     private Pedido pedido ; 
     private String FechaEntrega;
     private Empleado empleado;
     private String RutaArchivo;
     private String fechaInicial;
-
+/**
+* Constructor para la clase produccion
+* @param pedido El parámetro pedido define el pedido asociado a la orden de produccion;
+*/
     public Produccion(Pedido pedido) {
         this.pedido = pedido;
+        this.empleado= pedido.getEmpleado();
         this.fechaInicial=fechaActual();           
     }
+/**
+* Metodo que imprime en pantalla una orden de pedido para entregar en produccion.
+*/
     
     public void GenerarOrden(){
         System.out.println("Arteacryl de Colombia - Orden de Produccion");
@@ -36,8 +46,11 @@ public class Produccion {
         }
         System.out.println("Fecha Estimada de entrega: " + this.FechaEntrega);
     }
-       
-    private String fechaActual(){
+/**
+* Metodo que usa el calendario para obtener la fecha actual
+* @return fecha actual al llamar el metodo
+*/
+    public String fechaActual(){
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
