@@ -32,7 +32,8 @@ public class Main {
 //            System.out.println(us.getNombres()+" "+us.getApellidos());
 //        }
         
-        // TODO code application logic here 
+        // TODO code application logic here
+            
         Scanner sc = new Scanner(System.in);
         
         Integer option;
@@ -44,12 +45,16 @@ public class Main {
             case 1: 
                 System.out.println("Va a ingresar un empleado.");
                 Empleado empleado = new Empleado();
+                System.out.println("Codigo Empleado:");
+                empleado.setID(sc.next());
                 System.out.println("Nombres:.");
                 empleado.setNombres(sc.next());
                 System.out.println("Apellidos:.");
                 empleado.setApellidos(sc.next());
                 System.out.println("Documento de Identidad:.");
-                empleado.setID(sc.next());
+                empleado.setIdenficacion(sc.next());
+                System.out.println("Genero:.");
+                empleado.setGenero(sc.next());
                 System.out.println("Cargo:.");
                 empleado.setCargo(sc.next());
                 System.out.println("Fecha de Nacimiento:.");
@@ -60,6 +65,7 @@ public class Main {
                 empleado.setTelefono(sc.next());
                 System.out.println("Correo:.");
                 empleado.setCorreo(sc.next());
+                empleado.crearUsuario();
                 break;
             case 2: 
                 System.out.println("Va a realizar una cotización.");
@@ -170,6 +176,36 @@ public class Main {
                 }while(agregar == 1);
                 cotizar.setProductos(productos);
                 cotizar.generarCotizacion();
+                System.out.println("\n ¿Contuniar a facturar? \n\t 1)Descartar cotización. 2)Facturar.");
+                option = sc.nextInt();
+                if(option == 2)
+                {
+                    Factura factura = new Factura(cotizar);
+                    System.out.println("FACTURA \n Fecha: " + factura.getFechaAprobado() +  "\n Producto \t\t Valor");
+                    for(Producto ver : factura.getProductos())
+                    {
+                        System.out.println(ver.getTipo() + "\t\t" + ver.getValor());
+                    }
+                    System.out.println("VALOR TOTAL: \t $" + factura.CalculoValorTotal(productos));
+                    
+                    System.out.println("Para enviar pedido a producción presione enter");
+                    sc.next();
+                    Pedido pedido = factura.generarPedido();
+                    Empleado e1 = new Empleado();
+                    System.out.println("Asignar un empleado al pedido:");
+                    int i = 1;
+                    for(Empleado ver : e1.obtenerListaEmpleados())
+                    {
+                        System.out.println(i + ")" + ver.getNombres() + " " + ver.getApellidos());
+                        i++;
+                    }
+                    option = sc.nextInt();
+                    pedido.setEmpleado(e1.obtenerListaEmpleados().get(option-1));
+                    Produccion produccion = new Produccion(pedido);
+                    System.out.println("Fecha estimada de entrega del producto: ");
+                    produccion.setFechaEntrega(sc.next());
+                    produccion.GenerarOrden();
+                }
                 break;
         }
         } while(option != 3);

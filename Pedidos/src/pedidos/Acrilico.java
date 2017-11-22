@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package pedidos;
-
 /**
- *
  * @author john
  */
 public class Acrilico extends Producto{

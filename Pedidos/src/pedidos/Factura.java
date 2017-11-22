@@ -59,12 +59,13 @@ public class Factura {
         String formatted = format1.format(cal.getTime());
         return(formatted);        
     }
- 
-    
-    public void generarPedido(){
-        pedido = new Pedido("Facturado",getCliente(),getProductos(),getDescripcion(),getFechaAprobado());
+    public Pedido generarPedido(){
+        this.fechaAprobado=fechaAprobado();
+        pedido = new Pedido("Facturado",getCliente(),getProductos(),getFechaAprobado());
+        pedido.setCotizacion(getCotizacion());
         setPedido(pedido);
-        this.fechaAprobado=fechaAprobado();        
+        return pedido;
+                
     }
 
     public ArrayList<Producto> getProductos() {

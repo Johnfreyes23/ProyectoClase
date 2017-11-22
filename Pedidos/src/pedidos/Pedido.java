@@ -22,7 +22,7 @@ public class Pedido {
     private String fechaIncial;
     private String fechaFinal;
 
-    public Pedido(String estado, Cliente cliente, ArrayList<Producto>  productos, String descripcion, String fechaIncial) {
+    public Pedido(String estado, Cliente cliente, ArrayList<Producto>  productos, String fechaIncial) {
         this.estado = estado;
         this.cliente = cliente;
         this.productos = productos;

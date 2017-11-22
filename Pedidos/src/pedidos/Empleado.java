@@ -33,7 +33,7 @@ public class Empleado extends Usuario {
     }
     public List<Empleado> obtenerListaEmpleados() {
         ConexionBD diamante = new ConexionBD();
-        String sentencia = "select IdUsr from Usuario ";
+        String sentencia = "select IdUsr from Usuario where Categoria = 'Empleado'";
         ResultSet rs = diamante.consultarBD(sentencia);
         List<Empleado> empleados = new ArrayList<>();
         try {
