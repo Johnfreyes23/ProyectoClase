@@ -76,6 +76,14 @@ public class Pedido {
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
+
+    public Cotizacion getCotizacion() {
+        return cotizacion;
+    }
+
+    public void setCotizacion(Cotizacion cotizacion) {
+        this.cotizacion = cotizacion;
+    }
     
     
 }

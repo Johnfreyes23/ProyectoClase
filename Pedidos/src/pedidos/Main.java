@@ -34,6 +34,7 @@ public class Main {
         
         // TODO code application logic here 
         Scanner sc = new Scanner(System.in);
+        
         Integer option;
         do{
         System.out.println("\n\n¿Qué quiere hacer? \n 1)Agregar un empleado. \n 2))Hacer una cotización. \n 3)Salir");

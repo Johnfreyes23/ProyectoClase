@@ -21,6 +21,7 @@ public class Factura {
     private String fechaAprobado;
     private Pedido pedido;
     private Cotizacion cotizacion;
+    private Produccion p;
 
     public Factura(Cotizacion cotizacion) {
         this.cotizacion = cotizacion;
@@ -58,11 +59,11 @@ public class Factura {
         String formatted = format1.format(cal.getTime());
         return(formatted);        
     }
-    
-    
+ 
     
     public void generarPedido(){
         pedido = new Pedido("Facturado",getCliente(),getProductos(),getDescripcion(),getFechaAprobado());
+        setPedido(pedido);
         this.fechaAprobado=fechaAprobado();        
     }
 
@@ -113,6 +114,14 @@ public class Factura {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public Cotizacion getCotizacion() {
+        return cotizacion;
+    }
+
+    public void setCotizacion(Cotizacion cotizacion) {
+        this.cotizacion = cotizacion;
     }
     
     
