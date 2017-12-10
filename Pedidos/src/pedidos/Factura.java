@@ -5,155 +5,113 @@
  */
 package pedidos;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Esta clase define objetos que generan una factura
+ *
  * @author John Reyes Celis
  * @author Nicolas Gamboa Agredo
  * @version: 20/11/2017
  */
+public class Factura extends RegistroVentas {
 
-public class Factura {
-    //Campos de la Clase
-    private ArrayList<Producto> productos = new ArrayList();
-    private Cliente cliente = new Cliente();
+    //Campos de la Clase;
+    private String IdFactura;
     private String descripcion;
     private double valorTotal;
-    private String fechaAprobado;
-    private Pedido pedido;
-    private Cotizacion cotizacion;
-    private Produccion produccion;
+    private String fechaFactura;
 
-/**
-* Constructor para la clase Factura.
-* @param cotizacion El parámetro cotizacion define una Factura luego de cotizar.
-*/
-    public Factura(Cotizacion cotizacion) {
-        this.cotizacion = cotizacion;
-        this.cliente = cotizacion.getCliente();
-        this.fechaAprobado=cotizacion.fechaAprobado();
-        this.productos= cotizacion.getProductos();        
+    /**
+     * Constructor para la clase Factura.
+     */
+    public Factura() {
     }
-    
-    public Factura(){
-    }
-/**
-* Constructor para la clase Factura.
-* @param cliente El parámetro cliente define el cliente asociado a la factura.
-* @param descripcion El parámetro descripcion define la descripcion de la factura.
-* @param valorTotal El parámetro valorTotal define el valor total de la factura.
-* @param fechaFactura El parámetro fechaFactura define la fecha en que se crea la factura.
 
-*/
-    public Factura(Cliente cliente, String descripcion,double valorTotal, String fechaFactura) {
+    /**
+     * Constructor para la clase Factura.
+     *
+     * @param cliente El parámetro cliente define el cliente asociado a la
+     * factura.
+     * @param descripcion El parámetro descripcion define la descripcion de la
+     * factura.
+     * @param valorTotal El parámetro valorTotal define el valor total de la
+     * factura.
+     * @param fechaFactura El parámetro fechaFactura define la fecha en que se
+     * crea la factura.
+     *
+     */
+    public Factura(Cliente cliente, String descripcion, double valorTotal, String fechaFactura) {
+        super.setCliente(cliente);
         this.descripcion = descripcion;
         this.valorTotal = valorTotal;
-        this.fechaAprobado = fechaFactura;
-    }
-/**
-* Metodo que permite agregar un producto al arreglo de productos en una factura.
-*/
-    
-    public void agregarProducto (Producto producto){
-        productos.add(producto);
-    } 
-/**
-* Metodo que calcula el valor total de los productos agregados a la factura
-* @return suma total del valor de cada producto.
-*/
-    public double CalculoValorTotal(ArrayList Productos){
-        valorTotal=0;
-        for(Producto prod : productos){
-            valorTotal = prod.getValor()+ valorTotal;}
-        setValorTotal(valorTotal) ;
-        return valorTotal;
-    }
-    
-/**
-* Metodo que usa el calendario para obtener la fecha actual
-* @return fecha actual al llamar el metodo
-*/ 
-    public String fechaAprobado(){
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, 1);
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        String formatted = format1.format(cal.getTime());
-        return(formatted);        
-    }
-/**
-* Metodo crea un pedido, debe ser llamado luego de crear la factura.
-* @return pedido con estado facturado y los datos de la factura.
-*/ 
-    public Pedido generarPedido(){
-        this.fechaAprobado=fechaAprobado();
-        pedido = new Pedido("Facturado",getCliente(),getProductos(),getFechaAprobado());
-        pedido.setCotizacion(getCotizacion());
-        setPedido(pedido);
-        return pedido;
-                
+        this.fechaFactura = fechaFactura;
     }
 
-    public ArrayList<Producto> getProductos() {
-        return productos;
+    public Factura ObtenerFactura(String Id) {
+        ConexionBD Proyecto = new ConexionBD(); // se crea la conexion con base de datos.
+        String sentencia = "selec * from Proyecto.Factura where IdFactura ='" + Id + "'"; //Consulta SQL 
+        ResultSet rs = Proyecto.consultarBD(sentencia); // Objeto ResulSet que contendra los datos devueltos de la consulta.
+        try {
+            if (rs.next()) {
+                this.setIdFactura(Id);
+                this.setDescripcion(rs.getString("descripcion"));
+                this.setIdCliente(rs.getString("IdCliente"));
+                this.setFechaFactura(rs.getString("FechaFactura"));
+                this.setValorTotal(rs.getDouble("valorTotal"));
+                return this;
+
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    /**
+     * Metodo que permite agregar un producto al arreglo de productos en una
+     * factura.
+     *
+     * @param producto
+     */
+
+    public void agregarProducto(Producto producto) {
+        getProductos().add(producto);
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public String getIdFactura() {
+        return IdFactura;
     }
 
-    public String getFechaAprobado() {
-        return fechaAprobado;
+    public void setIdFactura(String IdFactura) {
+        this.IdFactura = IdFactura;
     }
 
-    public void setFechaAprobado(String fechaAprobado) {
-        this.fechaAprobado = fechaAprobado;
-    }
-    
-    
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
+
+    public String getFechaFactura() {
+        return fechaFactura;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public void setFechaFactura(String fechaFactura) {
+        this.fechaFactura = fechaFactura;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public Cotizacion getCotizacion() {
-        return cotizacion;
-    }
-
-    public void setCotizacion(Cotizacion cotizacion) {
-        this.cotizacion = cotizacion;
-    }
-    
-    
-    
+    /**
+     * Metodo crea un pedido, debe ser llamado luego de crear la factura.
+     *
+     * @return pedido con estado facturado y los datos de la factura.
+     */
+//    public Pedido generarPedido(){
+//        this.fechaAprobado=fechaAprobado();
+//        pedido = new Pedido("Facturado",getCliente(),getProductos(),getFechaAprobado());
+//        setPedido(pedido);
+//        return pedido;
+//                
+//    }
     
 }

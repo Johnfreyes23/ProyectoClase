@@ -5,9 +5,13 @@
  */
 package pedidos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Esta clase define objetos que generan cotizacion
@@ -16,7 +20,7 @@ import java.util.Calendar;
  * @version: 20/11/2017
  */
 
-public class Cotizacion extends Factura {
+public class Cotizacion extends RegistroVentas {
     
 /**
 * Constructor para la clase produccion
@@ -25,14 +29,40 @@ public class Cotizacion extends Factura {
 * @param valorTotal El parámetro valorTotal define el valor total de la cotizacion.
 * @param fechaAprobado El parámetro fechaAprobado define la fecha en que se crea la cotizacion.
 
-*/
-    public Cotizacion(Cliente cliente,String descripcion, double valorTotal, String fechaAprobado) {
-        super(cliente, descripcion, valorTotal, fechaAprobado);
-    }
+*
+//*/
+//    public Cotizacion(Cliente cliente,String descripcion, double valorTotal, String fechaAprobado) {
+//        super(cliente, descripcion, valorTotal, fechaAprobado);
+//    }
+    
+    private String IdCotizacion;
+    private String FechaCotizacion;
 
     public Cotizacion() {
         super();
     }   
+    
+     public Cotizacion ObtenerCotizacion(String Id) {
+        ConexionBD Proyecto = new ConexionBD(); // se crea la conexion con base de datos.
+        String sentencia = "selec * from Proyecto.Cotizacion where IdCotizacion ='" + Id + "'"; //Consulta SQL 
+        ResultSet rs = Proyecto.consultarBD(sentencia); // Objeto ResulSet que contendra los datos devueltos de la consulta.
+        try {
+            if (rs.next()) {
+                this.setIdCotizacion(Id);
+                this.setDescripcion(rs.getString("descripcion"));
+                this.setIdCliente(rs.getString("IdCliente"));
+                this.setFechaCotizacion(rs.getString("FechaCotizacion"));
+                this.setValorTotal(rs.getDouble("valorTotal"));
+                return this;
+
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Cotizacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
+    }
 /**
 * Metodo que imprime en pantalla descripcion de los productos en cotizacion de un pedido.
 */
@@ -76,5 +106,23 @@ public class Cotizacion extends Factura {
         }
         System.out.println("Valor total : " + CalculoValorTotal(getProductos()));
     }
+
+    public String getIdCotizacion() {
+        return IdCotizacion;
+    }
+
+    public void setIdCotizacion(String IdCotizacion) {
+        this.IdCotizacion = IdCotizacion;
+    }
+
+    public String getFechaCotizacion() {
+        return FechaCotizacion;
+    }
+
+    public void setFechaCotizacion(String FechaCotizacion) {
+        this.FechaCotizacion = FechaCotizacion;
+    }
+    
+    
     
 }

@@ -5,25 +5,25 @@
  */
 package pedidos;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * Esta clase define objetos que generan un pedido. 
  * @author John Reyes Celis
  * @author Nicolas Gamboa Agredo
  * @version: 20/11/2017
  */
-public class Pedido {
+public class Pedido extends Registro{
     //Campos de la Clase
+    private String IdPedido;
     private String estado;
-    private Cotizacion cotizacion;
-    private ArrayList<Producto> productos = new ArrayList();
-    private Cliente cliente ;
-    private Empleado empleado;
-    private String descripcion;
+    private String IdCotizacion;
+    private String IdFactura;
+    private String IdProduccion;
     private double valorTotal;
-    private String fechaIncial;
-    private String fechaFinal;
 /**
 * Constructor para la clase Pedido.
 * @param estado El parámetro estado define el estado asociado a el pedido.
@@ -33,9 +33,7 @@ public class Pedido {
 */
     public Pedido(String estado, Cliente cliente, ArrayList<Producto>  productos, String fechaIncial) {
         this.estado = estado;
-        this.cliente = cliente;
-        this.productos = productos;
-        this.fechaIncial = fechaIncial;
+        setCliente(cliente);
     }
     
     
@@ -43,6 +41,30 @@ public class Pedido {
         
     }   
     
+    public Pedido ObtenerPedido(String Id){
+       ConexionBD Proyecto = new ConexionBD(); // se crea la conexion con base de datos.
+       String sentencia = "selec * from Proyecto.Pedido where IdPedido ='"+ Id + "'"; //Consulta SQL 
+       ResultSet rs = Proyecto.consultarBD(sentencia); // Objeto ResulSet que contendra los datos devueltos de la consulta.
+       try{
+           if(rs.next()){
+               this.setIdPedido(Id);
+               this.setEstado(rs.getString("IdPedido"));
+               this.setEstado(rs.getString("IdCliente"));
+               this.setEstado(rs.getString("IdCotizacion"));
+               this.setEstado(rs.getString("IdFactura"));
+               this.setEstado(rs.getString("IdProduccion"));
+               this.setEstado(rs.getString("estado"));       
+               return this;
+               
+           }
+       }
+        catch (SQLException ex) {
+
+            Logger.getLogger(Pedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return null;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -51,31 +73,39 @@ public class Pedido {
         this.estado = estado;
     }
 
-    public ArrayList<Producto> getProductos() {
-        return productos;
+    public String getIdPedido() {
+        return IdPedido;
     }
 
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
+    public void setIdPedido(String IdPedido) {
+        this.IdPedido = IdPedido;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public String getIdFactura() {
+        return IdFactura;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setIdFactura(String IdFactura) {
+        this.IdFactura = IdFactura;
     }
 
-   
-
-    public String getDescripcion() {
-        return descripcion;
+    public String getIdProduccion() {
+        return IdProduccion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setIdProduccion(String IdProduccion) {
+        this.IdProduccion = IdProduccion;
     }
+    
+
+    public String getIdCotizacion() {
+        return IdCotizacion;
+    }
+
+    public void setIdCotizacion(String IdCotizacion) {
+        this.IdCotizacion = IdCotizacion;
+    }
+
 
     public double getValorTotal() {
         return valorTotal;
@@ -84,38 +114,7 @@ public class Pedido {
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
-
-    public Cotizacion getCotizacion() {
-        return cotizacion;
-    }
-
-    public void setCotizacion(Cotizacion cotizacion) {
-        this.cotizacion = cotizacion;
-    }
-
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
-
-    public String getFechaIncial() {
-        return fechaIncial;
-    }
-
-    public void setFechaIncial(String fechaIncial) {
-        this.fechaIncial = fechaIncial;
-    }
-
-    public String getFechaFinal() {
-        return fechaFinal;
-    }
-
-    public void setFechaFinal(String fechaFinal) {
-        this.fechaFinal = fechaFinal;
-    }
     
+   
     
 }
