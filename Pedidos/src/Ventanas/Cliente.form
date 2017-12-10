@@ -4,7 +4,7 @@
   <Properties>
     <Property name="focusable" type="boolean" value="false"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[520, 480]"/>
+      <Dimension value="[720, 580]"/>
     </Property>
   </Properties>
   <SyntheticProperties>

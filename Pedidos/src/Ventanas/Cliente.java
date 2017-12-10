@@ -34,7 +34,7 @@ public class Cliente extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setFocusable(false);
-        setPreferredSize(new java.awt.Dimension(520, 480));
+        setPreferredSize(new java.awt.Dimension(720, 580));
 
         jLabel1.setText("Funcionó");
 
