@@ -5,11 +5,15 @@
  */
 package Ventanas;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.JInternalFrame;
+import java.awt.event.*;
 /**
  *
  * @author Nicolas
  */
-public class Interfaz extends javax.swing.JFrame {
+public class Interfaz extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form Interfaz
@@ -20,6 +24,16 @@ public class Interfaz extends javax.swing.JFrame {
         GestorPedidos pedido = new GestorPedidos();
         pedido.setVisible(true);
         Escritorio.add(pedido);
+    }
+    
+    public void actionPerformed( ActionEvent e)
+    {
+       // Escritorio.add(e.getActionCommand());
+    }
+    
+public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/bloggif_5a2562e4b8fe2.png"));
+        return retValue;
     }
 
     /**
@@ -36,21 +50,23 @@ public class Interfaz extends javax.swing.JFrame {
         jButtonSalir = new javax.swing.JButton();
         jLabelCabecera = new javax.swing.JLabel();
         jPanelMenu = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Pedido = new javax.swing.JButton();
+        Clientes = new javax.swing.JButton();
+        Empleados = new javax.swing.JButton();
         Escritorio = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bloggif_5a2562e4b8fe2-iloveimg-cropped.png"))); // NOI18N
         getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        jLabelTitulo.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        jLabelTitulo.setFont(new java.awt.Font("Calibri", 1, 48)); // NOI18N
         jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTitulo.setText("Arteacryl de Colombia s.a.s.");
-        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 440, 50));
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 580, 50));
 
         jButtonSalir.setBackground(new java.awt.Color(255, 0, 0));
         jButtonSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -68,33 +84,33 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanelMenu.setBackground(new java.awt.Color(102, 153, 255));
 
-        jButton3.setBackground(new java.awt.Color(255, 51, 0));
-        jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("GESTOR DE PEDIDOS");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Pedido.setBackground(new java.awt.Color(255, 51, 0));
+        Pedido.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Pedido.setForeground(new java.awt.Color(255, 255, 255));
+        Pedido.setText("GESTOR DE PEDIDOS");
+        Pedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                PedidoActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 51, 0));
-        jButton4.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("CLIENTES");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Clientes.setBackground(new java.awt.Color(255, 51, 0));
+        Clientes.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Clientes.setForeground(new java.awt.Color(255, 255, 255));
+        Clientes.setText("CLIENTES");
+        Clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ClientesActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 51, 0));
-        jButton2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("EMPLEADOS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Empleados.setBackground(new java.awt.Color(255, 51, 0));
+        Empleados.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Empleados.setForeground(new java.awt.Color(255, 255, 255));
+        Empleados.setText("EMPLEADOS");
+        Empleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                EmpleadosActionPerformed(evt);
             }
         });
 
@@ -102,26 +118,24 @@ public class Interfaz extends javax.swing.JFrame {
         jPanelMenu.setLayout(jPanelMenuLayout);
         jPanelMenuLayout.setHorizontalGroup(
             jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelMenuLayout.createSequentialGroup()
-                .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMenuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Clientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Empleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelMenuLayout.setVerticalGroup(
             jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelMenuLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(415, Short.MAX_VALUE))
+                .addComponent(Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 590));
@@ -147,25 +161,25 @@ public class Interfaz extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleadosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_EmpleadosActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
         // TODO add your handling code here:
         Escritorio.removeAll();
         Cliente cliente = new Cliente();
         cliente.setVisible(true);
         Escritorio.add(cliente);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_ClientesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void PedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidoActionPerformed
         // TODO add your handling code here:
         Escritorio.removeAll();
         GestorPedidos obj = new GestorPedidos();
         obj.setVisible(true);
         Escritorio.add(obj);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_PedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,12 +216,18 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void setEscritorio(JInternalFrame frame)
+    {
+        Escritorio.removeAll();
+        Escritorio.add(frame);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Clientes;
+    private javax.swing.JButton Empleados;
     private javax.swing.JPanel Escritorio;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton Pedido;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabelCabecera;
     private javax.swing.JLabel jLabelLogo;
