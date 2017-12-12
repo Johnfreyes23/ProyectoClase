@@ -219,7 +219,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = format1.format(fechaNacimientoCliente);
         Cliente cliente = new Cliente( nombreCliente , apellidoCliente, Identificacion , formatted , generoCliente , direccionCliente, telefonoCliente, correoCliente);
-        
+        cliente.crearUsuario();
         
         
         System.out.println(formatted);

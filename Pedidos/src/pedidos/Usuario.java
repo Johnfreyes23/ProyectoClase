@@ -115,9 +115,8 @@ public class Usuario {
 */   
     public Boolean crearUsuario() {
         ConexionBD Proyecto = new ConexionBD();
-        String sentencia = "Insert into Proyecto.Usuario (IdUsr,Identif,Categoria,NomUsr,ApeUsr,CorreoUsr,GeneroUsr,Domicilio,Telefono,FechaNacimiento) "
-                + " Values('" + this.ID + "',"
-                + "'" + this.Identificacion + "',"
+        String sentencia = "Insert into Proyecto.Usuario (Identif,Categoria,NomUsr,ApeUsr,CorreoUsr,GeneroUsr,Domicilio,Telefono,FechaNacimiento) "
+                + " Values('" + this.Identificacion + "',"
                 + "'" + this.Categoria + "',"
                 + "'" + this.Nombres + "',"
                 + "'" + this.Apellidos + "',"
