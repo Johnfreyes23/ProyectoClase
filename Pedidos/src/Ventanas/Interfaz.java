@@ -136,8 +136,6 @@ public Image getIconImage() {
 
         getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 580));
 
-        Escritorio.setPreferredSize(new java.awt.Dimension(640, 580));
-
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
