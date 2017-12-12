@@ -28,7 +28,7 @@ public class Interfaz extends javax.swing.JFrame{
    
     
 public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/bloggif_5a2562e4b8fe2.png"));
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource(""));
         return retValue;
     }
 
@@ -164,7 +164,7 @@ public Image getIconImage() {
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed
         // TODO add your handling code here:
         Escritorio.removeAll();
-        Cliente cliente = new Cliente();
+        VistaCliente cliente = new VistaCliente();
         cliente.setVisible(true);
         Escritorio.add(cliente);
     }//GEN-LAST:event_ClientesActionPerformed

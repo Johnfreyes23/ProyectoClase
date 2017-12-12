@@ -23,20 +23,20 @@ public class Cliente extends Usuario{
     private String Id_Pedido;
 
 /**
-* Constructor para la clase Cliente.
-* @param ID Identificacion del Cliente en base de datos. 
+* Constructor para la clase Cliente. 
 * @param Nombres 
 * @param Apellidos 
+* @param Fecha_Nacimiento 
 * @param Identificacion 
 * @param Genero 
-* @param Nombres 
+* @param Correo 
 * @param Direccion 
 * @param Telefono 
-* @param Correo 
+* @paam Correo 
 */
-    public Cliente(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
-        super( ID,  Nombres,   Apellidos,  Identificacion,   Fecha_Nacimiento,  Genero,  Direccion,  Telefono,  Correo);
-        setCategoria("cliente");
+    public Cliente( String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
+        super(   Nombres,   Apellidos,  Identificacion,   Fecha_Nacimiento,  Genero,  Direccion,  Telefono,  Correo);
+        this.setCategoria("cliente");
     }
     
 /**

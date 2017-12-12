@@ -34,8 +34,8 @@ public class Empleado extends Usuario {
 * @param Telefono 
 * @param Correo 
 */
-    public Empleado(String ID, String Nombres, String Apellidos, String Identificacion, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo, String Cargo) {
-        super(ID, Nombres, Apellidos, Identificacion, Fecha_Nacimiento,  Genero, Direccion, Telefono, Correo);
+    public Empleado( String Nombres, String Apellidos, String Identificacion, String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo, String Cargo) {
+        super( Nombres, Apellidos, Identificacion, Fecha_Nacimiento,  Genero, Direccion, Telefono, Correo);
         this.Cargo = Cargo;
         this.Orden_Pedido = Orden_Pedido;
         setCategoria("Empleado");

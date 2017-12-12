@@ -64,6 +64,31 @@ public class Pedido extends Registro{
         }
        return null;
     }
+    public Boolean crearPedido() {
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Insert into Proyecto.Pedido (IdCliente,IdCotizacion,IdFactura,IdProduccion,estado) "
+                + " Values('" + getIdCliente()+ "',"
+                + "'" + this.IdCotizacion + "',"
+                + "'" + this.IdFactura + "',"
+                + "'" + this.IdProduccion + "',"
+                + "'" + this.estado  + "');";
+        boolean exito = Proyecto.insertarBD(sentencia);
+        if (exito) {
+            String sentencia2 = "select max(IdUsr) as Id from Proyecto.Usuario;";
+            ResultSet rs = Proyecto.consultarBD(sentencia2);
+            try {
+                if (rs.next()) {
+                    this.setIdPedido(rs.getString("IdPedido"));
+                    Proyecto.cerrarConexion();
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Proyecto.cerrarConexion();
+        return false;
+    }
 
     public String getEstado() {
         return estado;

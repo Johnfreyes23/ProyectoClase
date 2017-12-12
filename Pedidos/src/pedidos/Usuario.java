@@ -42,10 +42,10 @@ public class Usuario {
 * @param Telefono 
 * @param Correo 
 */
-   public Usuario(String ID, String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
+   public Usuario( String Nombres,  String Apellidos, String Identificacion,  String Fecha_Nacimiento, String Genero, String Direccion, String Telefono, String Correo) {
         this.Nombres = Nombres;
         this.Apellidos = Apellidos;
-        this.ID = ID;
+        
         this.Fecha_Nacimiento = Fecha_Nacimiento;
         this.Identificacion = Identificacion;
         this.Genero = Genero;
