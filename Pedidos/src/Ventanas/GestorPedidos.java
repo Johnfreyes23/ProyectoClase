@@ -13,7 +13,7 @@ import javax.swing.*;
  *
  * @author Nicolas
  */
-public class GestorPedidos extends javax.swing.JInternalFrame {
+public class GestorPedidos extends javax.swing.JInternalFrame{
 
     /**
      * Creates new form GestosPedidos
@@ -44,7 +44,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(720, 580));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(640, 520));
+        jPanel1.setPreferredSize(new java.awt.Dimension(640, 580));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 48)); // NOI18N
@@ -63,11 +63,6 @@ public class GestorPedidos extends javax.swing.JInternalFrame {
         jPanel1.add(Cotizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
 
         Facturar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tax.png"))); // NOI18N
-        Facturar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FacturarMouseClicked(evt);
-            }
-        });
         jPanel1.add(Facturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
 
         Produccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/assembly-line.png"))); // NOI18N
@@ -87,7 +82,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,15 +92,13 @@ public class GestorPedidos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FacturarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturarMouseClicked
-        // TODO add your handling ce here:
-        
-    }//GEN-LAST:event_FacturarMouseClicked
-
     private void FacturaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FacturaBotonActionPerformed
         // TODO add your handling code here:
-        this.removeAll();
-        System.out.println("John es gay");
+        Interfaz.Escritorio.removeAll();
+        VistaFactura fac = new VistaFactura();
+        Interfaz.Escritorio.add(fac);
+        fac.toFront();
+        fac.setVisible(true);
     }//GEN-LAST:event_FacturaBotonActionPerformed
 
     

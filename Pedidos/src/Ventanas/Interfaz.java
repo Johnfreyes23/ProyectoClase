@@ -13,7 +13,7 @@ import java.awt.event.*;
  *
  * @author Nicolas
  */
-public class Interfaz extends javax.swing.JFrame implements ActionListener{
+public class Interfaz extends javax.swing.JFrame{
 
     /**
      * Creates new form Interfaz
@@ -25,11 +25,7 @@ public class Interfaz extends javax.swing.JFrame implements ActionListener{
         pedido.setVisible(true);
         Escritorio.add(pedido);
     }
-    
-    public void actionPerformed( ActionEvent e)
-    {
-       // Escritorio.add(e.getActionCommand());
-    }
+   
     
 public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/bloggif_5a2562e4b8fe2.png"));
@@ -53,7 +49,7 @@ public Image getIconImage() {
         Pedido = new javax.swing.JButton();
         Clientes = new javax.swing.JButton();
         Empleados = new javax.swing.JButton();
-        Escritorio = new javax.swing.JPanel();
+        Escritorio = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -135,10 +131,12 @@ public Image getIconImage() {
                 .addComponent(Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 590));
+        getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 580));
+
+        Escritorio.setPreferredSize(new java.awt.Dimension(640, 580));
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
@@ -226,7 +224,7 @@ public Image getIconImage() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Clientes;
     private javax.swing.JButton Empleados;
-    private javax.swing.JPanel Escritorio;
+    public static javax.swing.JDesktopPane Escritorio;
     private javax.swing.JButton Pedido;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabelCabecera;
