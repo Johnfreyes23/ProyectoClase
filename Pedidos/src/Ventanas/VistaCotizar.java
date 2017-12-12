@@ -22,20 +22,19 @@ import java.awt.*;
  *
  * @author Nicolas
  */
-public class VistaCotizar extends javax.swing.JInternalFrame implements ActionListener {
+public class VistaCotizar extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VistaCotizar
      */
     public VistaCotizar() {
         initComponents();
+        Dimensiones.setVisible(false);
+        CalibrePane.setVisible(false);
+        ColorPane.setVisible(false);
+        Cajon.setVisible(false);
     }
-    
-    public void actionPerformed(ActionEvent e)
-    {
-        
-    }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,11 +48,41 @@ public class VistaCotizar extends javax.swing.JInternalFrame implements ActionLi
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        SelectProduct = new javax.swing.JLabel();
+        Producto = new javax.swing.JComboBox<>();
         Dimensiones = new javax.swing.JPanel();
-        Calibre = new javax.swing.JPanel();
-        Color = new javax.swing.JPanel();
+        AltoLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Alto = new javax.swing.JTextPane();
+        AnchoLabel = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        Ancho = new javax.swing.JTextPane();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        CalibrePane = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Calibre = new javax.swing.JTextPane();
+        CalLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ColorPane = new javax.swing.JPanel();
+        ColorLabel = new javax.swing.JLabel();
+        Color = new javax.swing.JComboBox<>();
+        Cajon = new javax.swing.JPanel();
+        CantoLabel = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        Canto = new javax.swing.JTextPane();
+        TubosLabel = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        Tubos = new javax.swing.JTextPane();
+        LedsLabel = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        Leds = new javax.swing.JTextPane();
+        ManoLabel = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        Mano = new javax.swing.JTextPane();
+        OtrosLabel = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        Otros = new javax.swing.JTextPane();
 
         setPreferredSize(new java.awt.Dimension(720, 580));
 
@@ -64,58 +93,126 @@ public class VistaCotizar extends javax.swing.JInternalFrame implements ActionLi
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         jLabel1.setText("Cotizar un Producto");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Producto a cotizar: ");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+        SelectProduct.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        SelectProduct.setText("Producto a cotizar: ");
+        jPanel3.add(SelectProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Polietileno", "Acrilico", "Cajon" }));
-        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        Producto.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        Producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un producto", "Polietileno", "Acrilico", "Cajon" }));
+        Producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProductoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
 
-        Dimensiones.setBackground(new java.awt.Color(204, 204, 204));
+        Dimensiones.setBackground(new java.awt.Color(255, 255, 255));
+        Dimensiones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout DimensionesLayout = new javax.swing.GroupLayout(Dimensiones);
-        Dimensiones.setLayout(DimensionesLayout);
-        DimensionesLayout.setHorizontalGroup(
-            DimensionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        DimensionesLayout.setVerticalGroup(
-            DimensionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        AltoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        AltoLabel.setText("Alto:");
+        Dimensiones.add(AltoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
-        jPanel3.add(Dimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 360, -1));
+        jScrollPane2.setViewportView(Alto);
 
-        javax.swing.GroupLayout CalibreLayout = new javax.swing.GroupLayout(Calibre);
-        Calibre.setLayout(CalibreLayout);
-        CalibreLayout.setHorizontalGroup(
-            CalibreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        CalibreLayout.setVerticalGroup(
-            CalibreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        Dimensiones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
 
-        jPanel3.add(Calibre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 360, 40));
+        AnchoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        AnchoLabel.setText("Ancho:");
+        Dimensiones.add(AnchoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
 
-        javax.swing.GroupLayout ColorLayout = new javax.swing.GroupLayout(Color);
-        Color.setLayout(ColorLayout);
-        ColorLayout.setHorizontalGroup(
-            ColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-        ColorLayout.setVerticalGroup(
-            ColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
+        jScrollPane4.setViewportView(Ancho);
 
-        jPanel3.add(Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 360, 40));
+        Dimensiones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 180, -1));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel3.setText("cm");
+        Dimensiones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel4.setText("cm");
+        Dimensiones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
+
+        jPanel3.add(Dimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 430, 80));
+
+        CalibrePane.setBackground(new java.awt.Color(255, 255, 255));
+        CalibrePane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setViewportView(Calibre);
+
+        CalibrePane.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
+
+        CalLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        CalLabel.setText("Calibre:");
+        CalibrePane.add(CalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setText("mm");
+        CalibrePane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+
+        jPanel3.add(CalibrePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 430, 40));
+
+        ColorPane.setBackground(new java.awt.Color(255, 255, 255));
+        ColorPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ColorLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        ColorLabel.setText("Color:");
+        ColorPane.add(ColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+
+        Color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un color", "Blanco", "Cristal", "Otros" }));
+        ColorPane.add(Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
+
+        jPanel3.add(ColorPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 430, 50));
+
+        Cajon.setBackground(new java.awt.Color(255, 255, 255));
+        Cajon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CantoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        CantoLabel.setText("Canto:");
+        Cajon.add(CantoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+
+        jScrollPane5.setViewportView(Canto);
+
+        Cajon.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
+
+        TubosLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        TubosLabel.setText("Tubos:");
+        Cajon.add(TubosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+
+        jScrollPane6.setViewportView(Tubos);
+
+        Cajon.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 180, -1));
+
+        LedsLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        LedsLabel.setText("Leds:");
+        Cajon.add(LedsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+
+        jScrollPane7.setViewportView(Leds);
+
+        Cajon.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 180, -1));
+
+        ManoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        ManoLabel.setText("Manofcatura:");
+        Cajon.add(ManoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
+
+        jScrollPane8.setViewportView(Mano);
+
+        Cajon.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 180, -1));
+
+        OtrosLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        OtrosLabel.setText("Otros:");
+        Cajon.add(OtrosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
+
+        jScrollPane9.setViewportView(Otros);
+
+        Cajon.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 180, -1));
+
+        jPanel3.add(Cajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 430, 210));
 
         jScrollPane3.setViewportView(jPanel3);
 
@@ -137,16 +234,71 @@ public class VistaCotizar extends javax.swing.JInternalFrame implements ActionLi
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductoActionPerformed
+        // TODO add your handling code here:
+        switch(Producto.getSelectedItem().toString())
+        {
+        case "Polietileno":
+                Dimensiones.setVisible(true);
+                CalibrePane.setVisible(true);
+                ColorPane.setVisible(false);
+                Cajon.setVisible(false);
+                break;
+            case "Acrilico":
+                Dimensiones.setVisible(true);
+                ColorPane.setVisible(true);
+                CalibrePane.setVisible(true);
+                Cajon.setVisible(false);
+                break;
+            case "Cajon":
+                Dimensiones.setVisible(true);
+                CalibrePane.setVisible(false);
+                ColorPane.setVisible(false);
+                Cajon.setVisible(true);
+                break;
+        }
+    }//GEN-LAST:event_ProductoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Calibre;
-    private javax.swing.JPanel Color;
+    private javax.swing.JTextPane Alto;
+    private javax.swing.JLabel AltoLabel;
+    private javax.swing.JTextPane Ancho;
+    private javax.swing.JLabel AnchoLabel;
+    private javax.swing.JPanel Cajon;
+    private javax.swing.JLabel CalLabel;
+    private javax.swing.JTextPane Calibre;
+    private javax.swing.JPanel CalibrePane;
+    private javax.swing.JTextPane Canto;
+    private javax.swing.JLabel CantoLabel;
+    private javax.swing.JComboBox<String> Color;
+    private javax.swing.JLabel ColorLabel;
+    private javax.swing.JPanel ColorPane;
     private javax.swing.JPanel Dimensiones;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextPane Leds;
+    private javax.swing.JLabel LedsLabel;
+    private javax.swing.JTextPane Mano;
+    private javax.swing.JLabel ManoLabel;
+    private javax.swing.JTextPane Otros;
+    private javax.swing.JLabel OtrosLabel;
+    private javax.swing.JComboBox<String> Producto;
+    private javax.swing.JLabel SelectProduct;
+    private javax.swing.JTextPane Tubos;
+    private javax.swing.JLabel TubosLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     // End of variables declaration//GEN-END:variables
 }
