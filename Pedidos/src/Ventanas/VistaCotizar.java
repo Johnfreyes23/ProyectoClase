@@ -15,6 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package Ventanas;
+import pedidos.*;
 import java.awt.event.*;
 import java.awt.*;
 
@@ -59,11 +60,6 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         Ancho = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        CalibrePane = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Calibre = new javax.swing.JTextPane();
-        CalLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         ColorPane = new javax.swing.JPanel();
         ColorLabel = new javax.swing.JLabel();
         Color = new javax.swing.JComboBox<>();
@@ -83,6 +79,11 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         OtrosLabel = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         Otros = new javax.swing.JTextPane();
+        CalibrePane = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Calibre = new javax.swing.JTextPane();
+        CalLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(720, 580));
 
@@ -95,11 +96,11 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         jLabel1.setText("Cotizar un Producto");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         SelectProduct.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         SelectProduct.setText("Producto a cotizar: ");
-        jPanel3.add(SelectProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
+        jPanel3.add(SelectProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         Producto.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         Producto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un producto", "Polietileno", "Acrilico", "Cajon" }));
@@ -108,7 +109,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                 ProductoActionPerformed(evt);
             }
         });
-        jPanel3.add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
+        jPanel3.add(Producto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, -1));
 
         Dimensiones.setBackground(new java.awt.Color(255, 255, 255));
         Dimensiones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -137,24 +138,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         jLabel4.setText("cm");
         Dimensiones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
 
-        jPanel3.add(Dimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 430, 80));
-
-        CalibrePane.setBackground(new java.awt.Color(255, 255, 255));
-        CalibrePane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane1.setViewportView(Calibre);
-
-        CalibrePane.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
-
-        CalLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        CalLabel.setText("Calibre:");
-        CalibrePane.add(CalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel2.setText("mm");
-        CalibrePane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
-
-        jPanel3.add(CalibrePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 430, 40));
+        jPanel3.add(Dimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 430, 80));
 
         ColorPane.setBackground(new java.awt.Color(255, 255, 255));
         ColorPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -167,14 +151,14 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un color", "Blanco", "Cristal", "Otros" }));
         ColorPane.add(Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
 
-        jPanel3.add(ColorPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 430, 50));
+        jPanel3.add(ColorPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 430, 50));
 
         Cajon.setBackground(new java.awt.Color(255, 255, 255));
         Cajon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CantoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         CantoLabel.setText("Canto:");
-        Cajon.add(CantoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        Cajon.add(CantoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 10, 50, -1));
 
         jScrollPane5.setViewportView(Canto);
 
@@ -212,7 +196,24 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
 
         Cajon.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 180, -1));
 
-        jPanel3.add(Cajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 430, 210));
+        jPanel3.add(Cajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 430, 210));
+
+        CalibrePane.setBackground(new java.awt.Color(255, 255, 255));
+        CalibrePane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setViewportView(Calibre);
+
+        CalibrePane.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
+
+        CalLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        CalLabel.setText("Calibre:");
+        CalibrePane.add(CalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setText("mm");
+        CalibrePane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+
+        jPanel3.add(CalibrePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 430, 40));
 
         jScrollPane3.setViewportView(jPanel3);
 

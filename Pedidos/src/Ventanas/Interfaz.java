@@ -159,6 +159,10 @@ public Image getIconImage() {
 
     private void EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpleadosActionPerformed
         // TODO add your handling code here:
+        VistaEmpleado empleado = new VistaEmpleado();
+        empleado.setVisible(true);
+        Escritorio.removeAll();
+        Escritorio.add(empleado);
     }//GEN-LAST:event_EmpleadosActionPerformed
 
     private void ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClientesActionPerformed

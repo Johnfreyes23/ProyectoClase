@@ -112,7 +112,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
         Interfaz.Escritorio.removeAll();
         VistaFactura fac = new VistaFactura();
         fac.setVisible(true);
-        fac.toFront();
+        
         Interfaz.Escritorio.add(fac);
     }//GEN-LAST:event_FacturaBotonActionPerformed
 
