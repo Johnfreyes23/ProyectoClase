@@ -71,7 +71,7 @@ public class VistaFactura extends javax.swing.JInternalFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Titulo.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        Titulo.setText("Facturazión");
+        Titulo.setText("Facturación");
         jPanel2.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         ClienteFact.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N

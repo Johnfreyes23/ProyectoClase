@@ -72,6 +72,31 @@ public class Cliente extends Usuario{
     public void setId_Pedido(String Id_Pedido) {
         this.Id_Pedido = Id_Pedido;
     }
+    
+    public Cliente obtenerCliente(String Id) {
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "select * from Usuario where Categoria = 'Cliente' and Identif='" + Id + "'";
+        ResultSet rs = Proyecto.consultarBD(sentencia);
+        try {
+            if (rs.next()) {
+                this.setID("IdUsr");
+                this.setNombres(rs.getString("NomUsr"));
+                this.setApellidos(rs.getString("ApeUsr"));
+                this.setIdenficacion(rs.getString("Identif"));
+                this.setFecha_Nacimiento("FechaNacimiento");
+                this.setGenero("GeneroUsr");
+                this.setDireccion("Domicilio");
+                this.setTelefono("Telefono");
+                this.setCorreo(rs.getString("CorreoUsr"));
+                return this;
+            }
+            
+        } catch (SQLException ex) {
 
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
   
 }
