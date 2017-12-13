@@ -37,7 +37,7 @@ public class RegistroVentas extends Registro{
 */
     public double CalculoValorTotal(ArrayList Productos){
         valorTotal=0;
-        for (Producto prod : getProductos()) {
+        for(Producto prod : getProductos()) {
             valorTotal = prod.getValor()+ valorTotal;
         }
         setValorTotal(valorTotal) ;
