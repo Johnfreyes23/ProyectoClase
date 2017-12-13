@@ -20,6 +20,11 @@ public class VistaCliente extends javax.swing.JInternalFrame {
      */
     public VistaCliente() {
         initComponents();
+        Validador validar = new Validador();
+        validar.ValidadorNumeros(txtNombre);
+        validar.ValidadorNumeros(txtApellidos);
+        validar.ValidadorLetras(txtTelefono);
+        
     }
 
     /**

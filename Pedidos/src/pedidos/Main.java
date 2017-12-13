@@ -20,13 +20,14 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {  
-        Pedido p1 = new Pedido();
-        p1.setIdCliente("13");
-        p1.setIdCotizacion("12");
-        p1.setIdFactura("12");
-        p1.setIdPedido("123");
-        p1.setEstado("Facturado");
-        p1.crearPedido();
-    }          
+        Acrilico p1 = new Acrilico(3,"cristal",12,12);
+        
+        
+        
+        Factura f1 = new Factura();    
+        f1.agregarProducto(p1);
+        String v = " " + f1.CalculoValorTotal();
+        System.out.println(v);
+    }     
         
 }

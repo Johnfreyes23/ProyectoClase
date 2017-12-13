@@ -35,14 +35,15 @@ public class RegistroVentas extends Registro{
 * @param Productos
 * @return suma total del valor de cada producto.
 */
-    public double CalculoValorTotal(ArrayList Productos){
+    public double CalculoValorTotal(){
         valorTotal=0;
         for (Producto prod : getProductos()) {
-            valorTotal = prod.getValor()+ valorTotal;
+            valorTotal = prod.CalcularPrecio()+ valorTotal;
         }
         setValorTotal(valorTotal) ;
         return valorTotal;
     }
+    
     
     
     public String getDescripcion() {

@@ -30,6 +30,7 @@ public class Usuario {
     private String Telefono;
     private String Correo;
     private String Categoria ;
+    private String Cargo;
 /**
 * Constructor para la clase Usuario.
 * @param ID Identificacion del usuario en base de datos. 
@@ -115,7 +116,7 @@ public class Usuario {
 */   
     public Boolean crearUsuario() {
         ConexionBD Proyecto = new ConexionBD();
-        String sentencia = "Insert into Proyecto.Usuario (Identif,Categoria,NomUsr,ApeUsr,CorreoUsr,GeneroUsr,Domicilio,Telefono,FechaNacimiento) "
+        String sentencia = "Insert into Proyecto.Usuario (Identif,Categoria,NomUsr,ApeUsr,CorreoUsr,GeneroUsr,Domicilio,Telefono,FechaNacimiento,cargo) "
                 + " Values('" + this.Identificacion + "',"
                 + "'" + this.Categoria + "',"
                 + "'" + this.Nombres + "',"
@@ -124,7 +125,8 @@ public class Usuario {
                 + "'" + this.Genero + "',"
                 + "'" + this.Direccion + "',"
                 + "'" + this.Telefono + "',"
-                + "'" + this.Fecha_Nacimiento + "');";
+                + "'" + this.Fecha_Nacimiento + "',"
+                + "'" + this.Cargo + "');";
         boolean exito = Proyecto.insertarBD(sentencia);
         if (exito) {
             String sentencia2 = "select max(IdUsr) as Id from Proyecto.Usuario;";
@@ -143,6 +145,23 @@ public class Usuario {
         return false;
     }
 
+    public String getIdentificacion() {
+        return Identificacion;
+    }
+
+    public void setIdentificacion(String Identificacion) {
+        this.Identificacion = Identificacion;
+    }
+
+    public String getCargo() {
+        return Cargo;
+    }
+
+    public void setCargo(String Cargo) {
+        this.Cargo = Cargo;
+    }
+
+    
     public String getCategoria() {
         return Categoria;
     }

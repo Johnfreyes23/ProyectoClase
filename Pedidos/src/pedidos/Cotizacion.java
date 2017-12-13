@@ -92,20 +92,20 @@ public class Cotizacion extends RegistroVentas {
                 }
     }
     
-/**
-* Metodo que imprime en pantalla descripcion la cotizacion de un pedido.
-*/
-    public void generarCotizacion(){
-        
-        System.out.println("Arteacryl de Colombia - Cotizacion");
-        System.out.println("Cliente " + getCliente().getNombres()+ " " + getCliente().getApellidos());
-        System.out.println("Producto(s) a cotizar");
-        for(Producto ver : getProductos())
-        {
-            Imprimir(ver);
-        }
-        System.out.println("Valor total : " + CalculoValorTotal(getProductos()));
-    }
+///**
+//* Metodo que imprime en pantalla descripcion la cotizacion de un pedido.
+//*/
+//    public void generarCotizacion(){
+//        
+//        System.out.println("Arteacryl de Colombia - Cotizacion");
+//        System.out.println("Cliente " + getCliente().getNombres()+ " " + getCliente().getApellidos());
+//        System.out.println("Producto(s) a cotizar");
+//        for(Producto ver : getProductos())
+//        {
+//            Imprimir(ver);
+//        }
+//        System.out.println("Valor total : " + CalculoValorTotal(getProductos()));
+//    }
 
     public String getIdCotizacion() {
         return IdCotizacion;
