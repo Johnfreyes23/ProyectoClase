@@ -38,7 +38,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
         Produccion = new javax.swing.JLabel();
         FacturaBoton = new javax.swing.JButton();
         CotizarB = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ProduccionBtn = new javax.swing.JButton();
 
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(720, 580));
@@ -82,16 +82,16 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
         });
         jPanel1.add(CotizarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 160, -1));
 
-        jButton1.setBackground(new java.awt.Color(204, 51, 0));
-        jButton1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Producción");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ProduccionBtn.setBackground(new java.awt.Color(204, 51, 0));
+        ProduccionBtn.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        ProduccionBtn.setForeground(new java.awt.Color(255, 255, 255));
+        ProduccionBtn.setText("Producción");
+        ProduccionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ProduccionBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, -1, -1));
+        jPanel1.add(ProduccionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,14 +121,17 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
         VistaCotizar cot = new VistaCotizar();
         Interfaz.Escritorio.removeAll();
         cot.setVisible(true);
-        cot.toFront();
         Interfaz.Escritorio.add(cot);
         
     }//GEN-LAST:event_CotizarBActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ProduccionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProduccionBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        VistaProduccion product = new VistaProduccion();
+        product.setVisible(true);
+        Interfaz.Escritorio.removeAll();
+        Interfaz.Escritorio.add(product);
+    }//GEN-LAST:event_ProduccionBtnActionPerformed
 
     
 
@@ -138,7 +141,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
     private javax.swing.JButton FacturaBoton;
     private javax.swing.JLabel Facturar;
     private javax.swing.JLabel Produccion;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton ProduccionBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

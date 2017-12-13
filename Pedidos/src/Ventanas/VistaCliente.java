@@ -53,144 +53,98 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
         setFocusable(false);
         setPreferredSize(new java.awt.Dimension(720, 580));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         jLabel5.setText("Registrar un Cliente");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 310, -1));
 
-        JLNombre.setText("Nombres :");
+        JLNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JLNombre.setText("Nombres:");
+        getContentPane().add(JLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
-        JLApellido.setText("Apellidos :");
+        JLApellido.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JLApellido.setText("Apellidos:");
+        getContentPane().add(JLApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
-        JLTelefono.setText("Telefono :");
+        JLTelefono.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JLTelefono.setText("Telefono:");
+        getContentPane().add(JLTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
 
-        JLEmail.setText("E-mail :");
+        JLEmail.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JLEmail.setText("E-mail:");
+        getContentPane().add(JLEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, -1, -1));
 
+        txtNombre.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 229, -1));
 
+        txtApellidos.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        getContentPane().add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 230, -1));
+
+        txtTelefono.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        getContentPane().add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 230, -1));
+
+        txtEmail.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        getContentPane().add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 232, -1));
+
+        JLGenero.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         JLGenero.setText("Genero :");
+        getContentPane().add(JLGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
 
-        txtGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        txtGenero.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        txtGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Genero", "Masculino", "Femenino" }));
         txtGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGeneroActionPerformed(evt);
             }
         });
+        getContentPane().add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 230, -1));
 
-        JLFechaNacimiento.setText("Fecha Nacimiento :");
+        JLFechaNacimiento.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JLFechaNacimiento.setText("Fecha Nacimiento:");
+        getContentPane().add(JLFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, -1, -1));
+        getContentPane().add(JDFechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 230, 30));
 
+        btnGuardar.setBackground(new java.awt.Color(204, 51, 0));
+        btnGuardar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, 130, -1));
 
+        btnLimpiar.setBackground(new java.awt.Color(204, 51, 0));
+        btnLimpiar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 130, -1));
 
-        JLDireccion.setText("Direccion :");
+        JLDireccion.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JLDireccion.setText("Direccion:");
+        getContentPane().add(JLDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
 
-        JLIdentificacion.setText("Identificacion :");
+        txtDireccion.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 232, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(216, 216, 216))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(JLGenero)
-                                    .addComponent(JLEmail)
-                                    .addComponent(JLTelefono))
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(JLDireccion)
-                                    .addComponent(JLFechaNacimiento))
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(JDFechaNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtGenero, javax.swing.GroupLayout.Alignment.LEADING, 0, 149, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(JLNombre)
-                            .addComponent(JLIdentificacion)
-                            .addComponent(JLApellido))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtApellidos)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIdentificacion))))
-                .addContainerGap(169, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel5)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLApellido)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLIdentificacion)
-                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLTelefono)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLGenero)
-                    .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JLFechaNacimiento)
-                    .addComponent(JDFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JLDireccion)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnLimpiar))
-                .addContainerGap(141, Short.MAX_VALUE))
-        );
+        JLIdentificacion.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JLIdentificacion.setText("Identificacion:");
+        getContentPane().add(JLIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
+
+        txtIdentificacion.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        getContentPane().add(txtIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 230, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
