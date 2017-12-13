@@ -378,12 +378,18 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         Cliente cliente = new Cliente().obtenerCliente(cedula);
         if(cliente == null)
         {
-            int option = JOptionPane.showOptionDialog(Fondo, "Cliente no registrado. \n  ¿Agrear un nuevo cliente", 
+            int option = JOptionPane.showOptionDialog(Fondo, "Cliente no registrado. \n  ¿Agrear un nuevo cliente?", 
                     "Cliente no encontrado", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
                     null,    // null para icono por defecto.
                     new Object[] { "SI", "NO"},   // null para YES, NO y CANCEL
-                    "opcion 1");
-            System.out.println(option);
+                    "SI");
+            if(option == 0)
+            {
+                Interfaz.Escritorio.removeAll();
+                VistaCliente client = new VistaCliente();
+                client.setVisible(true);
+                Interfaz.Escritorio.add(client);
+            }
         }
         else
         {
