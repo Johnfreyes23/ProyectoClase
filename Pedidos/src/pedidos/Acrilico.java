@@ -36,11 +36,11 @@ public class Acrilico extends Producto{
 /**
 * Metodo que calcula el precio del producto teniendo en cuenta el area y el color.
 */
-    public double CalcularPrecio() {
+    public int CalcularPrecio() {
         
         double area = getArea();
         double costo = 0;  
-        double valor;
+        int valor;
         if(color.equals("Cristal") ){
             costo = (3.67*calibre + 0.3)*area ;
         }
@@ -51,10 +51,16 @@ public class Acrilico extends Producto{
             costo = (4.123*calibre + 0.3)*area ;
         }
         
-        valor = costo*RecargoValor(area);
+        valor = (int) (costo*RecargoValor(area));
         setCosto(costo);
         setValor(valor);
         return valor;
+    }
+     public String detalles(){
+        String detalles =  " \n" + this.getTipo() + " " + this.getAlto() 
+                +"x" + this.getAncho() + "cm "+" Calibre: " + this.getCalibre()+" Color: " + this.getColor()
+                + "\t Valor: $" + this.CalcularPrecio();
+        return detalles ;
     }
     public double getCalibre() {
         return calibre;

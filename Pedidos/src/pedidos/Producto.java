@@ -16,7 +16,7 @@ public class Producto {
     private double alto;
     private double ancho;
     private double area;
-    private double valor;
+    private int valor;
     private double costo;    
     private String tipo;
     static final double IVA = 0.19;
@@ -32,8 +32,13 @@ public class Producto {
         this.tipo = tipo;
         this.area = this.alto * this.ancho ;
     }
-    public double CalcularPrecio() {
+    public int CalcularPrecio() {
         return valor;
+    }
+    public String detalles(){
+        String detalles = " " + this.getTipo() + " Alto: " + this.getAlto() 
+                +" Ancho: " + this.getAncho() + "\n\t Valor: $" + this.CalcularPrecio();
+        return detalles ;
     }
     public double getCosto() {
         return costo;
@@ -72,7 +77,7 @@ public class Producto {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(int valor) {
         this.valor = valor;
     }
     

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -35,11 +35,11 @@ public class Polietileno extends Producto {
 /**
 * Metodo que calcula el precio del producto teniendo en cuenta su area.
 */
-    public double CalcularPrecio() {
+    public int CalcularPrecio() {
 
         double area = getArea();
         double costo =  ((442.8 * calibre + 0.4428*(area-20000)*(calibre/20))) ;
-        double valor = costo * RecargoValor(area);
+        int valor = (int) (costo * RecargoValor(area));
         setCosto(costo);
         setValor(valor);
         return valor;
@@ -48,5 +48,12 @@ public class Polietileno extends Producto {
     public double getCalibre()
     {
         return calibre;
+    }
+    
+    public String detalles(){
+        String detalles = "\n " + this.getTipo() + "  Alto: " + this.getAlto() + 
+                                " Ancho: " + this.getAncho() + " Calibre: " + this.getCalibre() + "\t Valor: $" + 
+                                this.CalcularPrecio();
+        return detalles ;
     }
 }

@@ -21,9 +21,13 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
 
 /**
  * Esta clase contiene metodos que generan pdf para las clases Cotizacion ,
@@ -41,14 +45,17 @@ public class GeneradorPDF {
     /**
      * @param cotizacion // trae los datos a mostrar en el pdf
      *
-     * Metodo que genera un archivo pdf con los datos de la cotizacion recibe un objeto cotizacion 
+     * Metodo que genera un archivo pdf con los datos de la cotizacion recibe un
+     * objeto cotizacion
      */
     public void PdfCotizacion(Cotizacion cotizacion) {
 
         Document document = new Document();
         Calendar fecha = new GregorianCalendar();
+        cotizacion.setRutaArchivo("src/Archivos/cotizacion" + cotizacion.getIdCotizacion() + ".pdf" );
+        cotizacion.GuardarRuta();
         try {
-            PdfWriter.getInstance(document, new FileOutputStream("Image2.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream(cotizacion.getRutaArchivo()));
             document.open();
             Image image1 = Image.getInstance("encabezado.png");
             image1.scaleAbsolute(550f, 100f);
@@ -58,7 +65,7 @@ public class GeneradorPDF {
             document.add(new Paragraph(" "));
             document.add(new Paragraph(" "));
             document.add(new Paragraph("Cordial Saludo"));
-            document.add(new Paragraph(cotizacion.getCliente().getNombres() + cotizacion.getCliente().getApellidos()));
+            document.add(new Paragraph(cotizacion.getCliente().getNombres() + " " + cotizacion.getCliente().getApellidos()));
             document.add(new Paragraph(" "));
             document.add(new Paragraph("De acuerdo a su solicitud adjunto la siguiente cotización."));
             document.add(new Paragraph(" "));
@@ -66,21 +73,39 @@ public class GeneradorPDF {
             titulo1.setAlignment(Element.ALIGN_CENTER);
             document.add(titulo1);
             document.add(new Paragraph(" "));
+            document.add(new Paragraph("Todos nuestros productos tienen garantia de 36 meses por defectos de fabricacion."
+                    + "Se realiza un pago inicial del 50% , el resto del dinero se cancela al entregar el producto. "));
+            document.add(new Paragraph("\nProductos: \n"));
+            for (Producto prod : cotizacion.getProductos()) {
+                document.add(new Paragraph(prod.detalles()));
+            }
             document.add(new Paragraph(" "));
-            document.add(new Paragraph("Productos: "));
-            document.add(new Paragraph("Especificaciones: "));
-            document.add(new Paragraph(" Elaboracion de logotipos de acrilicos, con los siguientes diametros .100 "
-                    + "80 – 70, letras PANADERIA con un calibre de 11 mm sobre puesta en una base en acrilico"
-                    + "cristal 8m para dar efecto 3D o de volumen, la letra M y la hoja con un volumen de 4 cm."));
+            document.add(new Paragraph("Valor Total : $" + cotizacion.getValorTotal()));
             document.add(new Paragraph(" "));
             document.add(new Paragraph(" "));
-            document.add(new Paragraph("Valor Total : "));
-            document.add(new Paragraph(" "));
-            document.add(new Paragraph(" "));
-            document.add(new Paragraph("Tiempo de Entrega : "));
+            Image image2 = Image.getInstance("pie.png");
+            image2.scaleAbsolute(550f, 100f);
+            document.add(image2);
             document.close();
+            cotizacion.setRutaArchivo(cotizacion.getRutaArchivo());
+           
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public void abrirPdf(String ruta) {
+ try{ 
+ 
+   File path = new File (ruta);
+   Desktop.getDesktop().open(path);
+  
+  }catch(IOException e){
+     e.printStackTrace();
+  }catch(IllegalArgumentException e){
+     JOptionPane.showMessageDialog(null, "No se pudo encontrar el archivo","Error",JOptionPane.ERROR_MESSAGE);
+     e.printStackTrace();
+ } 
+    }
+
 }

@@ -58,12 +58,17 @@ public class Cajon extends Producto {
 /**
 * Metodo que calcula el valor del producto
 */
-    public double CalcularPrecio() {
-        double valor;
+    public int CalcularPrecio() {
+        int valor;
         double costoLuz = tubos*5000 + leds*4500;  
-        valor = costoLuz + frente.CalcularPrecio() + cantonera.CalcularPrecio()+ valorEstructura()+otros;
+        valor = (int) (costoLuz + frente.CalcularPrecio() + cantonera.CalcularPrecio()+ valorEstructura()+otros);
         setValor(valor);
         return valor;
+    }
+     public String detalles(){
+        String detalles = " \n" + this.getTipo() + " Alto: " + this.getAlto() + 
+                " Ancho: " + getAncho() +" Canto: " + getCanto() +"\t Valor: $" + this.CalcularPrecio();
+        return detalles ;
     }
 
     public double getOtros() {

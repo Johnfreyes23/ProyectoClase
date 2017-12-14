@@ -34,11 +34,15 @@ import javax.swing.DefaultListModel;
 public class VistaCotizar extends javax.swing.JInternalFrame {
     Cotizacion cotizacion ;
     ArrayList<Producto> ListaProductos = new ArrayList<>();
-
+    DefaultListModel lista = new DefaultListModel();
+    DefaultListModel precio = new DefaultListModel();
+    int i =0;
+    
     /**
      * Creates new form VistaCotizar
      */
     public VistaCotizar() {
+        
         initComponents();
         Dimensiones.setVisible(false);
         CalibrePane.setVisible(false);
@@ -73,22 +77,6 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         Calibre = new javax.swing.JTextPane();
         CalLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Cajon = new javax.swing.JPanel();
-        CantoLabel = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        Canto = new javax.swing.JTextPane();
-        TubosLabel = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        Tubos = new javax.swing.JTextPane();
-        LedsLabel = new javax.swing.JLabel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        Leds = new javax.swing.JTextPane();
-        ManoLabel = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        Mano = new javax.swing.JTextPane();
-        OtrosLabel = new javax.swing.JLabel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        Otros = new javax.swing.JTextPane();
         ColorPane = new javax.swing.JPanel();
         ColorLabel = new javax.swing.JLabel();
         Color = new javax.swing.JComboBox<>();
@@ -127,6 +115,23 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         Subtotal = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        Cajon = new javax.swing.JPanel();
+        OtrosLabel = new javax.swing.JLabel();
+        CantoLabel = new javax.swing.JLabel();
+        LedsLabel = new javax.swing.JLabel();
+        TubosLabel = new javax.swing.JLabel();
+        ManoLabel = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        Canto = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        Tubos = new javax.swing.JTextPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        Leds = new javax.swing.JTextPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        Mano = new javax.swing.JTextPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        Otros = new javax.swing.JTextPane();
 
         setPreferredSize(new java.awt.Dimension(720, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,115 +141,70 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         jLabel1.setText("Cotizar un Producto");
-        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         CalibrePane.setBackground(new java.awt.Color(255, 255, 255));
         CalibrePane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setViewportView(Calibre);
 
-        CalibrePane.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
+        CalibrePane.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, 180, -1));
 
         CalLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         CalLabel.setText("Calibre:");
-        CalibrePane.add(CalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        CalibrePane.add(CalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel2.setText("mm");
-        CalibrePane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+        CalibrePane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, -1));
 
-        Fondo.add(CalibrePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 430, 40));
-
-        Cajon.setBackground(new java.awt.Color(255, 255, 255));
-        Cajon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        CantoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        CantoLabel.setText("Canto:");
-        Cajon.add(CantoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 10, 50, -1));
-
-        jScrollPane5.setViewportView(Canto);
-
-        Cajon.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
-
-        TubosLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        TubosLabel.setText("Tubos:");
-        Cajon.add(TubosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
-
-        jScrollPane6.setViewportView(Tubos);
-
-        Cajon.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 180, -1));
-
-        LedsLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        LedsLabel.setText("Leds:");
-        Cajon.add(LedsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
-
-        jScrollPane7.setViewportView(Leds);
-
-        Cajon.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 180, -1));
-
-        ManoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        ManoLabel.setText("Manofactura:");
-        Cajon.add(ManoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
-
-        jScrollPane8.setViewportView(Mano);
-
-        Cajon.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 180, -1));
-
-        OtrosLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        OtrosLabel.setText("Otros:");
-        Cajon.add(OtrosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
-
-        jScrollPane9.setViewportView(Otros);
-
-        Cajon.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 180, -1));
-
-        Fondo.add(Cajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 430, 200));
+        Fondo.add(CalibrePane, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 290, 30));
 
         ColorPane.setBackground(new java.awt.Color(255, 255, 255));
         ColorPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ColorLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         ColorLabel.setText("Color:");
-        ColorPane.add(ColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        ColorPane.add(ColorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Color.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         Color.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un color", "Opal", "Cristal", "Otros" }));
-        ColorPane.add(Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
+        ColorPane.add(Color, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 210, -1));
 
-        Fondo.add(ColorPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 430, 70));
+        Fondo.add(ColorPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 290, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setText("Buscar Cliente:");
-        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         Dimensiones.setBackground(new java.awt.Color(255, 255, 255));
         Dimensiones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AltoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         AltoLabel.setText("Alto:");
-        Dimensiones.add(AltoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        Dimensiones.add(AltoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jScrollPane2.setViewportView(Alto);
 
-        Dimensiones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 180, -1));
+        Dimensiones.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 180, -1));
 
         AnchoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         AnchoLabel.setText("Ancho:");
-        Dimensiones.add(AnchoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+        Dimensiones.add(AnchoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jScrollPane4.setViewportView(Ancho);
 
-        Dimensiones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 180, -1));
+        Dimensiones.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 180, -1));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setText("cm");
-        Dimensiones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, -1));
+        Dimensiones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setText("cm");
-        Dimensiones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, -1, -1));
+        Dimensiones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
 
-        Fondo.add(Dimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 430, 80));
+        Fondo.add(Dimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 280, 70));
 
         IDCliente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         IDCliente.setText("Cedula Cliente");
@@ -253,7 +213,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                 IDClienteMouseClicked(evt);
             }
         });
-        Fondo.add(IDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 59, 190, 30));
+        Fondo.add(IDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 190, 30));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -263,7 +223,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        Fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 40, 30));
+        Fondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 40, 30));
 
         Seleccionar.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -285,9 +245,9 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
             .addGroup(SeleccionarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(SelectProduct)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SeleccionarLayout.setVerticalGroup(
             SeleccionarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,7 +259,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Fondo.add(Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 430, 50));
+        Fondo.add(Seleccionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 410, 50));
 
         SetCliente.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -318,23 +278,26 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         SetCliente.setLayout(SetClienteLayout);
         SetClienteLayout.setHorizontalGroup(
             SetClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SetClienteLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SetClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(ClienteNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(241, 241, 241))
+            .addGroup(SetClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ClienteNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SetClienteLayout.setVerticalGroup(
             SetClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SetClienteLayout.createSequentialGroup()
-                .addGroup(SetClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(ClienteNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ClienteNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Fondo.add(SetCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 390, 30));
+        Fondo.add(SetCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 270, 70));
 
         r.setText("jButton2");
         Fondo.add(r, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 880, -1, -1));
@@ -372,37 +335,36 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         CalculosLayout.setHorizontalGroup(
             CalculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CalculosLayout.createSequentialGroup()
-                .addGroup(CalculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(40, 40, 40)
+                .addGroup(CalculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(CalculosLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel9)
-                        .addGap(8, 8, 8)
-                        .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CalculosLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addComponent(Calcular)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Agregar)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         CalculosLayout.setVerticalGroup(
             CalculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CalculosLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addGroup(CalculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel9)
+                    .addComponent(Valor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CalculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Agregar)
-                    .addComponent(Calcular))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Calcular)
+                    .addComponent(Agregar))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        Fondo.add(Calculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 320, -1));
+        Fondo.add(Calculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 320, -1));
 
         PanelAgregar.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -423,32 +385,42 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel12.setText("Subtotal:");
 
+        jButton2.setText("Imprimir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelAgregarLayout = new javax.swing.GroupLayout(PanelAgregar);
         PanelAgregar.setLayout(PanelAgregarLayout);
         PanelAgregarLayout.setHorizontalGroup(
             PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAgregarLayout.createSequentialGroup()
                 .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(PanelAgregarLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel12)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(Subtotal))
+                        .addGroup(PanelAgregarLayout.createSequentialGroup()
+                            .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(PanelAgregarLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jLabel10))
+                                .addGroup(PanelAgregarLayout.createSequentialGroup()
+                                    .addGap(9, 9, 9)
+                                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(18, 18, 18)
+                            .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11)
+                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(25, 25, 25)))
                     .addGroup(PanelAgregarLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel10))
-                    .addGroup(PanelAgregarLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAgregarLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(108, 108, 108))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAgregarLayout.createSequentialGroup()
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAgregarLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                        .addContainerGap()
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelAgregarLayout.setVerticalGroup(
             PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,21 +433,67 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                 .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelAgregarLayout.createSequentialGroup()
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(46, 46, 46)
+                        .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(Subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(jButton2))
                     .addGroup(PanelAgregarLayout.createSequentialGroup()
                         .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(0, 13, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        Fondo.add(PanelAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 570, 460, 260));
+        Fondo.add(PanelAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 320, 330));
+
+        Cajon.setBackground(new java.awt.Color(255, 255, 255));
+        Cajon.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        OtrosLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        OtrosLabel.setText("Otros:");
+        Cajon.add(OtrosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+
+        CantoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        CantoLabel.setText("Canto:");
+        Cajon.add(CantoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 60, -1));
+
+        LedsLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        LedsLabel.setText("Leds:");
+        Cajon.add(LedsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
+
+        TubosLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        TubosLabel.setText("Tubos:");
+        Cajon.add(TubosLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+
+        ManoLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        ManoLabel.setText("Manofactura:");
+        Cajon.add(ManoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+
+        jScrollPane5.setViewportView(Canto);
+
+        Cajon.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 180, -1));
+
+        jScrollPane6.setViewportView(Tubos);
+
+        Cajon.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 180, -1));
+
+        jScrollPane7.setViewportView(Leds);
+
+        Cajon.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 180, -1));
+
+        jScrollPane8.setViewportView(Mano);
+
+        Cajon.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 180, -1));
+
+        jScrollPane9.setViewportView(Otros);
+
+        Cajon.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 180, -1));
+
+        Fondo.add(Cajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 290, 170));
 
         Escritorio.setViewportView(Fondo);
 
-        getContentPane().add(Escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 720, 570));
+        getContentPane().add(Escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -546,6 +564,8 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
             SetCliente.setVisible(true);
             ClienteNombre.setText(cliente.getNombres() + " " + cliente.getApellidos());
             Seleccionar.setVisible(true);
+            cotizacion.setCliente(cliente);
+            cotizacion.setIdCliente(cliente.getID());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -587,9 +607,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         String valor = String.valueOf(product.CalcularPrecio());
         Valor.setText(valor);
     }//GEN-LAST:event_CalcularActionPerformed
-    DefaultListModel lista = new DefaultListModel();
-    DefaultListModel precio = new DefaultListModel();
-    int i =0;
+
     
     
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
@@ -599,14 +617,26 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         Producto product = CrearObjeto();
         i++;
         lista.addElement(i + ") " + product.getTipo());
-        String valor = String.valueOf(product.CalcularPrecio());
+        String valor = String.valueOf(product.CalcularPrecio());        
         precio.addElement(i + ") " + valor);
         Productos.setModel(lista);
         Precios.setModel(precio);
         ListaProductos.add(product);
+        cotizacion.setProductos(ListaProductos);
+        
         String subtotal = String.valueOf(cotizacion.CalculoValorTotal());
         Subtotal.setText(subtotal);
     }//GEN-LAST:event_AgregarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        GeneradorPDF pdf = new GeneradorPDF();
+        cotizacion.crearCotizacion();
+        pdf.PdfCotizacion(cotizacion);
+        
+        pdf.abrirPdf(cotizacion.getRutaArchivo());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void borrar()
     {
@@ -662,6 +692,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel TubosLabel;
     private javax.swing.JTextField Valor;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

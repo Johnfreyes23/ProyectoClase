@@ -37,9 +37,11 @@ public class Cotizacion extends RegistroVentas {
     
     private String IdCotizacion;
     private String FechaCotizacion;
+    
 
     public Cotizacion() {
         super();
+        FechaCotizacion = super.fechaActual();
     }   
     
      public Cotizacion ObtenerCotizacion(String Id) {
@@ -63,49 +65,44 @@ public class Cotizacion extends RegistroVentas {
         return null;
 
     }
-/**
-* Metodo que imprime en pantalla descripcion de los productos en cotizacion de un pedido.
-*/
-    public void Imprimir(Producto product)
-    {
-        switch(product.getTipo())
-                {
-                    case "Polietileno":
-                        Polietileno po = (Polietileno) product;
-                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
-                                "\n\t Ancho: " + product.getAncho() + "\n\t Calibre: " + po.getCalibre() + "\n\t Valor: $" + 
-                                po.CalcularPrecio());
-                    break;
-                    
-                    case "Acrilico":
-                        Acrilico a1 = (Acrilico) product;
-                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
-                                "\n\t Ancho: " + product.getAncho() + "\n\t Calibre: " + a1.getCalibre() + "\n\t Color: " + a1.getColor() + 
-                                "\n\t Valor: $" + a1.CalcularPrecio());
-                    break;
-                    
-                    case "Cajon":
-                        Cajon c1 = (Cajon) product;
-                        System.out.println("Producto: " + product.getTipo() + "\n Dimensiones: \n\t Alto: " + product.getAlto() + 
-                                "\n\t Largo: " + product.getAncho() + "\n\t Ancho: " + c1.getCanto() + "\n\t Valor: $" + c1.CalcularPrecio());
-                        
-                }
+     
+      public Boolean GuardarRuta() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Insert into Proyecto.Cotizacion  where IdCotizacion ='" + getIdCotizacion() + "' (rutaArchivo) "
+                + " Values('" + getRutaArchivo()+ "');";
+        boolean exito = Proyecto.insertarBD(sentencia);
+        
+        Proyecto.cerrarConexion();
+        return exito;
     }
-    
-///**
-//* Metodo que imprime en pantalla descripcion la cotizacion de un pedido.
-//*/
-//    public void generarCotizacion(){
-//        
-//        System.out.println("Arteacryl de Colombia - Cotizacion");
-//        System.out.println("Cliente " + getCliente().getNombres()+ " " + getCliente().getApellidos());
-//        System.out.println("Producto(s) a cotizar");
-//        for(Producto ver : getProductos())
-//        {
-//            Imprimir(ver);
-//        }
-//        System.out.println("Valor total : " + CalculoValorTotal(getProductos()));
-//    }
+     
+     public Boolean crearCotizacion() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Insert into Proyecto.Cotizacion (IdCliente,fechaCotizacion,descripcion,valorTotal,rutaArchivo) "
+                + " Values('" + getIdCliente()+ "',"
+                + "'" + getFechaCotizacion() + "',"
+                + "'" + getDescripcion()+ "',"
+                + "'" + getValorTotal()+ "',"
+                + "'" + getRutaArchivo()+ "');";
+        boolean exito = Proyecto.insertarBD(sentencia);
+        if (exito) {
+            String sentencia2 = "select max(IdCotizacion) as Id from Proyecto.Cotizacion;";
+            ResultSet rs = Proyecto.consultarBD(sentencia2);
+            try {
+                if (rs.next()) {
+                    this.setIdCotizacion(rs.getString("Id"));
+                    Proyecto.cerrarConexion();
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Cotizacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Proyecto.cerrarConexion();
+        return false;
+    }
 
     public String getIdCotizacion() {
         return IdCotizacion;

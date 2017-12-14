@@ -26,6 +26,8 @@ import java.util.Calendar;
 public abstract class Registro {
     private Cliente cliente;
     private String IdCliente;
+    
+    public Registro(){}
 
 /**
 * Metodo que usa el calendario para obtener la fecha actual

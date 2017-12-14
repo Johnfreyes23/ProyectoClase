@@ -5,10 +5,14 @@
  */
 package pedidos;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,14 +24,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {  
-        Acrilico p1 = new Acrilico(3,"cristal",12,12);
         
         
-        
-        Factura f1 = new Factura();    
-        f1.agregarProducto(p1);
-        String v = " " + f1.CalculoValorTotal();
-        System.out.println(v);
     }     
         
 }

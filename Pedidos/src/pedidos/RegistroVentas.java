@@ -29,6 +29,11 @@ public class RegistroVentas extends Registro{
     private String descripcion;
     private double valorTotal;
     private ArrayList<Producto> productos = new ArrayList();
+    private String rutaArchivo;
+
+    public RegistroVentas() {
+    }
+    
     
     /**
 * Metodo que calcula el valor total de los productos agregados a la factura
@@ -41,10 +46,31 @@ public class RegistroVentas extends Registro{
             valorTotal = prod.CalcularPrecio()+ valorTotal;
         }
         setValorTotal(valorTotal) ;
+        Descripcion();
         return valorTotal;
     }
     
     
+    /**
+* Metodo que imprime en pantalla descripcion de los productos en cotizacion de un pedido.
+*/
+    public void Descripcion()
+    {
+        String Descripcion = "\n";
+        for (Producto product : getProductos()) {
+            Descripcion = Descripcion + product.detalles();
+        }
+        this.setDescripcion(Descripcion);
+       
+    }
+
+    public String getRutaArchivo() {
+        return rutaArchivo;
+    }
+
+    public void setRutaArchivo(String rutaArchivo) {
+        this.rutaArchivo = rutaArchivo;
+    }
     
     public String getDescripcion() {
         return descripcion;
