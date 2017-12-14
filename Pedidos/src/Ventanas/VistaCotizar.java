@@ -36,6 +36,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
     ArrayList<Producto> ListaProductos = new ArrayList<>();
     DefaultListModel lista = new DefaultListModel();
     DefaultListModel precio = new DefaultListModel();
+    
     int i =0;
     
     /**
@@ -98,7 +99,6 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         SetCliente = new javax.swing.JPanel();
         ClienteNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        r = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         Calculos = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -299,9 +299,6 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         );
 
         Fondo.add(SetCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 270, 70));
-
-        r.setText("jButton2");
-        Fondo.add(r, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 880, -1, -1));
         Fondo.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, -1, -1));
 
         Calculos.setBackground(new java.awt.Color(255, 255, 255));
@@ -450,7 +447,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                         .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
                             .addComponent(Subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(JBImprimir)
                             .addComponent(JBFacturar)))
@@ -618,8 +615,8 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
     
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
         // TODO add your handling code here:
-        Producto product = CrearObjeto();
-        String valor = String.valueOf(product.CalcularPrecio());
+       
+        String valor = String.valueOf(CrearObjeto().CalcularPrecio());
         Valor.setText(valor);
     }//GEN-LAST:event_CalcularActionPerformed
 
@@ -739,6 +736,5 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JButton r;
     // End of variables declaration//GEN-END:variables
 }
