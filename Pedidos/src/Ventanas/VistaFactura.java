@@ -56,8 +56,10 @@ public class VistaFactura extends javax.swing.JInternalFrame {
                 Integer.toString(i), product.detalles(), Double.toString(product.getValor())
             });
         }
-        table.addRow(titulo);
         Tabla.setModel(table);
+        Tabla.getColumn("Item").setPreferredWidth(50);
+        Tabla.getColumn("Descripción").setPreferredWidth(435);
+        Tabla.getColumn("Valor").setPreferredWidth(108);
     }
 
     /**
@@ -73,7 +75,6 @@ public class VistaFactura extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
-        Guardar = new javax.swing.JButton();
         Imprimir = new javax.swing.JButton();
         Producir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -102,23 +103,22 @@ public class VistaFactura extends javax.swing.JInternalFrame {
         Titulo.setText("Facturación");
         jPanel2.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
-        Guardar.setBackground(new java.awt.Color(204, 51, 0));
-        Guardar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        Guardar.setText("Guardar");
-        jPanel2.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
-
         Imprimir.setBackground(new java.awt.Color(204, 51, 0));
         Imprimir.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         Imprimir.setForeground(new java.awt.Color(255, 255, 255));
         Imprimir.setText("Imprimir");
-        jPanel2.add(Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
+        jPanel2.add(Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, -1, -1));
 
         Producir.setBackground(new java.awt.Color(204, 51, 0));
         Producir.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         Producir.setForeground(new java.awt.Color(255, 255, 255));
         Producir.setText("Enviar a Producción");
-        jPanel2.add(Producir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, -1, -1));
+        Producir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProducirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Producir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel1.setText("Fecha Factura");
@@ -170,9 +170,15 @@ public class VistaFactura extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane2.setViewportView(Tabla);
+        if (Tabla.getColumnModel().getColumnCount() > 0) {
+            Tabla.getColumnModel().getColumn(0).setPreferredWidth(100);
+            Tabla.getColumnModel().getColumn(1).setPreferredWidth(300);
+            Tabla.getColumnModel().getColumn(2).setPreferredWidth(100);
+        }
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 500, 280));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 600, 280));
 
         jScrollPane1.setViewportView(jPanel2);
 
@@ -191,6 +197,14 @@ public class VistaFactura extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ProducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProducirActionPerformed
+        // TODO add your handling code here:
+        VistaProduccion produccion = new VistaProduccion(factura);
+        produccion.setVisible(true);
+        Interfaz.Escritorio.removeAll();
+        Interfaz.Escritorio.add(produccion);
+    }//GEN-LAST:event_ProducirActionPerformed
 DefaultListModel lista = new DefaultListModel();
 int i =0;
 
@@ -199,7 +213,6 @@ int i =0;
     private javax.swing.JTextField Cliente;
     private javax.swing.JTextField Direccion;
     private javax.swing.JTextField Fecha;
-    private javax.swing.JButton Guardar;
     private javax.swing.JButton Imprimir;
     private javax.swing.JButton Producir;
     private javax.swing.JTable Tabla;

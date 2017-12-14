@@ -16,6 +16,10 @@
  */
 package Ventanas;
 
+import javax.swing.DefaultComboBoxModel;
+import pedidos.Empleado;
+import pedidos.Factura;
+
 /**
  *
  * @author Nicolas
@@ -25,8 +29,20 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
     /**
      * Creates new form VistaProduccion
      */
-    public VistaProduccion() {
+    public VistaProduccion(Factura factura) {
         initComponents();
+    }
+    
+    public void mostrar()
+    {
+        
+        DefaultComboBoxModel combo = new DefaultComboBoxModel();
+        combo.addElement("Seleccione un Empleado");
+        for(Empleado empl : new Empleado().obtenerListaEmpleados())
+        {
+            combo.addElement(empl.getNombres() + " " + empl.getApellidos());
+        }
+        EmpleadoCombo.setModel(combo);
     }
 
     /**
@@ -44,14 +60,14 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         ClienteProduc = new javax.swing.JLabel();
         MostrarClienteP = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        EmpleadoCombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -60,48 +76,58 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         jLabel1.setText("Orden de Producción");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
-        ClienteProduc.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        ClienteProduc.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         ClienteProduc.setText("Cliente:");
-        jPanel1.add(ClienteProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+        jPanel1.add(ClienteProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         MostrarClienteP.setEditable(false);
-        MostrarClienteP.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jPanel1.add(MostrarClienteP, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 250, 40));
+        MostrarClienteP.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel1.add(MostrarClienteP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 260, 20));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Asignar Operario:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        jComboBox1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un operario" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 250, -1));
+        EmpleadoCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        EmpleadoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un operario" }));
+        jPanel1.add(EmpleadoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 260, -1));
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel3.setText("Fecha Terminado:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
         jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 210, 150, -1));
+        jTextField1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 150, -1));
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel4.setText("Fecha Inicio:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
         jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 150, -1));
+        jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel5.setText("Productos");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, -1, -1));
 
-        jList1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jList1);
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        Tabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane2.setViewportView(Tabla);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 360, 150));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 470, 230));
 
         jDesktopPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 560));
 
@@ -122,17 +148,17 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClienteProduc;
+    private javax.swing.JComboBox<String> EmpleadoCombo;
     private javax.swing.JTextField MostrarClienteP;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTable Tabla;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

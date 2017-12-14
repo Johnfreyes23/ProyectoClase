@@ -33,8 +33,9 @@ public class Produccion extends Registro {
      * @param pedido El parámetro pedido define el pedido asociado a la orden de
      * produccion;
      */
-    public Produccion() {
+    public Produccion(Factura factura) {
         this.fechaInicial = fechaActual();
+        
     }
 
     /**

@@ -103,10 +103,10 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
 
     private void ProduccionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProduccionBtnActionPerformed
         // TODO add your handling code here:
-        VistaProduccion product = new VistaProduccion();
-        product.setVisible(true);
-        Interfaz.Escritorio.removeAll();
-        Interfaz.Escritorio.add(product);
+        //VistaProduccion product = new VistaProduccion();
+//        product.setVisible(true);
+//        Interfaz.Escritorio.removeAll();
+//        Interfaz.Escritorio.add(product);
     }//GEN-LAST:event_ProduccionBtnActionPerformed
 
     

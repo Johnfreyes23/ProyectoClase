@@ -53,7 +53,24 @@ public class Empleado extends Usuario {
 */
     public List<Empleado> obtenerListaEmpleados() {
         ConexionBD diamante = new ConexionBD();
-        String sentencia = "select IdUsr from Usuario where Categoria = 'Empleado'";
+        String sentencia = "select IdUsr from Usuario  where Categoria = 'Empleado'";
+        ResultSet rs = diamante.consultarBD(sentencia);
+        List<Empleado> empleados = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Empleado u = new Empleado();
+                u.obtenerUsuario(rs.getString("IdUsr"));
+                empleados.add(u);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return empleados;
+    }
+    
+    public List<Empleado> obtenerOperarios() {
+        ConexionBD diamante = new ConexionBD();
+        String sentencia = "select IdUsr from Usuario  where Cargo= 'Operario' and Categoria = 'Empleado'";
         ResultSet rs = diamante.consultarBD(sentencia);
         List<Empleado> empleados = new ArrayList<>();
         try {
