@@ -69,10 +69,8 @@ public class Cotizacion extends RegistroVentas {
       public Boolean GuardarRuta() {
         
         ConexionBD Proyecto = new ConexionBD();
-        String sentencia = "Insert into Proyecto.Cotizacion  where IdCotizacion ='" + getIdCotizacion() + "' (rutaArchivo) "
-                + " Values('" + getRutaArchivo()+ "');";
-        boolean exito = Proyecto.insertarBD(sentencia);
-        
+        String sentencia = "Update  Proyecto.Cotizacion set rutaArchivo='" + getRutaArchivo()+"'  where IdCotizacion ='" + getIdCotizacion() + "'";
+        boolean exito = Proyecto.insertarBD(sentencia);        
         Proyecto.cerrarConexion();
         return exito;
     }
