@@ -31,6 +31,12 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
      */
     public VistaEmpleado() {
         initComponents();
+        Validador validar = new Validador();
+        validar.ValidadorNumeros(NombreEm);
+        validar.ValidadorNumeros(ApellidosEm);
+        validar.ValidadorNumeros(CargoEm);
+        validar.ValidadorNumeros(IdentificacionEm);
+        validar.ValidadorLetras(TelefonoEm);
     }
 
     /**
@@ -189,7 +195,6 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         Empleado empleado = new Empleado( nombreEmpleado , apellidoEmpleado, Identificacion , formatted , generoEmpleado , direccionEmpleado, telefonoEmpleado, correoEmpleado, cargoEmpleado);
         empleado.crearUsuario();
 
-        System.out.println(formatted);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed

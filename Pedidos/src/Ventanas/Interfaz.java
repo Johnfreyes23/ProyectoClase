@@ -175,6 +175,7 @@ public Image getIconImage() {
 
     private void PedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PedidoActionPerformed
         // TODO add your handling code here:
+        
         Escritorio.removeAll();
         GestorPedidos obj = new GestorPedidos();
         obj.setVisible(true);

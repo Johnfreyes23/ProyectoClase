@@ -121,7 +121,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
         VistaCotizar cot = new VistaCotizar();
         Interfaz.Escritorio.removeAll();
         cot.setVisible(true);
-        cot.toString();
+        cot.toFront();
         Interfaz.Escritorio.add(cot);
         
     }//GEN-LAST:event_CotizarBActionPerformed

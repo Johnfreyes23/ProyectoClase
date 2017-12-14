@@ -41,13 +41,13 @@ public class Acrilico extends Producto{
         double area = getArea();
         double costo = 0;  
         double valor;
-        if(color.equals("cristal") ){
+        if(color.equals("Cristal") ){
             costo = (3.67*calibre + 0.3)*area ;
         }
-        if(color.equals("opal") ){
+        if(color.equals("Opal") ){
             costo = (4.032*calibre + 0.3)*area ;
         }
-        if(color.equals("otros") ){
+        if(color.equals("Otros") ){
             costo = (4.123*calibre + 0.3)*area ;
         }
         

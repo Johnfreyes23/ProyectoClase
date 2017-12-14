@@ -18,6 +18,7 @@ package Ventanas;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -32,22 +33,23 @@ public class Validador {
     public void ValidadorNumeros(JTextField a){
         a.addKeyListener(new KeyAdapter(){
         public void keyTyped(KeyEvent e){
-            char c= e.getKeyChar();
-            if(Character.isDigit(c)){
-            e.consume();
-            }
-                
+            char k = e.getKeyChar();
+        if(!(k >= 97 && k <= 122) && !(k >= 65 && k <= 90) && k!= 8) { 
+             e.setKeyChar((char) KeyEvent.VK_CLEAR);//Limpiar el caracter ingresado
+            JOptionPane.showMessageDialog(null, "Solo puede ingresar letras!!", "Validando Datos",
+                    JOptionPane.ERROR_MESSAGE);}
         }
         });
     };
     public void ValidadorLetras(JTextField a){
         a.addKeyListener(new KeyAdapter(){
+            
         public void keyTyped(KeyEvent e){
-            char c= e.getKeyChar();
-            if(Character.isLetter(c)){
-            e.consume();
-            }
-                
+            char c = e.getKeyChar();
+        if(( (c<'0' || c>'9') && c !=8 )){ 
+            e.setKeyChar((char) KeyEvent.VK_CLEAR);//Limpiar el caracter ingresado
+            JOptionPane.showMessageDialog(null, "Solo puede ingresar numeros!!", "Validando Datos",
+                    JOptionPane.ERROR_MESSAGE);}
         }
         });
     };
