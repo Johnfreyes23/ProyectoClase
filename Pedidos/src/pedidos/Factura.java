@@ -44,11 +44,12 @@ public class Factura extends RegistroVentas {
      * crea la factura.
      *
      */
-    public Factura(Cliente cliente, String descripcion, double valorTotal, String fechaFactura) {
-        super.setCliente(cliente);
-        this.descripcion = descripcion;
-        this.valorTotal = valorTotal;
-        this.fechaFactura = fechaFactura;
+    public Factura(Cotizacion cotizacion) {
+        setIdCliente(cotizacion.getIdCliente());
+        super.setCliente(cotizacion.getCliente());
+        this.descripcion = cotizacion.getDescripcion();
+        this.valorTotal = cotizacion.getValorTotal();
+        this.fechaFactura = super.fechaActual();
     }
 
     public Factura ObtenerFactura(String Id) {

@@ -115,8 +115,8 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         Subtotal = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JBImprimir = new javax.swing.JButton();
+        JBFacturar = new javax.swing.JButton();
         Cajon = new javax.swing.JPanel();
         OtrosLabel = new javax.swing.JLabel();
         CantoLabel = new javax.swing.JLabel();
@@ -387,19 +387,19 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel12.setText("Subtotal:");
 
-        jButton2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton2.setText("Imprimir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        JBImprimir.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JBImprimir.setText("Imprimir");
+        JBImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                JBImprimirActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jButton3.setText("Facturar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        JBFacturar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JBFacturar.setText("Facturar");
+        JBFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                JBFacturarActionPerformed(evt);
             }
         });
 
@@ -430,9 +430,9 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                             .addGap(25, 25, 25)))
                     .addGroup(PanelAgregarLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)
+                        .addComponent(JBImprimir)
                         .addGap(48, 48, 48)
-                        .addComponent(jButton3)))
+                        .addComponent(JBFacturar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelAgregarLayout.setVerticalGroup(
@@ -452,8 +452,8 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
                             .addComponent(Subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                         .addGroup(PanelAgregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(JBImprimir)
+                            .addComponent(JBFacturar)))
                     .addGroup(PanelAgregarLayout.createSequentialGroup()
                         .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -643,7 +643,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         borrar();
     }//GEN-LAST:event_AgregarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void JBImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBImprimirActionPerformed
         // TODO add your handling code here:
         
         GeneradorPDF pdf = new GeneradorPDF();
@@ -651,15 +651,15 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         pdf.PdfCotizacion(cotizacion);
         
         pdf.abrirPdf(cotizacion.getRutaArchivo());
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_JBImprimirActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void JBFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFacturarActionPerformed
         // TODO add your handling code here:
         Interfaz.Escritorio.removeAll();
-        VistaFactura factura = new VistaFactura();
+        VistaFactura factura = new VistaFactura(cotizacion);
         factura.setVisible(true);
         Interfaz.Escritorio.add(factura);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_JBFacturarActionPerformed
 
     public void borrar()
     {
@@ -697,6 +697,8 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane Escritorio;
     private javax.swing.JPanel Fondo;
     private javax.swing.JTextField IDCliente;
+    private javax.swing.JButton JBFacturar;
+    private javax.swing.JButton JBImprimir;
     private javax.swing.JTextPane Leds;
     private javax.swing.JLabel LedsLabel;
     private javax.swing.JTextPane Mano;
@@ -715,8 +717,6 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
     private javax.swing.JLabel TubosLabel;
     private javax.swing.JTextField Valor;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

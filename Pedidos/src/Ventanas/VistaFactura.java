@@ -16,6 +16,8 @@
  */
 package Ventanas;
 import javax.swing.DefaultListModel;
+import pedidos.Cotizacion;
+import pedidos.Factura;
 
 /**
  *
@@ -23,10 +25,12 @@ import javax.swing.DefaultListModel;
  */
 public class VistaFactura extends javax.swing.JInternalFrame {
 
+    Factura factura;
     /**
      * Creates new form VistaFactura
      */
-    public VistaFactura() {
+    public VistaFactura(Cotizacion cotizacion ) {
+        factura = new Factura(cotizacion);
         initComponents();
     }
 
