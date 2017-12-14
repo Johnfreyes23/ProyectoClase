@@ -108,10 +108,10 @@ public class Cliente extends Usuario{
                 this.setNombres(rs.getString("NomUsr"));
                 this.setApellidos(rs.getString("ApeUsr"));
                 this.setIdenficacion(rs.getString("Identif"));
-                this.setFecha_Nacimiento("FechaNacimiento");
-                this.setGenero("GeneroUsr");
-                this.setDireccion("Domicilio");
-                this.setTelefono("Telefono");
+                this.setFecha_Nacimiento(rs.getString("FechaNacimiento"));
+                this.setGenero(rs.getString("GeneroUsr"));
+                this.setDireccion(rs.getString("Domicilio"));
+                this.setTelefono(rs.getString("Telefono"));
                 this.setCorreo(rs.getString("CorreoUsr"));
                 return this;
             }

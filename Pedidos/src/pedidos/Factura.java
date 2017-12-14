@@ -50,6 +50,7 @@ public class Factura extends RegistroVentas {
         this.descripcion = cotizacion.getDescripcion();
         this.valorTotal = cotizacion.getValorTotal();
         this.fechaFactura = super.fechaActual();
+        this.setProductos(cotizacion.getProductos());
     }
 
     public Factura ObtenerFactura(String Id) {

@@ -16,8 +16,10 @@
  */
 package Ventanas;
 import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 import pedidos.Cotizacion;
 import pedidos.Factura;
+import pedidos.Producto;
 
 /**
  *
@@ -32,6 +34,30 @@ public class VistaFactura extends javax.swing.JInternalFrame {
     public VistaFactura(Cotizacion cotizacion ) {
         factura = new Factura(cotizacion);
         initComponents();
+        mostrar();
+    }
+    
+    public void mostrar()
+    {
+        Fecha.setText(factura.getFechaFactura());
+        Cliente.setText(factura.getCliente().getNombres() + " " + factura.getCliente().getApellidos());
+        Cedula.setText(factura.getCliente().getIdenficacion());
+        Telefono.setText(factura.getCliente().getTelefono());
+        Direccion.setText(factura.getCliente().getDireccion());
+        
+        DefaultTableModel table = new DefaultTableModel();
+        String [] titulo = new String []{"Item", "Descripción", "Valor"};
+        table.setColumnIdentifiers(titulo);
+        int i=0;
+        for(Producto product: factura.getProductos())
+        {
+            i++;
+            table.addRow(new String[]{
+                Integer.toString(i), product.detalles(), Double.toString(product.getValor())
+            });
+        }
+        table.addRow(titulo);
+        Tabla.setModel(table);
     }
 
     /**
@@ -47,23 +73,21 @@ public class VistaFactura extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
-        ClienteFact = new javax.swing.JLabel();
-        MostrarCliente = new javax.swing.JTextField();
-        FechaEntrega = new com.toedter.calendar.JDateChooser();
-        Terminacion = new javax.swing.JLabel();
-        ProductosL = new javax.swing.JLabel();
-        PreciosL = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Precios = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        Productos = new javax.swing.JList<>();
-        hola = new javax.swing.JTextField();
-        TotalLabel = new javax.swing.JLabel();
-        Total = new javax.swing.JTextField();
         Guardar = new javax.swing.JButton();
         Imprimir = new javax.swing.JButton();
         Producir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        Fecha = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        Cliente = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        Cedula = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        Telefono = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        Direccion = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(720, 580));
 
@@ -77,51 +101,6 @@ public class VistaFactura extends javax.swing.JInternalFrame {
         Titulo.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         Titulo.setText("Facturación");
         jPanel2.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
-
-        ClienteFact.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        ClienteFact.setText("Cliente:");
-        jPanel2.add(ClienteFact, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
-
-        MostrarCliente.setEditable(false);
-        MostrarCliente.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jPanel2.add(MostrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 59, 250, 40));
-        jPanel2.add(FechaEntrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 150, -1));
-
-        Terminacion.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        Terminacion.setText("Terminación del producto:");
-        jPanel2.add(Terminacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
-
-        ProductosL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        ProductosL.setText("Producto(s):");
-        jPanel2.add(ProductosL, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
-
-        PreciosL.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        PreciosL.setText("Valor:");
-        jPanel2.add(PreciosL, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
-
-        jScrollPane2.setViewportView(Precios);
-
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 150, 160));
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
-
-        jScrollPane3.setViewportView(Productos);
-
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 150, 160));
-        jPanel2.add(hola, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 170, -1));
-
-        TotalLabel.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        TotalLabel.setText("Total:");
-        jPanel2.add(TotalLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, -1, -1));
-
-        Total.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jPanel2.add(Total, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, 200, 40));
 
         Guardar.setBackground(new java.awt.Color(204, 51, 0));
         Guardar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
@@ -140,6 +119,60 @@ public class VistaFactura extends javax.swing.JInternalFrame {
         Producir.setForeground(new java.awt.Color(255, 255, 255));
         Producir.setText("Enviar a Producción");
         jPanel2.add(Producir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel1.setText("Fecha Factura");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, -1, -1));
+
+        Fecha.setEditable(false);
+        Fecha.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel2.add(Fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 110, -1));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel2.setText("Cliente:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+
+        Cliente.setEditable(false);
+        Cliente.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel2.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 530, -1));
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel3.setText("C.C.");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+
+        Cedula.setEditable(false);
+        Cedula.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel2.add(Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 230, -1));
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel4.setText("Dirección:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, 20));
+
+        Telefono.setEditable(false);
+        Telefono.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel2.add(Telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 200, -1));
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel5.setText("Telefono:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
+
+        Direccion.setEditable(false);
+        Direccion.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel2.add(Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 530, -1));
+
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(Tabla);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 500, 280));
 
         jScrollPane1.setViewportView(jPanel2);
 
@@ -160,37 +193,26 @@ public class VistaFactura extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 DefaultListModel lista = new DefaultListModel();
 int i =0;
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        i++;
-        lista.addElement(i + ") " + hola.getText());
-        Productos.setModel(lista);
-        Precios.setModel(lista);
-        hola.setText("");
-        hola.requestFocus();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel ClienteFact;
-    private com.toedter.calendar.JDateChooser FechaEntrega;
+    private javax.swing.JTextField Cedula;
+    private javax.swing.JTextField Cliente;
+    private javax.swing.JTextField Direccion;
+    private javax.swing.JTextField Fecha;
     private javax.swing.JButton Guardar;
     private javax.swing.JButton Imprimir;
-    private javax.swing.JTextField MostrarCliente;
-    private javax.swing.JList<String> Precios;
-    private javax.swing.JLabel PreciosL;
     private javax.swing.JButton Producir;
-    private javax.swing.JList<String> Productos;
-    private javax.swing.JLabel ProductosL;
-    private javax.swing.JLabel Terminacion;
+    private javax.swing.JTable Tabla;
+    private javax.swing.JTextField Telefono;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JTextField Total;
-    private javax.swing.JLabel TotalLabel;
-    private javax.swing.JTextField hola;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
