@@ -38,6 +38,7 @@ public class Cotizacion extends RegistroVentas {
     private String IdCotizacion;
     private String FechaCotizacion;
     
+    
 
     public Cotizacion() {
         super();
@@ -46,15 +47,16 @@ public class Cotizacion extends RegistroVentas {
     
      public Cotizacion ObtenerCotizacion(String Id) {
         ConexionBD Proyecto = new ConexionBD(); // se crea la conexion con base de datos.
-        String sentencia = "selec * from Proyecto.Cotizacion where IdCotizacion ='" + Id + "'"; //Consulta SQL 
+        String sentencia = "select * from Proyecto.Cotizacion where IdCotizacion ='" + Id + "'"; //Consulta SQL 
         ResultSet rs = Proyecto.consultarBD(sentencia); // Objeto ResulSet que contendra los datos devueltos de la consulta.
         try {
             if (rs.next()) {
-                this.setIdCotizacion(Id);
-                this.setDescripcion(rs.getString("descripcion"));
-                this.setIdCliente(rs.getString("IdCliente"));
-                this.setFechaCotizacion(rs.getString("FechaCotizacion"));
-                this.setValorTotal(rs.getDouble("valorTotal"));
+                setIdCotizacion(Id);
+                setDescripcion(rs.getString("descripcion"));
+                setIdCliente(rs.getString("IdCliente"));
+                setFechaCotizacion(rs.getString("FechaCotizacion"));
+                setValorTotal(rs.getDouble("valorTotal"));
+                setCliente(new Cliente().obtenerCliente(rs.getString("IdCliente")));
                 return this;
 
             }

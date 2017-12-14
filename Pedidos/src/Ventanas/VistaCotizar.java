@@ -555,7 +555,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String cedula = IDCliente.getText();
-        Cliente cliente = new Cliente().obtenerCliente(cedula);
+        Cliente cliente = new Cliente().obtenerClientePorCedula(cedula);
         if(cliente == null)
         {
             int option = JOptionPane.showOptionDialog(Escritorio, "Cliente no registrado. \n  ¿Agrear un nuevo cliente?",
