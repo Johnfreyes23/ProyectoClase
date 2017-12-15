@@ -101,6 +101,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         Tabla = new javax.swing.JTable();
         FechaFin = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
+        Terminar = new javax.swing.JButton();
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -168,7 +169,18 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, -1));
+
+        Terminar.setBackground(new java.awt.Color(204, 51, 0));
+        Terminar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        Terminar.setForeground(new java.awt.Color(255, 255, 255));
+        Terminar.setText("Terminar");
+        Terminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TerminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Terminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, -1, -1));
 
         jDesktopPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 560));
 
@@ -199,12 +211,16 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         GeneradorPDF pdf = new GeneradorPDF();
         pdf.PdfProduccion(produccion);
         produccion.crearProduccion();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TerminarActionPerformed
+        // TODO add your handling code here:
         GestorPedidos pedidos = new GestorPedidos();
         Interfaz.Escritorio.removeAll();
         pedidos.setVisible(true);
         Interfaz.Escritorio.add(pedidos);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_TerminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -214,6 +230,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField FechaIn;
     private javax.swing.JTextField MostrarClienteP;
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton Terminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;

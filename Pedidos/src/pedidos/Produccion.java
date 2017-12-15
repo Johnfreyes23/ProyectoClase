@@ -66,6 +66,28 @@ public class Produccion extends Registro {
                 this.setFechaInicial(rs.getString("fechaInicio"));
                 this.setFechaEntrega(rs.getString("fechaDespacho"));
                 setIdCliente(rs.getString("IdEmpleado"));
+                setRutaArchivo(rs.getString("rutaArchivo"));  
+                return this;
+
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(Produccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public Produccion ObtenerProduccionCliente(String Id) {
+        ConexionBD Proyecto = new ConexionBD(); // se crea la conexion con base de datos.
+        String sentencia = "selec * from Proyecto.Produccion where IdCliente ='" + Id + "'"; //Consulta SQL 
+        ResultSet rs = Proyecto.consultarBD(sentencia); // Objeto ResulSet que contendra los datos devueltos de la consulta.
+        try {
+            if (rs.next()) {
+                this.setIdProduccion(rs.getString("IdProduccion"));
+                this.setIdEmpleado(rs.getString("IdEmpleado"));
+                this.setFechaInicial(rs.getString("fechaInicio"));
+                this.setFechaEntrega(rs.getString("fechaDespacho"));
+                setIdCliente(rs.getString("IdEmpleado"));
                 setRutaArchivo(rs.getString("rutaArchivo"));
                 return this;
 
@@ -76,6 +98,7 @@ public class Produccion extends Registro {
         }
         return null;
     }
+    
     public Boolean crearProduccion() {
         
         ConexionBD Proyecto = new ConexionBD();
