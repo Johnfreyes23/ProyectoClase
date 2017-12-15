@@ -202,8 +202,8 @@ int i =0;
     private void ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirActionPerformed
         // TODO add your handling code here:
             GeneradorPDF generar = new GeneradorPDF();
-            generar.PdfFactura(factura);
             factura.crearfactura();
+            generar.PdfFactura(factura);            
             generar.abrirPdf(factura.getRutaArchivo());
             
             

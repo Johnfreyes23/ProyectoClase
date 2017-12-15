@@ -661,6 +661,8 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
 
     private void JBFacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFacturarActionPerformed
         // TODO add your handling code here:
+        Pedido pedido = new Pedido();
+        pedido.setEstado("Cotizado");
         Interfaz.Escritorio.removeAll();
         VistaFactura factura = new VistaFactura(cotizacion);
         factura.setVisible(true);

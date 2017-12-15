@@ -84,7 +84,7 @@ public class Produccion extends Registro {
                 + "'" + getFechaInicial()+ "',"
                 + "'" + getFechaEntrega()+ "',"
                 + "'" + getRutaArchivo()+ "',"
-                + "'" + getIdCliente()+ "');";
+                + "'" + getCliente().getIdentificacion()+ "');";
         boolean exito = Proyecto.insertarBD(sentencia);
         if (exito) {
             String sentencia2 = "select max(IdProduccion) as Id from Proyecto.Factura;";

@@ -196,14 +196,14 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         List<Empleado> lista = new Empleado().obtenerOperarios();
         produccion.setEmpleado(lista.get(EmpleadoCombo.getSelectedIndex()-1));
         produccion.setIdEmpleado(produccion.getEmpleado().getID());
+        GeneradorPDF pdf = new GeneradorPDF();
+        pdf.PdfProduccion(produccion);
+        produccion.crearProduccion();
         GestorPedidos pedidos = new GestorPedidos();
         Interfaz.Escritorio.removeAll();
         pedidos.setVisible(true);
         Interfaz.Escritorio.add(pedidos);
-        GeneradorPDF pdf = new GeneradorPDF();
-        pdf.PdfProduccion(produccion);
-        produccion.crearProduccion();
-        pdf.abrirPdf(produccion.getRutaArchivo());
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
