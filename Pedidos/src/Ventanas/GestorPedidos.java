@@ -50,10 +50,10 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
 
         CotizarIma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/paper-pencil-and-calculator (1).png"))); // NOI18N
-        jPanel1.add(CotizarIma, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
+        jPanel1.add(CotizarIma, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, -1));
 
         Produccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/assembly-line.png"))); // NOI18N
-        jPanel1.add(Produccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
+        jPanel1.add(Produccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, -1, -1));
 
         CotizarB.setBackground(new java.awt.Color(204, 51, 0));
         CotizarB.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
@@ -64,7 +64,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
                 CotizarBActionPerformed(evt);
             }
         });
-        jPanel1.add(CotizarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 160, -1));
+        jPanel1.add(CotizarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 160, -1));
 
         ProduccionBtn.setBackground(new java.awt.Color(204, 51, 0));
         ProduccionBtn.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
@@ -75,7 +75,7 @@ public class GestorPedidos extends javax.swing.JInternalFrame{
                 ProduccionBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(ProduccionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, -1, -1));
+        jPanel1.add(ProduccionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

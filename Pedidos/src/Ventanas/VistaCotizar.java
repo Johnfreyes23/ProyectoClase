@@ -134,6 +134,7 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         Otros = new javax.swing.JTextPane();
 
+        setBackground(new java.awt.Color(204, 51, 0));
         setPreferredSize(new java.awt.Dimension(720, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -309,7 +310,9 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         Valor.setEditable(false);
         Valor.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
+        Calcular.setBackground(new java.awt.Color(204, 51, 0));
         Calcular.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        Calcular.setForeground(new java.awt.Color(255, 255, 255));
         Calcular.setText("Calcular Precio");
         Calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +320,9 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
             }
         });
 
+        Agregar.setBackground(new java.awt.Color(204, 51, 0));
         Agregar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        Agregar.setForeground(new java.awt.Color(255, 255, 255));
         Agregar.setText("Agregar");
         Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,7 +389,9 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         jLabel12.setText("Subtotal:");
 
+        JBImprimir.setBackground(new java.awt.Color(204, 51, 0));
         JBImprimir.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JBImprimir.setForeground(new java.awt.Color(255, 255, 255));
         JBImprimir.setText("Imprimir");
         JBImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,7 +399,9 @@ public class VistaCotizar extends javax.swing.JInternalFrame {
             }
         });
 
+        JBFacturar.setBackground(new java.awt.Color(204, 51, 0));
         JBFacturar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        JBFacturar.setForeground(new java.awt.Color(255, 255, 255));
         JBFacturar.setText("Facturar");
         JBFacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

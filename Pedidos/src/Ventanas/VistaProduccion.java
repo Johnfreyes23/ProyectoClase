@@ -16,6 +16,7 @@
  */
 package Ventanas;
 
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import pedidos.Empleado;
@@ -67,6 +68,11 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         Tabla.getColumn("Item").setPreferredWidth(60);
         Tabla.getColumn("Descripción").setPreferredWidth(402);
     }
+    
+//    public Empleado setOperario(String nombre)
+//    {
+//        
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,6 +97,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         FechaFin = new com.toedter.calendar.JDateChooser();
+        jButton1 = new javax.swing.JButton();
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -149,6 +156,17 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 470, 230));
         jPanel1.add(FechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 150, 30));
 
+        jButton1.setBackground(new java.awt.Color(204, 51, 0));
+        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Imprimir Orden");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, -1, -1));
+
         jDesktopPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,6 +183,19 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        produccion.setFechaInicial(FechaIn.getText());
+        produccion.setFechaEntrega(FechaFin.getDateFormatString());
+        List<Empleado> lista = new Empleado().obtenerOperarios();
+        produccion.setEmpleado(lista.get(EmpleadoCombo.getSelectedIndex()-1));
+        produccion.setIdEmpleado(produccion.getEmpleado().getID());
+        GestorPedidos pedidos = new GestorPedidos();
+        Interfaz.Escritorio.removeAll();
+        pedidos.setVisible(true);
+        Interfaz.Escritorio.add(pedidos);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClienteProduc;
@@ -173,6 +204,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField FechaIn;
     private javax.swing.JTextField MostrarClienteP;
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
