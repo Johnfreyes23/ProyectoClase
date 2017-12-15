@@ -24,7 +24,6 @@ public class Factura extends RegistroVentas {
     private String descripcion;
     private double valorTotal;
     private String fechaFactura;
-
     /**
      * Constructor para la clase Factura.
      */
@@ -34,6 +33,7 @@ public class Factura extends RegistroVentas {
     /**
      * Constructor para la clase Factura.
      *
+     * @param cotizacion
      * @param cliente El parámetro cliente define el cliente asociado a la
      * factura.
      * @param descripcion El parámetro descripcion define la descripcion de la
@@ -64,6 +64,7 @@ public class Factura extends RegistroVentas {
                 this.setIdCliente(rs.getString("IdCliente"));
                 this.setFechaFactura(rs.getString("FechaFactura"));
                 this.setValorTotal(rs.getDouble("valorTotal"));
+                setRutaArchivo(rs.getString("rutaArchivo"));
                 return this;
 
             }
@@ -73,6 +74,14 @@ public class Factura extends RegistroVentas {
         }
         return null;
 
+    }
+    public Boolean GuardarRuta() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Update  Proyecto.Cotizacion set rutaArchivo='" + getRutaArchivo()+"'  where IdCotizacion ='" + getIdFactura()+ "'";
+        boolean exito = Proyecto.insertarBD(sentencia);        
+        Proyecto.cerrarConexion();
+        return exito;
     }
 
     /**
@@ -102,6 +111,7 @@ public class Factura extends RegistroVentas {
     public void setFechaFactura(String fechaFactura) {
         this.fechaFactura = fechaFactura;
     }
+
 
     /**
      * Metodo crea un pedido, debe ser llamado luego de crear la factura.

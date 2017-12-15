@@ -58,7 +58,7 @@ public class RegistroVentas extends Registro{
     {
         String Descripcion = "\n";
         for (Producto product : getProductos()) {
-            Descripcion = Descripcion + product.detalles();
+            Descripcion = Descripcion + product.detalles()+ "Valor: $" + product.CalcularPrecio();;
         }
         this.setDescripcion(Descripcion);
        

@@ -98,10 +98,13 @@ public class GeneradorPDF {
     
     public void PdfFactura(Factura f1){
         Document document = new Document();
+        String ruta = "src/Archivos/cotizacion" + f1.getCliente().getNombres()+" "+f1.getFechaFactura() + ".pdf";
+        f1.setRutaArchivo(ruta);
+        f1.GuardarRuta();
     try {
              
             
-            PdfWriter.getInstance(document, new FileOutputStream("prueba2.pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream(ruta ));
             document.open();
             Image image1 = Image.getInstance("encabezado.png");
             image1.scaleAbsolute(550f, 100f);
