@@ -17,8 +17,11 @@
 package Ventanas;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import pedidos.Empleado;
 import pedidos.Factura;
+import pedidos.Produccion;
+import pedidos.Producto;
 
 /**
  *
@@ -26,23 +29,43 @@ import pedidos.Factura;
  */
 public class VistaProduccion extends javax.swing.JInternalFrame {
 
+    Produccion produccion;
     /**
      * Creates new form VistaProduccion
      */
     public VistaProduccion(Factura factura) {
+        produccion = new Produccion(factura);
         initComponents();
+        mostrar();
     }
     
     public void mostrar()
     {
-        
+        String prueba = produccion.getCliente().getNombres() + " " + produccion.getCliente().getApellidos();
+        MostrarClienteP.setText(prueba);
+        FechaIn.setText(produccion.getFechaInicial());
         DefaultComboBoxModel combo = new DefaultComboBoxModel();
         combo.addElement("Seleccione un Empleado");
-        for(Empleado empl : new Empleado().obtenerListaEmpleados())
+        for(Empleado empl : new Empleado().obtenerOperarios())
         {
             combo.addElement(empl.getNombres() + " " + empl.getApellidos());
         }
         EmpleadoCombo.setModel(combo);
+        
+        DefaultTableModel table = new DefaultTableModel();
+        String [] titulo = new String []{"Item", "Descripción"};
+        table.setColumnIdentifiers(titulo);
+        int i=0;
+        for(Producto product: produccion.getProductos())
+        {
+            i++;
+            table.addRow(new String[]{
+                Integer.toString(i), product.detalles()
+            });
+        }
+        Tabla.setModel(table);
+        Tabla.getColumn("Item").setPreferredWidth(60);
+        Tabla.getColumn("Descripción").setPreferredWidth(402);
     }
 
     /**
@@ -62,12 +85,12 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         EmpleadoCombo = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        FechaIn = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        FechaFin = new com.toedter.calendar.JDateChooser();
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -84,7 +107,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
 
         MostrarClienteP.setEditable(false);
         MostrarClienteP.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jPanel1.add(MostrarClienteP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 260, 20));
+        jPanel1.add(MostrarClienteP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 260, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Asignar Operario:");
@@ -98,17 +121,13 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         jLabel3.setText("Fecha Terminado:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
-        jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 150, -1));
-
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel4.setText("Fecha Inicio:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
-        jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, -1));
+        FechaIn.setEditable(false);
+        FechaIn.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jPanel1.add(FechaIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel5.setText("Productos");
@@ -128,6 +147,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(Tabla);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 470, 230));
+        jPanel1.add(FechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 150, 30));
 
         jDesktopPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 560));
 
@@ -149,6 +169,8 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ClienteProduc;
     private javax.swing.JComboBox<String> EmpleadoCombo;
+    private com.toedter.calendar.JDateChooser FechaFin;
+    private javax.swing.JTextField FechaIn;
     private javax.swing.JTextField MostrarClienteP;
     private javax.swing.JTable Tabla;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -159,7 +181,5 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

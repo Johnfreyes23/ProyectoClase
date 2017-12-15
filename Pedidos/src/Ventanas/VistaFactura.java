@@ -58,7 +58,6 @@ int i =0;
                 Integer.toString(i), product.detalles(), Double.toString(product.getValor())
             });
         }
-        table.addRow(titulo);
         Tabla.setModel(table);
     }
 
@@ -75,7 +74,6 @@ int i =0;
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
-        Guardar = new javax.swing.JButton();
         Imprimir = new javax.swing.JButton();
         Producir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -104,17 +102,6 @@ int i =0;
         Titulo.setText("Facturación");
         jPanel2.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
-        Guardar.setBackground(new java.awt.Color(204, 51, 0));
-        Guardar.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        Guardar.setText("Guardar");
-        Guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
-
         Imprimir.setBackground(new java.awt.Color(204, 51, 0));
         Imprimir.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         Imprimir.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,13 +111,18 @@ int i =0;
                 ImprimirActionPerformed(evt);
             }
         });
-        jPanel2.add(Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
+        jPanel2.add(Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, -1, -1));
 
         Producir.setBackground(new java.awt.Color(204, 51, 0));
         Producir.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         Producir.setForeground(new java.awt.Color(255, 255, 255));
         Producir.setText("Enviar a Producción");
-        jPanel2.add(Producir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 510, -1, -1));
+        Producir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProducirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(Producir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 510, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel1.setText("Fecha Factura");
@@ -204,10 +196,6 @@ int i =0;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GuardarActionPerformed
-
     private void ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirActionPerformed
         // TODO add your handling code here:
             GeneradorPDF generar = new GeneradorPDF();
@@ -218,13 +206,20 @@ int i =0;
         
     }//GEN-LAST:event_ImprimirActionPerformed
 
+    private void ProducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProducirActionPerformed
+        // TODO add your handling code here:
+        VistaProduccion produccion = new VistaProduccion(factura);
+        produccion.setVisible(true);
+        Interfaz.Escritorio.removeAll();
+        Interfaz.Escritorio.add(produccion);
+    }//GEN-LAST:event_ProducirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Cedula;
     private javax.swing.JTextField Cliente;
     private javax.swing.JTextField Direccion;
     private javax.swing.JTextField Fecha;
-    private javax.swing.JButton Guardar;
     private javax.swing.JButton Imprimir;
     private javax.swing.JButton Producir;
     private javax.swing.JTable Tabla;
