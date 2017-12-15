@@ -21,8 +21,6 @@ public class Factura extends RegistroVentas {
 
     //Campos de la Clase;
     private String IdFactura;
-    private String descripcion;
-    private double valorTotal;
     private String fechaFactura;
     /**
      * Constructor para la clase Factura.
@@ -47,8 +45,8 @@ public class Factura extends RegistroVentas {
     public Factura(Cotizacion cotizacion) {
         setIdCliente(cotizacion.getIdCliente());
         super.setCliente(cotizacion.getCliente());
-        this.descripcion = cotizacion.getDescripcion();
-        this.valorTotal = cotizacion.getValorTotal();
+        setDescripcion(cotizacion.getDescripcion());
+        setValorTotal(cotizacion.getValorTotal());
         this.fechaFactura = super.fechaActual();
         this.setProductos(cotizacion.getProductos());
     }
@@ -74,6 +72,32 @@ public class Factura extends RegistroVentas {
         }
         return null;
 
+    }
+    public Boolean crearfactura() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Insert into Proyecto.Factura (IdCliente,descripcion,fechaFactura,valorTotal,rutaArchivo) "
+                + " Values('" + getIdCliente()+ "',"
+                + "'" + getDescripcion()+ "',"
+                + "'" + getFechaFactura()+ "',"
+                + "'" + getValorTotal()+ "',"
+                + "'" + getRutaArchivo()+ "');";
+        boolean exito = Proyecto.insertarBD(sentencia);
+        if (exito) {
+            String sentencia2 = "select max(IdFactura) as Id from Proyecto.Factura;";
+            ResultSet rs = Proyecto.consultarBD(sentencia2);
+            try {
+                if (rs.next()) {
+                    this.setIdFactura(rs.getString("Id"));
+                    Proyecto.cerrarConexion();
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Proyecto.cerrarConexion();
+        return false;
     }
     public Boolean GuardarRuta() {
         
