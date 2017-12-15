@@ -20,6 +20,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.io.File;
@@ -89,6 +91,73 @@ public class GeneradorPDF {
             document.close();
             cotizacion.setRutaArchivo(cotizacion.getRutaArchivo());
            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void PdfFactura(Factura f1){
+        Document document = new Document();
+    try {
+             
+            
+            PdfWriter.getInstance(document, new FileOutputStream("prueba2.pdf"));
+            document.open();
+            Image image1 = Image.getInstance("encabezado.png");
+            image1.scaleAbsolute(550f, 100f);
+            document.add(image1);
+            Paragraph titulo = new Paragraph("FACTURA DE VENTA - N°"+f1.getIdFactura()); 
+            titulo.setAlignment(Element.ALIGN_CENTER);
+             document.add(new Paragraph(" "));
+            document.add(titulo);
+             document.add(new Paragraph(" "));
+           
+            PdfPTable tabla = new PdfPTable(1);
+            PdfPCell celda1 = new PdfPCell(new Paragraph("Cliente : "+ f1.getCliente().getNombres() +" "+ f1.getCliente().getApellidos()));
+            PdfPCell celda2 = new PdfPCell(new Paragraph("Direccion : "+ f1.getCliente().getDireccion() ));
+            PdfPCell celda3 = new PdfPCell(new Paragraph("Telefono : " + f1.getCliente().getTelefono()));
+            tabla.addCell(celda1);
+            tabla.addCell(celda2);
+            tabla.addCell(celda3);
+            
+            document.add(tabla);
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            PdfPTable tabla2 = new PdfPTable(6);
+            PdfPCell celda4 = new PdfPCell(new Paragraph("Item"));
+            PdfPCell celda5 = new PdfPCell(new Paragraph("Descripcion"));
+            PdfPCell celda6 = new PdfPCell(new Paragraph("Valor"));
+            celda4.setColspan(1);
+            celda5.setColspan(4);
+            celda6.setColspan(2);
+            tabla2.addCell(celda4);
+            tabla2.addCell(celda5);
+            tabla2.addCell(celda6);
+            int i = 0;
+            for (Producto p : f1.getProductos()) {
+                i++;
+            PdfPCell item = new PdfPCell(new Paragraph(""+i));
+            PdfPCell descrip = new PdfPCell(new Paragraph(p.detalles()));
+            PdfPCell valor = new PdfPCell(new Paragraph("$"+p.getValor()));
+            item.setColspan(1);
+            descrip.setColspan(4);
+            valor.setColspan(2);
+            tabla2.addCell(item);
+            tabla2.addCell(descrip);
+            tabla2.addCell(valor);
+            }
+            document.add(tabla2);
+            
+            document.add(new Paragraph(" "));
+
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            Image image2 = Image.getInstance("pie.png");
+            image2.scaleAbsolute(550f, 100f);
+            document.add(image2);
+            document.close();
+//            cotizacion.setRutaArchivo(cotizacion.getRutaArchivo());
+//           
         } catch (Exception e) {
             e.printStackTrace();
         }
