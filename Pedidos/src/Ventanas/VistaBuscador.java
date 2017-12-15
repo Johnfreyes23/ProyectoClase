@@ -219,7 +219,7 @@ public class VistaBuscador extends javax.swing.JInternalFrame {
                 .addComponent(TerminarP)
                 .addGap(61, 61, 61)
                 .addComponent(Salir)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         FondoLayout.setVerticalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +245,9 @@ public class VistaBuscador extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String cedula = CedulaCliente.getText();
         cliente = new Cliente().obtenerClientePorCedula(cedula);
-        if(cliente == null)
+         Validador validar = new Validador();
+        validar.ValidarVacio(cedula, this);
+        if(cliente == null )
         {
             int option = JOptionPane.showOptionDialog(Escritorio, "Cliente no registrado. \n  ¿Agrear un nuevo cliente?",
                 "Cliente no encontrado", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -276,6 +278,7 @@ public class VistaBuscador extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         mostrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import pedidos.Empleado;
 import pedidos.Factura;
@@ -203,11 +204,17 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
 
     private void ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirActionPerformed
         // TODO add your handling code here:
+        Validador validar = new Validador();
+        
         Date fechaNacimientoCliente = FechaFin.getDate();
+        if(fechaNacimientoCliente == null){
+            JOptionPane.showMessageDialog(this, "Existe Algun Campo Vacío", "Error!", JOptionPane.ERROR_MESSAGE);    
+        }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = format1.format(fechaNacimientoCliente);
         produccion.setFechaInicial(FechaIn.getText());
         produccion.setFechaEntrega(formatted);
+        validar.ValidarVacio(EmpleadoCombo.getSelectedItem().toString(), this);
         List<Empleado> lista = new Empleado().obtenerOperarios();
         produccion.setEmpleado(lista.get(EmpleadoCombo.getSelectedIndex()-1));
         produccion.setIdEmpleado(produccion.getEmpleado().getID());

@@ -190,12 +190,29 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         String generoCliente = txtGenero.getSelectedItem().toString();
         String direccionCliente = txtDireccion.getText();
         String telefonoCliente = txtTelefono.getText();
+        Validador validar = new Validador();
+        validar.ValidarVacio(nombreCliente, this);
+        validar.ValidarVacio(apellidoCliente, this);
+        validar.ValidarVacio(Identificacion, this);     
+        validar.ValidarVacio(correoCliente, this); 
+        validar.ValidarVacio(telefonoCliente, this); 
+        
+        
         Date fechaNacimientoCliente = JDFechaNacimiento.getDate();
+        if(fechaNacimientoCliente == null){
+            JOptionPane.showMessageDialog(this, "Existe Algun Campo Vacío", "Error!", JOptionPane.ERROR_MESSAGE);    
+        }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = format1.format(fechaNacimientoCliente);
-        Cliente cliente = new Cliente( nombreCliente , apellidoCliente, Identificacion , formatted , generoCliente , direccionCliente, telefonoCliente, correoCliente);
-        cliente.crearUsuario();
-        JOptionPane.showMessageDialog(this, "El cliente " + nombreCliente + " " + apellidoCliente + " se creó satisfactoriamemente");
+                Cliente cliente = new Cliente( nombreCliente , apellidoCliente, Identificacion , formatted , generoCliente , direccionCliente, telefonoCliente, correoCliente);
+
+        if(cliente.crearUsuario()){
+            JOptionPane.showMessageDialog(this, "El cliente " + nombreCliente + " " + apellidoCliente + " se creó satisfactoriamemente");
+        }
+        else{
+                    JOptionPane.showMessageDialog(this, "El cliente " + nombreCliente + " " + apellidoCliente + " no pudo ser creado");
+
+        }
         borrar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 

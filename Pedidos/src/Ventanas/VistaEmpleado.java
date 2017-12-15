@@ -36,7 +36,7 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         validar.ValidadorNumeros(NombreEm);
         validar.ValidadorNumeros(ApellidosEm);
         validar.ValidadorNumeros(CargoEm);
-        validar.ValidadorNumeros(IdentificacionEm);
+        validar.ValidadorLetras(IdentificacionEm);
         validar.ValidadorLetras(TelefonoEm);
     }
 
@@ -203,7 +203,18 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         String direccionEmpleado = DireccionEm.getText();
         String telefonoEmpleado = TelefonoEm.getText();
         String cargoEmpleado = CargoEm.getText();
+        Validador validar = new Validador();
+        validar.ValidarVacio(nombreEmpleado, this);
+        validar.ValidarVacio(apellidoEmpleado, this);
+        validar.ValidarVacio(Identificacion, this);     
+        validar.ValidarVacio(correoEmpleado, this);
+                validar.ValidarVacio(generoEmpleado, this);
+
+        
         Date fechaNacimientoEmpleado = FechaNacEm.getDate();
+        if(fechaNacimientoEmpleado == null){
+            JOptionPane.showMessageDialog(this, "Existe Algun Campo Vacío", "Error!", JOptionPane.ERROR_MESSAGE);    
+        }
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
         String formatted = format1.format(fechaNacimientoEmpleado);
         Empleado empleado = new Empleado( nombreEmpleado , apellidoEmpleado, Identificacion , formatted , generoEmpleado , direccionEmpleado, telefonoEmpleado, correoEmpleado, cargoEmpleado);
