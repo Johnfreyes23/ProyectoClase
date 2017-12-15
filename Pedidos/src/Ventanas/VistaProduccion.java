@@ -16,11 +16,14 @@
  */
 package Ventanas;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import pedidos.Empleado;
 import pedidos.Factura;
+import pedidos.GeneradorPDF;
 import pedidos.Produccion;
 import pedidos.Producto;
 
@@ -185,8 +188,11 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Date fechaNacimientoCliente = FechaFin.getDate();
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String formatted = format1.format(fechaNacimientoCliente);
         produccion.setFechaInicial(FechaIn.getText());
-        produccion.setFechaEntrega(FechaFin.getDateFormatString());
+        produccion.setFechaEntrega(formatted);
         List<Empleado> lista = new Empleado().obtenerOperarios();
         produccion.setEmpleado(lista.get(EmpleadoCombo.getSelectedIndex()-1));
         produccion.setIdEmpleado(produccion.getEmpleado().getID());
@@ -194,6 +200,10 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         Interfaz.Escritorio.removeAll();
         pedidos.setVisible(true);
         Interfaz.Escritorio.add(pedidos);
+        GeneradorPDF pdf = new GeneradorPDF();
+        pdf.PdfProduccion(produccion);
+        produccion.crearProduccion();
+        pdf.abrirPdf(produccion.getRutaArchivo());
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

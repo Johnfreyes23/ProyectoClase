@@ -52,8 +52,7 @@ public class Polietileno extends Producto {
     
     public String detalles(){
         String detalles = "\n " + this.getTipo() + "  Alto: " + this.getAlto() + 
-                                " Ancho: " + this.getAncho() + " Calibre: " + this.getCalibre() + "\t Valor: $" + 
-                                this.CalcularPrecio();
+                                " Ancho: " + this.getAncho() + " Calibre: " + this.getCalibre();
         return detalles ;
     }
 }

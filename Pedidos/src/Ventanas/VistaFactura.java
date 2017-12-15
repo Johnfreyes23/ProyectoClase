@@ -209,9 +209,9 @@ int i =0;
 
     private void ProducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProducirActionPerformed
         // TODO add your handling code here:
-        if(!(factura.ObtenerFactura(factura.getIdFactura()) != null)) {
+       
             factura.crearfactura();
-        }
+       
         VistaProduccion produccion = new VistaProduccion(factura);
         produccion.setVisible(true);
         Interfaz.Escritorio.removeAll();

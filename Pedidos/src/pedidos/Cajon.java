@@ -67,7 +67,7 @@ public class Cajon extends Producto {
     }
      public String detalles(){
         String detalles = " \n" + this.getTipo() + " Alto: " + this.getAlto() + 
-                " Ancho: " + getAncho() +" Canto: " + getCanto() +"\t Valor: $" + this.CalcularPrecio();
+                " Ancho: " + getAncho() +" Canto: " + getCanto();
         return detalles ;
     }
 

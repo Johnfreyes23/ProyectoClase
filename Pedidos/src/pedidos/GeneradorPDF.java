@@ -155,7 +155,7 @@ public class GeneradorPDF {
             document.add(new Paragraph(" "));
 
             document.add(new Paragraph(" "));
-            Paragraph derecha = new Paragraph("Valor Total : "+ f1.getValorTotal());
+            Paragraph derecha = new Paragraph("Valor Total : "+ f1.getValorTotal()+"                    ");
                     derecha.setAlignment(Element.ALIGN_RIGHT);
             document.add(derecha);
             Image image2 = Image.getInstance("pie.png");
@@ -197,12 +197,21 @@ public class GeneradorPDF {
             tabla.addCell(celda3);
             
             document.add(tabla);
+              document.add(new Paragraph(" "));
             document.add(new Paragraph(" "));
+            document.add(new Paragraph("Estimado " + p.getEmpleado().getNombres() + " " + p.getEmpleado().getApellidos()));
+            document.add(new Paragraph("Se deben ejecutar tareas para entregar los siguientes productos el dia " + p.getFechaEntrega()));
             document.add(new Paragraph(" "));
             document.add(new Paragraph("\nProductos: \n"));
             for (Producto prod : p.getProductos()) {
                 document.add(new Paragraph(prod.detalles()));
             }
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
             Image image2 = Image.getInstance("pie.png");
             image2.scaleAbsolute(550f, 100f);
             document.add(image2);

@@ -38,6 +38,7 @@ public class Produccion extends Registro {
     public Produccion(Factura factura) {
         this.fechaInicial = fechaActual();
         super.setCliente(factura.getCliente());
+        super.setIdCliente(factura.getIdCliente());
         productos = factura.getProductos();
     }
 
@@ -78,7 +79,7 @@ public class Produccion extends Registro {
     public Boolean crearProduccion() {
         
         ConexionBD Proyecto = new ConexionBD();
-        String sentencia = "Insert into Proyecto.Produccion (IdEmpleado,descripcion,fechaInicio,fechaDespacho,rutaArchivo,IdCliente) "
+        String sentencia = "Insert into Proyecto.Produccion (IdEmpleado,fechaInicio,fechaDespacho,rutaArchivo,IdCliente) "
                 + " Values('" + getIdEmpleado()+ "',"
                 + "'" + getFechaInicial()+ "',"
                 + "'" + getFechaEntrega()+ "',"

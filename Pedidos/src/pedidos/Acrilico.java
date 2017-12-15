@@ -58,8 +58,7 @@ public class Acrilico extends Producto{
     }
      public String detalles(){
         String detalles =  " \n" + this.getTipo() + " " + this.getAlto() 
-                +"x" + this.getAncho() + "cm "+" Calibre: " + this.getCalibre()+" Color: " + this.getColor()
-                + "\t Valor: $" + this.CalcularPrecio();
+                +"x" + this.getAncho() + "cm "+" Calibre: " + this.getCalibre()+" Color: " + this.getColor();
         return detalles ;
     }
     public double getCalibre() {
