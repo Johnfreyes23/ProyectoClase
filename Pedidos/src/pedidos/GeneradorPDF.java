@@ -216,6 +216,7 @@ public class GeneradorPDF {
             image2.scaleAbsolute(550f, 100f);
             document.add(image2);
             document.close();
+            abrirPdf(ruta);
 //            cotizacion.setRutaArchivo(cotizacion.getRutaArchivo());
 //           
         } catch (Exception e) {
