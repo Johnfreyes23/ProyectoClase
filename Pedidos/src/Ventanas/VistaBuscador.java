@@ -16,17 +16,53 @@
  */
 package Ventanas;
 
+import static Ventanas.Interfaz.Escritorio;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import pedidos.Cliente;
+import pedidos.Empleado;
+import pedidos.Factura;
+import pedidos.Produccion;
+import pedidos.Producto;
+
 /**
  *
  * @author Nicolas
  */
 public class VistaBuscador extends javax.swing.JInternalFrame {
 
+    Cliente cliente;
+    Factura fact;
+    Produccion prodc;
     /**
      * Creates new form VistaBuscador
      */
     public VistaBuscador() {
         initComponents();
+        MostrarCliente.setVisible(false);
+        TablaPanel.setVisible(false);
+        
+    }
+    
+    public void mostrar()
+    {
+        TablaPanel.setVisible(true);
+        DefaultTableModel table = new DefaultTableModel();
+        String [] titulo = new String []{"ID Produccion", "Fecha Inicio", "Fecha Fin", "Descripción"};
+        table.setColumnIdentifiers(titulo);
+        List<Factura> lista = new Factura().obtenerListaFacturas(cliente.getID());
+        fact = lista.get(Pedidos.getSelectedIndex()-1);
+        prodc = new Produccion().ObtenerProduccion(fact.getIdFactura());
+        table.addRow(new String[]{
+                prodc.getIdProduccion(), prodc.getFechaInicial(), prodc.getFechaEntrega(), fact.getDescripcion()
+            });
+        Tabla.setModel(table);
+        Tabla.getColumn("ID Produccion").setPreferredWidth(88);
+        Tabla.getColumn("Fecha Inicio").setPreferredWidth(78);
+        Tabla.getColumn("Fecha Fin").setPreferredWidth(75);
+        Tabla.getColumn("Descripción").setPreferredWidth(422);
     }
 
     /**
@@ -41,21 +77,31 @@ public class VistaBuscador extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         CedulaCliente = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         Buscar = new javax.swing.JButton();
+        MostrarCliente = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        ClienteNombre = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        Pedidos = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        TablaPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Tabla = new javax.swing.JTable();
+        Fondo = new javax.swing.JPanel();
+        TerminarP = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(720, 580));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setText("Buscar Pedido");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Buscar Pedidos de Clientes:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         CedulaCliente.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         CedulaCliente.setText("Cedula del Cliente");
@@ -64,23 +110,7 @@ public class VistaBuscador extends javax.swing.JInternalFrame {
                 CedulaClienteMouseClicked(evt);
             }
         });
-        getContentPane().add(CedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 53, 190, 30));
-
-        jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 210, -1));
-
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel3.setText("Cliente:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jLabel4.setText("Pedidos:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, -1, -1));
-
-        jComboBox1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 190, -1));
+        getContentPane().add(CedulaCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 190, 30));
 
         Buscar.setBackground(new java.awt.Color(204, 204, 255));
         Buscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,7 +120,118 @@ public class VistaBuscador extends javax.swing.JInternalFrame {
                 BuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 30, 30));
+        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 30, 30));
+
+        MostrarCliente.setBackground(new java.awt.Color(255, 255, 255));
+        MostrarCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel3.setText("Cliente:");
+        MostrarCliente.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        ClienteNombre.setEditable(false);
+        ClienteNombre.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        MostrarCliente.add(ClienteNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 210, -1));
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel4.setText("Pedidos:");
+        MostrarCliente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
+
+        Pedidos.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        Pedidos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        MostrarCliente.add(Pedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 190, -1));
+
+        jButton1.setBackground(new java.awt.Color(204, 51, 0));
+        jButton1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Ver Pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        MostrarCliente.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
+
+        getContentPane().add(MostrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 560, 120));
+
+        TablaPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        Tabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jScrollPane2.setViewportView(Tabla);
+
+        javax.swing.GroupLayout TablaPanelLayout = new javax.swing.GroupLayout(TablaPanel);
+        TablaPanel.setLayout(TablaPanelLayout);
+        TablaPanelLayout.setHorizontalGroup(
+            TablaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TablaPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        TablaPanelLayout.setVerticalGroup(
+            TablaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TablaPanelLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(TablaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 690, 130));
+
+        Fondo.setBackground(new java.awt.Color(255, 255, 255));
+
+        TerminarP.setBackground(new java.awt.Color(204, 51, 0));
+        TerminarP.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        TerminarP.setForeground(new java.awt.Color(255, 255, 255));
+        TerminarP.setText("Terminar Producto");
+        TerminarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TerminarPActionPerformed(evt);
+            }
+        });
+
+        Salir.setBackground(new java.awt.Color(204, 51, 0));
+        Salir.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        Salir.setForeground(new java.awt.Color(255, 255, 255));
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
+        Fondo.setLayout(FondoLayout);
+        FondoLayout.setHorizontalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(TerminarP)
+                .addGap(61, 61, 61)
+                .addComponent(Salir)
+                .addContainerGap(235, Short.MAX_VALUE))
+        );
+        FondoLayout.setVerticalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
+                .addContainerGap(428, Short.MAX_VALUE)
+                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TerminarP)
+                    .addComponent(Salir))
+                .addGap(91, 91, 91))
+        );
+
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,42 +243,75 @@ public class VistaBuscador extends javax.swing.JInternalFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-//        String cedula = IDCliente.getText();
-//        Cliente cliente = new Cliente().obtenerClientePorCedula(cedula);
-//        if(cliente == null)
-//        {
-//            int option = JOptionPane.showOptionDialog(Escritorio, "Cliente no registrado. \n  ¿Agrear un nuevo cliente?",
-//                "Cliente no encontrado", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-//                null,    // null para icono por defecto.
-//                new Object[] { "SI", "NO"},   // null para YES, NO y CANCEL
-//                "SI");
-//            if(option == 0)
-//            {
-//                Interfaz.Escritorio.removeAll();
-//                VistaCliente client = new VistaCliente();
-//                client.setVisible(true);
-//                Interfaz.Escritorio.add(client);
-//            }
-//        }
-//        else
-//        {
-//            SetCliente.setVisible(true);
-//            ClienteNombre.setText(cliente.getNombres() + " " + cliente.getApellidos());
-//            Seleccionar.setVisible(true);
-//            cotizacion.setCliente(cliente);
-//            cotizacion.setIdCliente(cliente.getID());
-//        }
+        String cedula = CedulaCliente.getText();
+        cliente = new Cliente().obtenerClientePorCedula(cedula);
+        if(cliente == null)
+        {
+            int option = JOptionPane.showOptionDialog(Escritorio, "Cliente no registrado. \n  ¿Agrear un nuevo cliente?",
+                "Cliente no encontrado", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                null,    // null para icono por defecto.
+                new Object[] { "SI", "NO"},   // null para YES, NO y CANCEL
+                "SI");
+            if(option == 0)
+            {
+                Interfaz.Escritorio.removeAll();
+                VistaCliente client = new VistaCliente();
+                client.setVisible(true);
+                Interfaz.Escritorio.add(client);
+            }
+        }
+        else
+        {
+            MostrarCliente.setVisible(true);
+            ClienteNombre.setText(cliente.getNombres() + " " + cliente.getApellidos());
+            DefaultComboBoxModel combo = new DefaultComboBoxModel();
+            combo.addElement("Seleccione un Pedido");
+            for(Factura fac : new Factura().obtenerListaFacturas(cliente.getID()))
+            {
+                combo.addElement("Factura # " + fac.getIdFactura() + " De: " + fac.getFechaFactura());
+            }
+            Pedidos.setModel(combo);
+        }
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        mostrar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TerminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TerminarPActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(Fondo, "El pedido #" + prodc.getIdProduccion() + " De: " + prodc.getFechaInicial()
+        + " Se ha terminado hoy " + prodc.fechaActual());
+        prodc.setFechaEntrega(prodc.fechaActual());
+        Tabla.setValueAt(prodc.getFechaEntrega(), 0, 2);
+    }//GEN-LAST:event_TerminarPActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        GestorPedidos ges = new GestorPedidos();
+        ges.setVisible(true);
+        Interfaz.Escritorio.removeAll();
+        Interfaz.Escritorio.add(ges);
+    }//GEN-LAST:event_SalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
     private javax.swing.JTextField CedulaCliente;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField ClienteNombre;
+    private javax.swing.JPanel Fondo;
+    private javax.swing.JPanel MostrarCliente;
+    private javax.swing.JComboBox<String> Pedidos;
+    private javax.swing.JButton Salir;
+    private javax.swing.JTable Tabla;
+    private javax.swing.JPanel TablaPanel;
+    private javax.swing.JButton TerminarP;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

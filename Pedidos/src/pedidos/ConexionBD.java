@@ -82,7 +82,7 @@ public class ConexionBD {
     public ResultSet consultarBD(String sentencia) {
         try {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            rs = stmt.executeQuery(sentencia);
+        rs = stmt.executeQuery(sentencia);
         } catch (SQLException sqlex) {
             sqlex.printStackTrace();
         } catch (RuntimeException rex) {

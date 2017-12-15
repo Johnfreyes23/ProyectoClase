@@ -7,6 +7,8 @@ package pedidos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,7 +55,7 @@ public class Factura extends RegistroVentas {
 
     public Factura ObtenerFactura(String Id) {
         ConexionBD Proyecto = new ConexionBD(); // se crea la conexion con base de datos.
-        String sentencia = "selec * from Proyecto.Factura where IdFactura ='" + Id + "'"; //Consulta SQL 
+        String sentencia = "select * from Proyecto.Factura where IdFactura ='" + Id + "'"; //Consulta SQL 
         ResultSet rs = Proyecto.consultarBD(sentencia); // Objeto ResulSet que contendra los datos devueltos de la consulta.
         try {
             if (rs.next()) {
@@ -71,8 +73,25 @@ public class Factura extends RegistroVentas {
             Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
+    
+    public List<Factura> obtenerListaFacturas(String idCliente) {
+        ConexionBD diamante = new ConexionBD();
+        String sentencia = "select IdFactura from factura  where IdCliente = '" + idCliente + "'";
+        ResultSet rs = diamante.consultarBD(sentencia);
+        List<Factura> facturas = new ArrayList<>();
+        try {
+            while (rs.next()) {
+                Factura u = new Factura();
+                u.ObtenerFactura(rs.getString("IdFactura"));
+                facturas.add(u);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return facturas;
+    }
+    
     public Boolean crearfactura() {
         
         ConexionBD Proyecto = new ConexionBD();
