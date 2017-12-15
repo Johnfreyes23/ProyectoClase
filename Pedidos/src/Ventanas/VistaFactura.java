@@ -212,6 +212,7 @@ int i =0;
         // TODO add your handling code here:
             GeneradorPDF generar = new GeneradorPDF();
             generar.PdfFactura(factura);
+            factura.crearfactura();
             generar.abrirPdf(factura.getRutaArchivo());
             
             
