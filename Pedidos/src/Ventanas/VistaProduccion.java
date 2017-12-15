@@ -26,6 +26,7 @@ import pedidos.Factura;
 import pedidos.GeneradorPDF;
 import pedidos.Produccion;
 import pedidos.Producto;
+import pedidos.Pedido;
 
 /**
  *
@@ -34,10 +35,12 @@ import pedidos.Producto;
 public class VistaProduccion extends javax.swing.JInternalFrame {
 
     Produccion produccion;
+    Pedido pedido;
     /**
      * Creates new form VistaProduccion
      */
-    public VistaProduccion(Factura factura) {
+    public VistaProduccion(Factura factura, Pedido pedido) {
+        this.pedido = pedido;
         produccion = new Produccion(factura);
         initComponents();
         mostrar();

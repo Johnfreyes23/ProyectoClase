@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import pedidos.Cotizacion;
 import pedidos.Factura;
 import pedidos.GeneradorPDF;
+import pedidos.Pedido;
 import pedidos.Producto;
 
 /**
@@ -30,10 +31,12 @@ public class VistaFactura extends javax.swing.JInternalFrame {
 DefaultListModel lista = new DefaultListModel();
 int i =0;
     Factura factura;
+    Pedido pedido;
     /**
      * Creates new form VistaFactura
      */
-    public VistaFactura(Cotizacion cotizacion ) {
+    public VistaFactura(Cotizacion cotizacion , Pedido pedido ) {
+        this.pedido = pedido;
         factura = new Factura(cotizacion);
         initComponents();
         mostrar();
@@ -209,10 +212,13 @@ int i =0;
 
     private void ProducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProducirActionPerformed
         // TODO add your handling code here:
-       
+       pedido.setEstado("Produccion");
+       pedido.GuardarEstado();
+       pedido.setIdFactura(factura.getIdFactura());
+       pedido.GuardarIdFactura();
             factura.crearfactura();
        
-        VistaProduccion produccion = new VistaProduccion(factura);
+        VistaProduccion produccion = new VistaProduccion(factura , pedido);
         produccion.setVisible(true);
         Interfaz.Escritorio.removeAll();
         Interfaz.Escritorio.add(produccion);
