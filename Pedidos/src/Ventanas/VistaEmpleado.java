@@ -18,6 +18,7 @@ package Ventanas;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import pedidos.Empleado;
 
 /**
@@ -179,6 +180,19 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_GeneroEmActionPerformed
 
+    public void borrar()
+    {
+        NombreEm.setText("");
+        ApellidosEm.setText("");
+        IdentificacionEm.setText("");
+        EmailEm.setText("");
+        GeneroEm.setSelectedIndex(0);
+        DireccionEm.setText("");
+        TelefonoEm.setText("");
+        CargoEm.setText("");
+        FechaNacEm.setDate(null);
+    }
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         String nombreEmpleado = NombreEm.getText();
@@ -194,11 +208,13 @@ public class VistaEmpleado extends javax.swing.JInternalFrame {
         String formatted = format1.format(fechaNacimientoEmpleado);
         Empleado empleado = new Empleado( nombreEmpleado , apellidoEmpleado, Identificacion , formatted , generoEmpleado , direccionEmpleado, telefonoEmpleado, correoEmpleado, cargoEmpleado);
         empleado.crearUsuario();
-
+        JOptionPane.showMessageDialog(this, "Empleado(a) " + nombreEmpleado + " " + apellidoEmpleado + " se creó satisfactoriamemente");
+        borrar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
+        borrar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void NombreEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreEmActionPerformed
