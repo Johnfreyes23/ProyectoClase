@@ -62,6 +62,9 @@ int i =0;
             });
         }
         Tabla.setModel(table);
+        Tabla.getColumn("Item").setPreferredWidth(50);
+        Tabla.getColumn("Descripción").setPreferredWidth(435);
+        Tabla.getColumn("Valor").setPreferredWidth(108);
     }
 
     /**
