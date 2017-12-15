@@ -61,9 +61,11 @@ public class Produccion extends Registro {
         try {
             if (rs.next()) {
                 this.setIdProduccion(Id);
-                this.setIdEmpleado(rs.getString("IdUsr"));
+                this.setIdEmpleado(rs.getString("IdEmpleado"));
                 this.setFechaInicial(rs.getString("fechaInicio"));
                 this.setFechaEntrega(rs.getString("fechaDespacho"));
+                setIdCliente(rs.getString("IdEmpleado"));
+                setRutaArchivo(rs.getString("rutaArchivo"));
                 return this;
 
             }
@@ -72,6 +74,40 @@ public class Produccion extends Registro {
             Logger.getLogger(Produccion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    public Boolean crearProduccion() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Insert into Proyecto.Produccion (IdEmpleado,descripcion,fechaInicio,fechaDespacho,rutaArchivo,IdCliente) "
+                + " Values('" + getIdEmpleado()+ "',"
+                + "'" + getFechaInicial()+ "',"
+                + "'" + getFechaEntrega()+ "',"
+                + "'" + getRutaArchivo()+ "',"
+                + "'" + getIdCliente()+ "');";
+        boolean exito = Proyecto.insertarBD(sentencia);
+        if (exito) {
+            String sentencia2 = "select max(IdProduccion) as Id from Proyecto.Factura;";
+            ResultSet rs = Proyecto.consultarBD(sentencia2);
+            try {
+                if (rs.next()) {
+                    this.setIdProduccion(rs.getString("Id"));
+                    Proyecto.cerrarConexion();
+                    return true;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Factura.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        Proyecto.cerrarConexion();
+        return false;
+    }
+    public Boolean GuardarRuta() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Update  Proyecto.Produccion set rutaArchivo='" + getRutaArchivo()+"'  where IdCotizacion ='" + getIdProduccion()+ "'";
+        boolean exito = Proyecto.insertarBD(sentencia);        
+        Proyecto.cerrarConexion();
+        return exito;
     }
 
     public String getIdProduccion() {

@@ -29,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 /**
@@ -98,7 +99,7 @@ public class GeneradorPDF {
     
     public void PdfFactura(Factura f1){
         Document document = new Document();
-        String ruta = "src/Archivos/cotizacion" + f1.getCliente().getNombres()+" "+f1.getFechaFactura() + ".pdf";
+        String ruta = "src/Archivos/Factura" + f1.getCliente().getNombres()+" "+f1.getFechaFactura() + ".pdf";
         f1.setRutaArchivo(ruta);
         f1.GuardarRuta();
     try {
@@ -154,7 +155,54 @@ public class GeneradorPDF {
             document.add(new Paragraph(" "));
 
             document.add(new Paragraph(" "));
+            Paragraph derecha = new Paragraph("Valor Total : "+ f1.getValorTotal());
+                    derecha.setAlignment(Element.ALIGN_RIGHT);
+            document.add(derecha);
+            Image image2 = Image.getInstance("pie.png");
+            image2.scaleAbsolute(550f, 100f);
+            document.add(image2);
+            document.close();
+//            cotizacion.setRutaArchivo(cotizacion.getRutaArchivo());
+//           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void PdfProduccion(Produccion p){
+        Document document = new Document();
+        String ruta = "src/Archivos/Produccion" + p.getCliente().getNombres()+" "+p.getFechaInicial()+ ".pdf";
+        p.setRutaArchivo(ruta);
+        p.GuardarRuta();
+    try {
+             
+            
+            PdfWriter.getInstance(document, new FileOutputStream(ruta ));
+            document.open();
+            Image image1 = Image.getInstance("encabezado.png");
+            image1.scaleAbsolute(550f, 100f);
+            document.add(image1);
+            Paragraph titulo = new Paragraph("Orden de Produccion - N° "+p.getIdProduccion()); 
+            titulo.setAlignment(Element.ALIGN_CENTER);
+             document.add(new Paragraph(" "));
+            document.add(titulo);
+             document.add(new Paragraph(" "));
+           
+            PdfPTable tabla = new PdfPTable(1);
+            PdfPCell celda1 = new PdfPCell(new Paragraph("Cliente : "+ p.getCliente().getNombres() +" "+ p.getCliente().getApellidos()));
+            PdfPCell celda2 = new PdfPCell(new Paragraph("Direccion : "+ p.getCliente().getDireccion() ));
+            PdfPCell celda3 = new PdfPCell(new Paragraph("Telefono : " + p.getCliente().getTelefono()));
+            tabla.addCell(celda1);
+            tabla.addCell(celda2);
+            tabla.addCell(celda3);
+            
+            document.add(tabla);
             document.add(new Paragraph(" "));
+            document.add(new Paragraph(" "));
+            document.add(new Paragraph("\nProductos: \n"));
+            for (Producto prod : p.getProductos()) {
+                document.add(new Paragraph(prod.detalles()));
+            }
             Image image2 = Image.getInstance("pie.png");
             image2.scaleAbsolute(550f, 100f);
             document.add(image2);
