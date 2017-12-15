@@ -90,7 +90,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jPanel1 = new javax.swing.JPanel();
+        Fondo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ClienteProduc = new javax.swing.JLabel();
         MostrarClienteP = new javax.swing.JTextField();
@@ -103,49 +103,49 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         FechaFin = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
+        Imprimir = new javax.swing.JButton();
         Terminar = new javax.swing.JButton();
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         jLabel1.setText("Orden de Producción");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+        Fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
         ClienteProduc.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         ClienteProduc.setText("Cliente:");
-        jPanel1.add(ClienteProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+        Fondo.add(ClienteProduc, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         MostrarClienteP.setEditable(false);
         MostrarClienteP.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jPanel1.add(MostrarClienteP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 260, 30));
+        Fondo.add(MostrarClienteP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 260, 30));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel2.setText("Asignar Operario:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         EmpleadoCombo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         EmpleadoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un operario" }));
-        jPanel1.add(EmpleadoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 260, -1));
+        Fondo.add(EmpleadoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 260, -1));
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel3.setText("Fecha Terminado:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
+        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel4.setText("Fecha Inicio:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
+        Fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
         FechaIn.setEditable(false);
         FechaIn.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jPanel1.add(FechaIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, -1));
+        Fondo.add(FechaIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 150, -1));
 
         jLabel5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel5.setText("Productos");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, -1, -1));
+        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, -1, -1));
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -160,19 +160,19 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         Tabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane2.setViewportView(Tabla);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 470, 230));
-        jPanel1.add(FechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 150, 30));
+        Fondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 470, 230));
+        Fondo.add(FechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 150, 30));
 
-        jButton1.setBackground(new java.awt.Color(204, 51, 0));
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Imprimir Orden");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Imprimir.setBackground(new java.awt.Color(204, 51, 0));
+        Imprimir.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        Imprimir.setForeground(new java.awt.Color(255, 255, 255));
+        Imprimir.setText("Imprimir Orden");
+        Imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ImprimirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, -1));
+        Fondo.add(Imprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 470, -1, -1));
 
         Terminar.setBackground(new java.awt.Color(204, 51, 0));
         Terminar.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -183,9 +183,9 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
                 TerminarActionPerformed(evt);
             }
         });
-        jPanel1.add(Terminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, -1, -1));
+        Fondo.add(Terminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, -1, -1));
 
-        jDesktopPane1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 560));
+        jDesktopPane1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,7 +201,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirActionPerformed
         // TODO add your handling code here:
         Date fechaNacimientoCliente = FechaFin.getDate();
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -215,7 +215,7 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
         pdf.PdfProduccion(produccion);
         produccion.crearProduccion();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ImprimirActionPerformed
 
     private void TerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TerminarActionPerformed
         // TODO add your handling code here:
@@ -233,17 +233,17 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> EmpleadoCombo;
     private com.toedter.calendar.JDateChooser FechaFin;
     private javax.swing.JTextField FechaIn;
+    private javax.swing.JPanel Fondo;
+    private javax.swing.JButton Imprimir;
     private javax.swing.JTextField MostrarClienteP;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton Terminar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

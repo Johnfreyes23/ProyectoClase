@@ -7,6 +7,7 @@ package Ventanas;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import pedidos.Cliente;
 
 /**
@@ -26,6 +27,18 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         validar.ValidadorLetras(txtIdentificacion);
         validar.ValidadorLetras(txtTelefono);
         
+    }
+    
+    public void borrar()
+    {
+        txtNombre.setText("");
+        txtApellidos.setText("");
+        txtIdentificacion.setText("");
+        txtEmail.setText("");
+        txtGenero.setSelectedIndex(0);
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        JDFechaNacimiento.setDate(null);
     }
 
     /**
@@ -165,6 +178,7 @@ public class VistaCliente extends javax.swing.JInternalFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
+        borrar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -181,9 +195,8 @@ public class VistaCliente extends javax.swing.JInternalFrame {
         String formatted = format1.format(fechaNacimientoCliente);
         Cliente cliente = new Cliente( nombreCliente , apellidoCliente, Identificacion , formatted , generoCliente , direccionCliente, telefonoCliente, correoCliente);
         cliente.crearUsuario();
-        
-        
-        System.out.println(formatted);
+        JOptionPane.showMessageDialog(this, "El cliente " + nombreCliente + " " + apellidoCliente + " se creó satisfactoriamemente");
+        borrar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
 

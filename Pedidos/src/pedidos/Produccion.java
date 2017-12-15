@@ -23,6 +23,7 @@ public class Produccion extends Registro {
     //Campos de la Clase
     private String IdProduccion;
     private String IdEmpleado;
+    private String IdFactura;
     private String FechaEntrega;
     private Empleado empleado;
     private String RutaArchivo;
@@ -40,7 +41,11 @@ public class Produccion extends Registro {
         super.setCliente(factura.getCliente());
         super.setIdCliente(factura.getIdCliente());
         productos = factura.getProductos();
+        this.IdFactura = factura.getIdFactura();
     }
+    
+    public Produccion()
+    {}
 
     /**
      * Metodo que imprime en pantalla una orden de pedido para entregar en
@@ -57,7 +62,7 @@ public class Produccion extends Registro {
 
     public Produccion ObtenerProduccion(String Id) {
         ConexionBD Proyecto = new ConexionBD(); // se crea la conexion con base de datos.
-        String sentencia = "selec * from Proyecto.Produccion where IdProduccion ='" + Id + "'"; //Consulta SQL 
+        String sentencia = "select * from Proyecto.Produccion where IdFactura ='" + Id + "'"; //Consulta SQL 
         ResultSet rs = Proyecto.consultarBD(sentencia); // Objeto ResulSet que contendra los datos devueltos de la consulta.
         try {
             if (rs.next()) {
@@ -102,12 +107,13 @@ public class Produccion extends Registro {
     public Boolean crearProduccion() {
         
         ConexionBD Proyecto = new ConexionBD();
-        String sentencia = "Insert into Proyecto.Produccion (IdEmpleado,fechaInicio,fechaDespacho,rutaArchivo,IdCliente) "
+        String sentencia = "Insert into Proyecto.Produccion (IdEmpleado,fechaInicio,fechaDespacho,rutaArchivo,IdCliente,IdFactura) "
                 + " Values('" + getIdEmpleado()+ "',"
                 + "'" + getFechaInicial()+ "',"
                 + "'" + getFechaEntrega()+ "',"
                 + "'" + getRutaArchivo()+ "',"
-                + "'" + getCliente().getIdentificacion()+ "');";
+                + "'" + getCliente().getIdentificacion()+ "',"
+                + "'" + getIdFactura()+ "');";        
         boolean exito = Proyecto.insertarBD(sentencia);
         if (exito) {
             String sentencia2 = "select max(IdProduccion) as Id from Proyecto.Factura;";
@@ -189,6 +195,14 @@ public class Produccion extends Registro {
 
     public void setProductos(ArrayList<Producto> productos) {
         this.productos = productos;
+    }
+
+    public String getIdFactura() {
+        return IdFactura;
+    }
+
+    public void setIdFactura(String IdFactura) {
+        this.IdFactura = IdFactura;
     }
     
 
