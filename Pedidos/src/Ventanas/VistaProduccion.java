@@ -219,6 +219,8 @@ public class VistaProduccion extends javax.swing.JInternalFrame {
 
     private void TerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TerminarActionPerformed
         // TODO add your handling code here:
+        pedido.setIdProduccion(produccion.getIdProduccion());
+        pedido.GuardarIdProduccion();
         GestorPedidos pedidos = new GestorPedidos();
         Interfaz.Escritorio.removeAll();
         pedidos.setVisible(true);

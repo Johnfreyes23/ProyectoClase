@@ -89,7 +89,39 @@ public class Pedido extends Registro{
         Proyecto.cerrarConexion();
         return false;
     }
+    public Boolean GuardarEstado() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Update  Proyecto.Pedido set estado='" + getEstado()+"'  where IdPedido ='" + getIdPedido()+ "'";
+        boolean exito = Proyecto.insertarBD(sentencia);        
+        Proyecto.cerrarConexion();
+        return exito;
+    }
+    public Boolean GuardarIdCotizacion() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Update  Proyecto.Pedido set IdCotizacion='" + getIdCotizacion()+"'  where IdPedido ='" + getIdPedido()+ "'";
+        boolean exito = Proyecto.insertarBD(sentencia);        
+        Proyecto.cerrarConexion();
+        return exito;
+    }
 
+     public Boolean GuardarIdFactura() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Update  Proyecto.Pedido set IdFactura='" + getIdFactura()+"'  where IdPedido ='" + getIdPedido()+ "'";
+        boolean exito = Proyecto.insertarBD(sentencia);        
+        Proyecto.cerrarConexion();
+        return exito;
+    }
+     public Boolean GuardarIdProduccion() {
+        
+        ConexionBD Proyecto = new ConexionBD();
+        String sentencia = "Update  Proyecto.Pedido set IdProduccion='" + getIdProduccion()+"'  where IdPedido ='" + getIdPedido()+ "'";
+        boolean exito = Proyecto.insertarBD(sentencia);        
+        Proyecto.cerrarConexion();
+        return exito;
+    }
     public String getEstado() {
         return estado;
     }
