@@ -7,6 +7,7 @@ package pedidos;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +27,7 @@ public class Produccion extends Registro {
     private Empleado empleado;
     private String RutaArchivo;
     private String fechaInicial;
+    private ArrayList<Producto> productos;
 
     /**
      * Constructor para la clase produccion
@@ -35,7 +37,8 @@ public class Produccion extends Registro {
      */
     public Produccion(Factura factura) {
         this.fechaInicial = fechaActual();
-        
+        super.setCliente(factura.getCliente());
+        productos = factura.getProductos();
     }
 
     /**
@@ -119,5 +122,14 @@ public class Produccion extends Registro {
     public void setFechaInicial(String fechaInicial) {
         this.fechaInicial = fechaInicial;
     }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
+    
 
 }
